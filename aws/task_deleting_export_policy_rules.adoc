@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar_aws
 permalink: aws/task_deleting_export_policy_rules.html
-keywords: Cloud Volumes for AWS, export policy rules
+keywords: Cloud Volumes Service for AWS, export policy rules
 summary: You can delete export policy rules that are no longer needed.
 ---
 

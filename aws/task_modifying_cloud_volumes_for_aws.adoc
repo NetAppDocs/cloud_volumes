@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar_aws
 permalink: aws/task_modifying_cloud_volumes_for_aws.html
-keywords: Cloud Volumes for AWS, volume names, quota, service levels.
+keywords: Cloud Volumes Service for AWS, volume names, quota, service levels.
 summary: You can modify existing volumes, including changing the volume name, quota, or service level.
 ---
 
-= Modifying Cloud Volumes for AWS
+= Modifying Cloud Volumes
 :toc: macro
 :hardbreaks:
 :nofooter:
@@ -19,7 +19,7 @@ You can modify existing volumes, including changing the volume name, quota, or s
 
 .Steps
 
-. Log in to https://cds-aws.netapp.com/storage/volumes[NetApp Cloud Central^].
+. Log in to https://cds-aws.netapp.com/storage/volumes[NetApp Cloud Orchestrator^].
 . Click the name of the volume that you want to manage.
 . Modify the following volume fields as applicable:
 +

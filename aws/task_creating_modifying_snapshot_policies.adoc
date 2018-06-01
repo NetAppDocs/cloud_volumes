@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar_aws
 permalink: aws/task_creating_modifying_snapshot_policies.html
-keywords: Cloud Volumes for AWS, snapshot policies
+keywords: Cloud Volumes Service for AWS, snapshot policies
 summary: You can create or modify a snapshot policy as necessary for a Cloud Volume.
 ---
 
