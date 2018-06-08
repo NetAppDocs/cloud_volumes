@@ -17,5 +17,5 @@ summary: The notice files provide information about third-party copyright and li
 The notice files provide information about third-party copyright and licenses that are used in NetApp Cloud Volumes Service for AWS.
 
 
-* link:media/notice.pdf[Notice for SDE]
+* link:media/Notice.pdf[Notice for SDE]
 
