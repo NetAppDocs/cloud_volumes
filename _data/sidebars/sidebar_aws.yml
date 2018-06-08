@@ -1,15 +1,15 @@
 entries:
-  - title: Cloud Volumes for AWS docs
+  - title: Cloud Volumes Service for AWS docs
     url: /index.html
   - title: Getting started
     entries:
       - title: Overview
         url: /concept_overview.html
-      - title: Creating Cloud Volumes for AWS
+      - title: Creating Cloud Volumes
         url: /task_creating_cloud_volumes_for_aws.html
       - title: Mounting a Cloud Volume
         url: /task_mounting_cloud_volumes_for_aws.html
-  - title: Managing Cloud Volumes for AWS
+  - title: Managing Cloud Volumes
     entries:
       - title: Modifying Cloud Volumes
         url: /task_modifying_cloud_volumes_for_aws.html

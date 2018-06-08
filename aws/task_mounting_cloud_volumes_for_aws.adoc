@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar_aws
 permalink: aws/task_mounting_cloud_volumes_for_aws.html
-keywords: Cloud Volumes for AWS, mount targets, Elastic Compute Cloud, EC2
+keywords: Cloud Volumes Service for AWS, mount targets, Elastic Compute Cloud, EC2
 summary: You can mount a Cloud Volume to your AWS instance.
 ---
 
-= Mounting a Cloud Volume for AWS
+= Mounting a Cloud Volume
 :toc: macro
 :hardbreaks:
 :nofooter:

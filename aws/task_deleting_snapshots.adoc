@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar_aws
 permalink: aws/task_deleting_snapshots.html
-keywords: Cloud Volumes for AWS, snapshots
+keywords: Cloud Volumes Service for AWS, snapshots
 summary: You can delete a snapshot from the Volumes or Snapshots page.
 ---
 

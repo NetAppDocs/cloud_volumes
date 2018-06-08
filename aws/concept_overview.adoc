@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar_aws
 permalink: aws/concept_overview.html
-keywords: overview, concepts, features, use cases, prerequisites, workflow
-summary: Cloud Volumes for AWS are simple to use and fast to deploy. Some prerequisites apply for using the Cloud Volumes for AWS service.
+keywords: Cloud Volumes Service for AWS, overview, concepts, features, use cases, prerequisites, workflow
+summary: Cloud Volumes are simple to use and fast to deploy. Some prerequisites apply for using Cloud Volumes Service for AWS.
 ---
 
-= Cloud Volumes for AWS overview
+= Cloud Volumes Service for AWS overview
 :toc: macro
 :hardbreaks:
 :nofooter:
@@ -14,11 +14,11 @@ summary: Cloud Volumes for AWS are simple to use and fast to deploy. Some prereq
 :imagesdir: ./media/
 
 [.lead]
-Cloud Volumes for AWS are simple to use and fast to deploy.  Some prerequisites apply for using the Cloud Volumes for AWS service.
+Cloud Volumes are simple to use and fast to deploy.  Some prerequisites apply for using Cloud Volumes Service for AWS.
 
-== Benefits of using Cloud Volumes for AWS
+== Benefits of using Cloud Volumes Service for AWS
 
-The Cloud Volumes for AWS service provides the following benefits:
+Cloud Volumes Service for AWS provides the following benefits:
 
 * Consistent high performance
 * Data protection without performance impacts
@@ -29,14 +29,6 @@ The Cloud Volumes for AWS service provides the following benefits:
 
 == Prerequisites
 
-You must have subscribed to the Cloud Volumes for AWS service before you can perform the Cloud Volumes tasks that are described in this documentation.  The subscription process includes the initial setup and configuration that are required for using the service.
+You must have subscribed to Cloud Volumes Service for AWS before you can perform the Cloud Volumes tasks that are described in this documentation.  The subscription process includes the initial setup and configuration that are required for using the service.
 
-See the https://www.netapp.com/us/forms/campaign/register-for-netapp-cloud-volumes-for-aws.aspx?hsCtaTracking=4f67614a-8c97-4c15-bd01-afa38bd31696%7C5e536b53-9371-4ce1-8e38-efda436e592e[Get a first look at the new NetApp Cloud Volumes for AWS^] page for information about subscribing to the Cloud Volumes for AWS service.
-
-////
-== Workflow for creating and managing NetApp Cloud Volumes for AWS
-
-The following illustration summarizes the process for creating and managing NetApp Cloud Volumes for AWS.
-
-image:diagram_workflow_cloud_volumes_for_aws.png[Workflow for creating and managing NetApp Cloud Volumes for AWS]
-////
+See the https://www.netapp.com/us/forms/campaign/register-for-netapp-cloud-volumes-for-aws.aspx?hsCtaTracking=4f67614a-8c97-4c15-bd01-afa38bd31696%7C5e536b53-9371-4ce1-8e38-efda436e592e[Get a first look at the new NetApp Cloud Volumes Service for AWS^] page for more information.
