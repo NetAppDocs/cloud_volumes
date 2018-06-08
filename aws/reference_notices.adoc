@@ -1,0 +1,21 @@
+---
+sidebar: sidebar_aws
+permalink: aws/reference_notices.html
+keywords: Cloud Volumes Service for AWS, notices
+summary: The notice files provide information about third-party copyright and licenses that are used in NetApp Cloud Volumes Service for AWS.
+---
+
+= Notices for NetApp Cloud Volumes Service for AWS
+:toc: macro
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The notice files provide information about third-party copyright and licenses that are used in NetApp Cloud Volumes Service for AWS.
+
+
+* link:media/notice.pdf[Notice for SDE]
+
