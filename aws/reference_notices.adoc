@@ -16,6 +16,6 @@ summary: The notice files provide information about third-party copyright and li
 [.lead]
 The notice files provide information about third-party copyright and licenses that are used in NetApp Cloud Volumes Service for AWS.
 
-
-* link:media/Notice.pdf[Notice for SDE]
-
+* link:media/notices_Cloud_Volumes_1.1.pdf[Notice for NetApp Cloud Volumes Service]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2839209[Notice for Data ONTAP^] 
+// ONTAP 9.3GA
