@@ -33,3 +33,5 @@ entries:
         url: /task_creating_additional_export_policy_rules.html
       - title: Deleting export policy rules
         url: /task_deleting_export_policy_rules.html
+  - title: Notices
+    url: /reference_notices.html
