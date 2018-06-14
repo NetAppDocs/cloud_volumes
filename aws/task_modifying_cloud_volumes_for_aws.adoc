@@ -19,7 +19,7 @@ You can modify existing volumes, including changing the volume name, quota, or s
 
 .Steps
 
-. Log in to https://cds-aws.netapp.com/storage/volumes[NetApp Cloud Orchestrator^].
+. Log in to https://cds-aws-bundles.netapp.com/storage/volumes[NetApp Cloud Orchestrator^].
 . Click the name of the volume that you want to manage.
 . Modify the following volume fields as applicable:
 +
