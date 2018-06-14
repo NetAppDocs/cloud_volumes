@@ -15,7 +15,6 @@ before_install:
 - rm -rf dependencies
 - mv sidebar.yml _data/sidebars/
 - sed -i 's/\/jekyll/\/'$REPO_NAME'/g' ./_config.yml
-- sed -i 's/`search\.html`/`\/'$REPO_NAME'\/us-en\/search\.html`/g' ./webpack/components/Search.js
 - sed -i 's/`search\.html`/`https\:\/\/docs\.netapp\.com\/us-en\/'$REPO_NAME'\/search\.html`/g' ./webpack/components/Search.js
 - ES_INDEX="clouddocs-"$REPO_NAME
 - SK_INDEXES=$ES_INDEX
