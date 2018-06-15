@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar_aws
 permalink: aws/task_deleting_cloud_sync_relationship.html
-keywords: Cloud Volumes Service for AWS, Cloud Sync Relationship
+keywords: Cloud Volumes Service for AWS, Cloud Sync relationship
 summary: You can delete a Cloud Sync relationship that is no longer needed.
 ---
 
