@@ -43,7 +43,5 @@ entries:
         url: /task_modifying_cloud_sync_schedule.html
       - title: Deleting a Cloud Sync Relationship
         url: /task_deleting_cloud_sync_relationship.html
-      - title: Deleting a Cloud Sync data broker
-        url: /task_deleting_cloud_sync_data_broker.html
   - title: Notices
     url: /reference_notices.html
