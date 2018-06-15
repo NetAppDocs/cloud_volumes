@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar_aws
-permalink: aws/task_creating_cloud_sync_data_broker.html
+permalink: aws/task_deleting_cloud_sync_data_broker.html
 keywords: Cloud Volumes Service for AWS, Cloud Sync, data brokers
 summary: You can delete a Cloud Sync data broker that is no longer needed.
 ---
 
-= Creating a Cloud Sync data broker
+= Deleting a Cloud Sync data broker
 :toc: macro
 :hardbreaks:
 :nofooter:
