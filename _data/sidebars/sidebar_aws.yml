@@ -41,7 +41,7 @@ entries:
         url: /task_creating_cloud_sync_relationship.html
       - title: Modifying the Cloud Sync schedule
         url: /task_modifying_cloud_sync_schedule.html
-      - title: Deleting a Cloud Sync Relationship
+      - title: Deleting a Cloud Sync relationship
         url: /task_deleting_cloud_sync_relationship.html
       - title: Deleting a Cloud Sync data broker
         url: /task_deleting_cloud_sync_data_broker.html
