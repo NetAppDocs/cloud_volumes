@@ -5,7 +5,7 @@ keywords: Cloud Volumes Service for AWS, Cloud Sync relationship
 summary: You can delete a Cloud Sync relationship that is no longer needed.
 ---
 
-= Deleting a Cloud Sync Relationship
+= Deleting a Cloud Sync relationship
 :toc: macro
 :hardbreaks:
 :nofooter:
