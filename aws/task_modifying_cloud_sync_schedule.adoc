@@ -18,7 +18,9 @@ summary: When a Cloud Sync relationship is initially created, auto sync is enabl
 When a Cloud Sync relationship is initially created, auto sync is enabled by default and scheduled to run once a day. You can modify the Cloud Sync schedule as appropriate.
 
 .Steps
-. To turn off auto sync, click the blue *ON* button.
+. To turn off auto sync, click the blue *ON* slider.
++
+image::diagram_modifying_cloud_sync_schedule_auto_sync.png[Auto sync slider]
 . To change the sync schedule, click the drop-down list under *Schedule*, select *Day/s* or *Hour/s*, select an interval number, and then click the checkmark.
 +
 image::diagram_modifying_cloud_sync_schedule.png[Modifying the Cloud Sync schedule]

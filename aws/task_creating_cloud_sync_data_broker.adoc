@@ -58,8 +58,6 @@ image::diagram_creating_cloud_sync_data_broker.png[Creating a Cloud Sync data br
 +
 It takes a few minutes to create a data broker.
 After the data broker is created, it is marked with a green dot to indicate that it is ready.
-+
-image::diagram_creating_cloud_sync_data_broker2.png[A Cloud Sync data broker is created]
 
 
 .After you finish
