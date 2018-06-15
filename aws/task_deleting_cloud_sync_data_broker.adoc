@@ -1,0 +1,34 @@
+---
+sidebar: sidebar_aws
+permalink: aws/task_creating_cloud_sync_data_broker.html
+keywords: Cloud Volumes Service for AWS, Cloud Sync, data brokers
+summary: You can delete a Cloud Sync data broker that is no longer needed.
+---
+
+= Creating a Cloud Sync data broker
+:toc: macro
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+You can delete a Cloud Sync data broker that is no longer needed.
+
+.About this task
+This task removes the data broker from Cloud Volumes, but it does not delete the data broker instance in AWS.
+
+To delete the data broker instance in AWS, you must go to the AWS console for your account, locate the EC2 instance for the broker by name, and then terminate it as needed.
+
+.Before you begin
+All cloud sync relationships that use the data broker must have already been deleted before you can delete the data broker.
+
+<<task_deleting_cloud_sync_relationship.adoc#,Deleting a Cloud Sync Relationship>>
+
+.Steps
+
+. Go to the Sync page or the Sync tab for a volume on the Volumes page.
+. Delete a data broker by clicking the data broker’s name and click the trash can icon.
+. In the confirmation dialog box, type `delete` to confirm, and then click *Delete*.

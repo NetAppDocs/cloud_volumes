@@ -1,0 +1,41 @@
+---
+sidebar: sidebar_aws
+permalink: aws/task_creating_cloud_sync_relationship.html
+keywords: Cloud Volumes Service for AWS, Cloud Sync relationships, target, source
+summary: A Cloud Sync relationship enables you to sync data to or from the Cloud Volume.
+---
+
+= Creating a Cloud Sync relationship
+:toc: macro
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+A Cloud Sync relationship enables you to sync data to or from the Cloud Volume.
+
+.Before you begin
+You must already have a Cloud Sync data broker.
+<<task_creating_cloud_sync_data_broker.adoc#,Creating a Cloud Sync data broker>>
+
+.Steps
+. Go to the Sync page or the Sync tab for a volume on the Volumes page.
+. Create a Cloud Sync relationship by clicking *Create new relationship*.
+. Take one of the following actions:
++
+* To sync data to the volume, select *Use volume as target*.
+* To sync data from the volume, select *Use volume as source*.
++
+image::diagram_creating_cloud_sync_relationship.png[Creating a Cloud Sync relationship]
+
+. In the *Host* field (unpopulated), enter the IP address of the NFS server that you want to sync to or sync from.
++
+After a few moments, a list of the available exports is automatically discovered.
+. In the *Export* field, select one of the available exports.
+. (Optional) Check the *Delete files on target when deleted from source* box if you want to delete the files on target when they are deleted from source.
+. Click *Create relationship*.
++
+The relationship status is displayed and the file progress fields show the number of files that are copied.

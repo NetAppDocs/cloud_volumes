@@ -1,0 +1,66 @@
+---
+sidebar: sidebar_aws
+permalink: aws/task_creating_cloud_sync_data_broker.html
+keywords: Cloud Volumes Service for AWS, Cloud Sync, data brokers, sync relationships
+summary: NetApp Cloud Sync is integrated with NetApp Cloud Volumes Service for AWS to enable fast data syncing to or from a Cloud Volume.  A Cloud Sync data broker enables you to create a Cloud Sync relationship for syncing data.
+---
+
+= Creating a Cloud Sync data broker
+:toc: macro
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+NetApp Cloud Sync is integrated with NetApp Cloud Volumes Service for AWS to enable fast data syncing to or from a Cloud Volume.  A Cloud Sync data broker enables you to create a Cloud Sync relationship for syncing data.
+
+.About this task
+If you already have a Cloud Sync data broker in the same AWS Virtual Private Cloud (VPC) that you use for your Cloud Volumes account, you can skip this task.
+
+.Steps
+. Go to the Sync page or the Sync tab for a volume on the Volumes page.
+. Create a data broker by clicking *Create data broker*.
+. Provide information for the following fields:
++
+* *Name*
++
+Provide a name for the data broker.
+* *Type*
++
+Select AWS.
+* *Region*
++
+Select an available region.
+* *API key*
++
+Provide the access key for your AWS account.
+* *Secret key*
++
+Provide the secret key for your AWS account.
+* *Keypair*
++
+Select an available keypair.
++
+The keypair will be updated after you enter valid keys.
+* *VPC*
++
+Select the VPC that is connected to your Cloud Volumes account.
+* *Subnet*
++
+Select an available subnet to use for the data broker.
++
+image::diagram_creating_cloud_sync_data_broker.png[Creating a Cloud Sync data broker]
+
+. Click *Create data broker* to start the data broker creation process.
++
+It takes a few minutes to create a data broker.
+After the broker is created, it is marked with a green dot to indicate that it is ready.
++
+image::diagram_creating_cloud_sync_data_broker2.png[A Cloud Sync data broker is created]
+
+
+.After you finish
+Continue with <<task_creating_cloud_sync_relationship.adoc#,Creating a Cloud Sync Relationship>>.
