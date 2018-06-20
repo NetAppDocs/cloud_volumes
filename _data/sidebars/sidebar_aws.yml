@@ -33,7 +33,7 @@ entries:
         url: /task_creating_additional_export_policy_rules.html
       - title: Deleting export policy rules
         url: /task_deleting_export_policy_rules.html
-  - title: Managing Cloud Sync
+  - title: Managing Cloud Sync for Cloud Volumes
     entries:
       - title: Creating a Cloud Sync data broker
         url: /task_creating_cloud_sync_data_broker.html
