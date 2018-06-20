@@ -20,6 +20,8 @@ NetApp Cloud Sync is integrated with NetApp Cloud Volumes Service for AWS to ena
 .About this task
 If you already have a Cloud Sync data broker in the same AWS Virtual Private Cloud (VPC) that you use for your Cloud Volumes account, you can skip this task.
 
+https://docs.netapp.com/us-en/cloudsync/[NetApp Cloud Sync Documentation^]
+
 .Steps
 . Go to the Sync page or the Sync tab for a volume on the Volumes page.
 . Create a data broker by clicking *Create data broker*.
