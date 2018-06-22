@@ -16,7 +16,7 @@ summary: If you use Windows Active Directory (AD) servers with Cloud Volumes, yo
 [.lead]
 If you use Windows Active Directory (AD) servers with Cloud Volumes, you should familiarize yourself with the guidance on AWS security group settings. The settings enable Cloud Volumes to integrate with AD correctly.
 
-By default, the AWS security group applied to an EC2 Windows instance does not contain inbound rules for any protocol except for RDP.  You must add the following rules to the security groups that are attached to each Windows AD instance to enable inbound communication from Cloud Volumes Service:
+By default, the AWS security group applied to an EC2 Windows instance does not contain inbound rules for any protocol except for RDP.  You must add rules to the security groups that are attached to each Windows AD instance to enable inbound communication from Cloud Volumes Service. The required ports are as follows:
 
 [cols=3*,options="header",cols="40,30,30",width="70%"]
 |===
@@ -30,7 +30,7 @@ By default, the AWS security group applied to an EC2 Windows instance does not c
 | Kerberos | 464 | TCP
 | Kerberos | 464 | UDP
 | Kerberos | 88 | TCP
-| Kerberos | 88 | TCP
+| Kerberos | 88 | UDP
 | LDAP | 389 | TCP
 | LDAP | 389 | UDP
 | LDAP | 3268 | TCP
