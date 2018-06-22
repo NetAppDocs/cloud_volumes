@@ -92,6 +92,9 @@ Enter an administrator username for the Active Directory server.
 Enter the password for the Active Directory administrator.
 +
 image::diagram_create_volume_ad.png[Active Directory]
++
+IMPORTANT: You should follow the guidance on AWS security group settings to enable Cloud Volumes to integrate with Active Directory correctly.
+<<reference_security_groups_windows_ad_servers.adoc#,AWS security group settings for Windows AD servers>>
 * *Snapshot policy* (Optional)
 +
 ** Select the snapshot frequency: *Hourly*, *Daily*, *Weekly*, or *Monthly*.
