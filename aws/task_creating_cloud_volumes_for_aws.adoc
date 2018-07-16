@@ -54,9 +54,13 @@ Select an existing snapshot to create a volume.
 * *Service level*
 +
 Select *Standard*, *Premium*, or *Extreme*.
++
+** _Standard_ provides 1000 IOPS per TB (16k IO) and 16 MB of throughput per TB.
+** _Premium_ provides 4000 IOPS per TB (16k IO) and 64 MB of throughput per TB.
+** _Extreme_ provides 8000 IOPS per TB (16k IO) and 128 MB of throughput per TB.
 * *Quota*
 +
-Select the size for the volume.
+Select the allocated capacity for the volume.
 * *Export policy*
 +
 ** *Allowed clients*
