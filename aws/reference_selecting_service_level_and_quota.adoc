@@ -205,12 +205,12 @@ IMPORTANT: _All pricing information is based on the list prices as of July 10, 2
 
 === Example 1
 
-For example, your application needs 25 TB of capacity and 100 MB/s of bandwidth. At 25 TB of capacity, the Standard service level would provide 391 MB/s of bandwidth at a cost of $3,750, making Standard the most suitable service level in this case.
+For example, your application requires 25 TB of capacity and 100 MB/s of bandwidth. At 25 TB of capacity, the Standard service level would provide 400 MB/s of bandwidth at a cost of $3,750, making Standard the most suitable service level in this case.
 
 image:diagram_service_level_quota_example1.png[Service level and quota selection, example 1]
 
 === Example 2
 
-For example, your application needs 12 TB of capacity and 800 MB of peak bandwidth.  Although the Extreme service level can meet the demands of the application at the 12 TB mark, it is more cost-effective to select 14 TB at the Premium service level, resulting in a saving of $600 per month.
+For example, your application requires 12 TB of capacity and 800 MB/s of peak bandwidth.  Although the Extreme service level can meet the demands of the application at the 12 TB mark, it is more cost-effective to select 13 TB at the Premium service level.
 
 image:diagram_service_level_quota_example2.png[Service level and quota selection, example 2]
