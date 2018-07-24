@@ -53,7 +53,7 @@ If you want capacity at the lowest cost, and your bandwidth needs are limited, t
 
 * **Premium** (a balance of capacity and performance)
 +
-If your application has a balanced need for storage capacity and bandwidth, then the Premium service level might be most appropriate for you.  This level is less expensive per MB/s than the Standard service level, and it is also less expensive per GB of storage capacity then the Extreme service level.
+If your application has a balanced need for storage capacity and bandwidth, then the Premium service level might be most appropriate for you.  This level is less expensive per MB/s than the Standard service level, and it is also less expensive per GB of storage capacity than the Extreme service level.
 +
 ** List Price: $0.30 per GB per month (as of July 10, 2018)
 ** Bandwidth: 64 KB of bandwidth per GB provisioned capacity
@@ -76,7 +76,7 @@ While you would select your service level based on your general, high-level busi
 * How much storage space the applications need
 * How much storage bandwidth per second the applications or the users require
 
-Quotas are specified in GBs.  A volume's quota can be set within the range of 1 GB to 100,000 GB (equivalent 100 TBs).
+Quotas are specified in GBs.  A volume's quota can be set within the range of 1 GB to 100,000 GB (equivalent to 100 TBs).
 
 == Bandwidth
 
@@ -205,7 +205,7 @@ IMPORTANT: _All pricing information is based on the list prices as of July 10, 2
 
 === Example 1
 
-For example, your application needs 25 TB of capacity and 100 MB/s of bandwidth. At 25 TB of capacity, the Standard service level would provide 391 MB/s of bandwidth at a cost of $3,750, making Standard the most suitable service level.
+For example, your application needs 25 TB of capacity and 100 MB/s of bandwidth. At 25 TB of capacity, the Standard service level would provide 391 MB/s of bandwidth at a cost of $3,750, making Standard the most suitable service level in this case.
 
 image:diagram_service_level_quota_example1.png[Service level and quota selection, example 1]
 
