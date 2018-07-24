@@ -1,8 +1,12 @@
 sudo: false
 dist: trusty
+group: deprecated-2017Q4 # To fix NPM timeout errors
 language: ruby
 rvm:
 - 2.3
+jobs:
+  include:
+    - if: branch = master OR repo =~ /-stage/
 branches:
   only:
   - master
@@ -16,6 +20,10 @@ before_install:
 - mv sidebar.yml _data/sidebars/
 - sed -i 's/\/jekyll/\/'$REPO_NAME'/g' ./_config.yml
 - sed -i 's/`search\.html`/`https\:\/\/docs\.netapp\.com\/us-en\/'$REPO_NAME'\/search\.html`/g' ./webpack/components/Search.js
+- if [[ "$TRAVIS_REPO_SLUG" =~ -stage ]]; then
+  sed -i 's/^.*searchyll.*//g' ./Gemfile &&
+  sed -i 's/^.*searchyll.*//g' ./_config.yml;
+  fi
 - ES_INDEX="clouddocs-"$REPO_NAME"-prod"
 - SK_INDEXES=$ES_INDEX
 - ES_INDEX_URL="https\:\/\/"$ES_AUTH"\@"$ES_API
