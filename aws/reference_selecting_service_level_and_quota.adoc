@@ -1,0 +1,216 @@
+---
+sidebar: sidebar_aws
+permalink: aws/reference_selecting_service_level_and_quota.html
+keywords: Cloud Volumes Service for AWS, security levels, quotas, bandwidth, capacity
+summary: The cost for Cloud Volumes Service for AWS is based on the service level and the capacity allocated by the quota that you select.  Selecting the appropriate service level and quota helps you meet your storage needs at the lowest cost.
+---
+
+= Selecting the appropriate service level and quota
+:toc: macro
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+The cost for Cloud Volumes Service for AWS is based on the _service level_ and the capacity allocated by the _quota_ that you select.  Selecting the appropriate service level and quota helps you meet your storage needs at the lowest cost.
+
+
+IMPORTANT: _All pricing information in this article is based on the list prices as of July 10, 2018.  The information is provided for example purposes only and is subject to change._
+
+toc::[]
+
+== Considerations
+
+Storage needs include two fundamental aspects:
+
+* The storage _capacity_ for holding data
+* The storage _bandwidth_ for interacting with data
+
+If you consume more storage capacity than the quota you selected for the volume, the following considerations apply:
+
+* You will be billed for the additional storage capacity that you consume at the price defined by your service level.
+
+* The amount of storage bandwidth available to the volume does not increase until you increase the quota size or change the service level.
+
+== Service levels
+
+Cloud Volumes Service for AWS supports three service levels. You specify your service level when you create or modify the volume.
+
+link:task_creating_cloud_volumes_for_aws.html[Creating Cloud Volumes]
+link:task_modifying_cloud_volumes_for_aws.html[Modifying Cloud Volumes]
+
+The service levels are catered to different storage capacity and storage bandwidth needs:
+
+* **Standard** (capacity)
++
+If you want capacity at the lowest cost, and your bandwidth needs are limited, then the Standard service level might be most appropriate for you.  An example is using the volume as a backup target.
++
+** List Price: $0.15 per GB per month (as of July 10, 2018)
+** Bandwidth: 16 KB of bandwidth per GB provisioned capacity
+
+* **Premium** (a balance of capacity and performance)
++
+If your application has a balanced need for storage capacity and bandwidth, then the Premium service level might be most appropriate for you.  This level is less expensive per MB/s than the Standard service level, and it is also less expensive per GB of storage capacity then the Extreme service level.
++
+** List Price: $0.30 per GB per month (as of July 10, 2018)
+** Bandwidth: 64 KB of bandwidth per GB provisioned capacity
+
+* **Extreme** (performance)
++
+The Extreme service level is least expensive in terms of storage bandwidth.  If your application demands storage bandwidth without the associated demand for lots of storage capacity, then the Extreme service level might be most appropriate for you.
++
+** List Price: $0.40 per GB per month  (as of July 10, 2018)
+** Bandwidth: 128 KB of bandwidth per GB provisioned capacity
+
+== Quotas
+You specify your quota for the volume when you create or modify the volume.
+
+link:task_creating_cloud_volumes_for_aws.html[Creating Cloud Volumes]
+link:task_modifying_cloud_volumes_for_aws.html[Modifying Cloud Volumes]
+
+While you would select your service level based on your general, high-level business needs, you should select your quota size based on the specific needs of applications, for example:
+
+* How much storage space the applications need
+* How much storage bandwidth per second the applications or the users require
+
+Quotas are specified in GBs.  A volume's quota can be set within the range of 1 GB to 100,000 GB (equivalent 100 TBs).
+
+== Bandwidth
+
+The combination of both the service level and the quota you select determines the maximum bandwidth for the volume.
+
+If your applications or users need more bandwidth than your selections, you can change the service level or increase the quota.  The changes do not disrupt data access.
+
+== Selecting the service level and the quota
+
+To select the most appropriate service level and quota for your needs, you need to know how much capacity and bandwidth you require at the peak or the edge.
+
+=== Cost comparison for service levels and quotas
+
+The table below compares cost for different service levels and quota sizes.  In the table, the leftmost column indicates the capacity, and the other columns define the MB/s available at each capacity point and its cost.
+
+IMPORTANT: _All pricing information is based on the list prices as of July 10, 2018.  The information is provided for example purposes only and is subject to change._
+
+[cols=7*,options="header",cols="10,15,15,15,15,15,15",width="80%"]
+|===
+| 	Capacity
+2+^.^| Standard
+2+^.^| Premium
+2+^.^| Extreme
+| 	 **TB**	| 	 **MB/s**	| 	**Cost**	| 	**MB/s**	| 	**Cost**	| 	**MB/s**	| 	**Cost**
+| 	1	| 	16	| 	$150 	| 	63	| 	$300 	| 	125	| 	$400
+| 	2	| 	31	| 	$300 	| 	125	| 	$600 	| 	250	| 	$800
+| 	3	| 	47	| 	$450 	| 	188	| 	$900 	| 	375	| 	$1,200
+| 	4	| 	63	| 	$600 	| 	250	| 	$1,200 	| 	500	| 	$1,600
+| 	5	| 	78	| 	$750 	| 	313	| 	$1,500 	| 	625	| 	$2,000
+| 	6	| 	94	| 	$900 	| 	375	| 	$1,800 	| 	750	| 	$2,400
+| 	7	| 	109	| 	$1,050 	| 	438	| 	$2,100 	| 	875	| 	$2,800
+| 	8	| 	125	| 	$1,200 	| 	500	| 	$2,400 	| 	1,000	| 	$3,200
+| 	9	| 	141	| 	$1,350 	| 	563	| 	$2,700 	| 	1,125	| 	$3,600
+| 	10	| 	156	| 	$1,500 	| 	625	| 	$3,000 	| 	1,250	| 	$4,000
+| 	11	| 	172	| 	$1,650 	| 	688	| 	$3,300 	| 	1,375	| 	$4,400
+| 	12	| 	188	| 	$1,800 	| 	750	| 	$3,600 	| 	1,500	| 	$4,800
+| 	13	| 	203	| 	$1,950 	| 	813	| 	$3,900 	| 	1,625	| 	$5,200
+| 	14	| 	219	| 	$2,100 	| 	875	| 	$4,200 	| 	1,750	| 	$5,600
+| 	15	| 	234	| 	$2,250 	| 	938	| 	$4,500 	| 	1,875	| 	$6,000
+| 	16	| 	250	| 	$2,400 	| 	1,000	| 	$4,800 	| 	2,000	| 	$6,400
+| 	17	| 	266	| 	$2,550 	| 	1,063	| 	$5,100 	| 	2,125	| 	$6,800
+| 	18	| 	281	| 	$2,700 	| 	1,125	| 	$5,400 	| 	2,250	| 	$7,200
+| 	19	| 	297	| 	$2,850 	| 	1,188	| 	$5,700 	| 	2,375	| 	$7,600
+| 	20	| 	313	| 	$3,000 	| 	1,250	| 	$6,000 	| 	2,500	| 	$8,000
+| 	21	| 	328	| 	$3,150 	| 	1,313	| 	$6,300 	| 	2,625	| 	$8,400
+| 	22	| 	344	| 	$3,300 	| 	1,375	| 	$6,600 	| 	2,750	| 	$8,800
+| 	23	| 	359	| 	$3,450 	| 	1,438	| 	$6,900 	| 	2,875	| 	$9,200
+| 	24	| 	375	| 	$3,600 	| 	1,500	| 	$7,200 	| 	3,000	| 	$9,600
+| 	25	| 	391	| 	$3,750 	| 	1,563	| 	$7,500 	| 	3,125	| 	$10,000
+| 	26	| 	406	| 	$3,900 	| 	1,625	| 	$7,800 	| 	3,250	| 	$10,400
+| 	27	| 	422	| 	$4,050 	| 	1,688	| 	$8,100 	| 	3,375	| 	$10,800
+| 	28	| 	438	| 	$4,200 	| 	1,750	| 	$8,400 	| 	3,500	| 	$11,200
+| 	29	| 	453	| 	$4,350 	| 	1,813	| 	$8,700 	| 	3,500	| 	$11,600
+| 	30	| 	469	| 	$4,500 	| 	1,875	| 	$9,000 	| 	3,500	| 	$12,000
+| 	31	| 	484	| 	$4,650 	| 	1,938	| 	$9,300 	| 	3,500	| 	$12,400
+| 	32	| 	500	| 	$4,800 	| 	2,000	| 	$9,600 	| 	3,500	| 	$12,800
+| 	33	| 	516	| 	$4,950 	| 	2,063	| 	$9,900 	| 	3,500	| 	$13,200
+| 	34	| 	531	| 	$5,100 	| 	2,125	| 	$10,200 	| 	3,500	| 	$13,600
+| 	35	| 	547	| 	$5,250 	| 	2,188	| 	$10,500 	| 	3,500	| 	$14,000
+| 	36	| 	563	| 	$5,400 	| 	2,250	| 	$10,800 	| 	3,500	| 	$14,400
+| 	37	| 	578	| 	$5,550 	| 	2,313	| 	$11,100 	| 	3,500	| 	$14,800
+| 	38	| 	594	| 	$5,700 	| 	2,375	| 	$11,400 	| 	3,500	| 	$15,200
+| 	39	| 	609	| 	$5,850 	| 	2,438	| 	$11,700 	| 	3,500	| 	$15,600
+| 	40	| 	625	| 	$6,000 	| 	2,500	| 	$12,000 	| 	3,500	| 	$16,000
+| 	41	| 	641	| 	$6,150 	| 	2,563	| 	$12,300 	| 	3,500	| 	$16,400
+| 	42	| 	656	| 	$6,300 	| 	2,625	| 	$12,600 	| 	3,500	| 	$16,800
+| 	43	| 	672	| 	$6,450 	| 	2,688	| 	$12,900 	| 	3,500	| 	$17,200
+| 	44	| 	688	| 	$6,600 	| 	2,750	| 	$13,200 	| 	3,500	| 	$17,600
+| 	45	| 	703	| 	$6,750 	| 	2,813	| 	$13,500 	| 	3,500	| 	$18,000
+| 	46	| 	719	| 	$6,900 	| 	2,875	| 	$13,800 	| 	3,500	| 	$18,400
+| 	47	| 	734	| 	$7,050 	| 	2,938	| 	$14,100 	| 	3,500	| 	$18,800
+| 	48	| 	750	| 	$7,200 	| 	3,000	| 	$14,400 	| 	3,500	| 	$19,200
+| 	49	| 	766	| 	$7,350 	| 	3,063	| 	$14,700 	| 	3,500	| 	$19,600
+| 	50	| 	781	| 	$7,500 	| 	3,125	| 	$15,000 	| 	3,500	| 	$20,000
+| 	51	| 	797	| 	$7,650 	| 	3,188	| 	$15,300 	| 	3,500	| 	$20,400
+| 	52	| 	813	| 	$7,800 	| 	3,250	| 	$15,600 	| 	3,500	| 	$20,800
+| 	53	| 	828	| 	$7,950 	| 	3,313	| 	$15,900 	| 	3,500	| 	$21,200
+| 	54	| 	844	| 	$8,100 	| 	3,375	| 	$16,200 	| 	3,500	| 	$21,600
+| 	55	| 	859	| 	$8,250 	| 	3,438	| 	$16,500 	| 	3,500	| 	$22,000
+| 	56	| 	875	| 	$8,400 	| 	3,500	| 	$16,800 	| 	3,500	| 	$22,400
+| 	57	| 	891	| 	$8,550 	| 	3,500	| 	$17,100 	| 	3,500	| 	$22,800
+| 	58	| 	906	| 	$8,700 	| 	3,500	| 	$17,400 	| 	3,500	| 	$23,200
+| 	59	| 	922	| 	$8,850 	| 	3,500	| 	$17,700 	| 	3,500	| 	$23,600
+| 	60	| 	938	| 	$9,000 	| 	3,500	| 	$18,000 	| 	3,500	| 	$24,000
+| 	61	| 	953	| 	$9,150 	| 	3,500	| 	$18,300 	| 	3,500	| 	$24,400
+| 	62	| 	969	| 	$9,300 	| 	3,500	| 	$18,600 	| 	3,500	| 	$24,800
+| 	63	| 	984	| 	$9,450 	| 	3,500	| 	$18,900 	| 	3,500	| 	$25,200
+| 	64	| 	1,000	| 	$9,600 	| 	3,500	| 	$19,200 	| 	3,500	| 	$25,600
+| 	65	| 	1,016	| 	$9,750 	| 	3,500	| 	$19,500 	| 	3,500	| 	$26,000
+| 	66	| 	1,031	| 	$9,900 	| 	3,500	| 	$19,800 	| 	3,500	| 	$26,400
+| 	67	| 	1,047	| 	$10,050 	| 	3,500	| 	$20,100 	| 	3,500	| 	$26,800
+| 	68	| 	1,063	| 	$10,200 	| 	3,500	| 	$20,400 	| 	3,500	| 	$27,200
+| 	69	| 	1,078	| 	$10,350 	| 	3,500	| 	$20,700 	| 	3,500	| 	$27,600
+| 	70	| 	1,094	| 	$10,500 	| 	3,500	| 	$21,000 	| 	3,500	| 	$28,000
+| 	71	| 	1,109	| 	$10,650 	| 	3,500	| 	$21,300 	| 	3,500	| 	$28,400
+| 	72	| 	1,125	| 	$10,800 	| 	3,500	| 	$21,600 	| 	3,500	| 	$28,800
+| 	73	| 	1,141	| 	$10,950 	| 	3,500	| 	$21,900 	| 	3,500	| 	$29,200
+| 	74	| 	1,156	| 	$11,100 	| 	3,500	| 	$22,200 	| 	3,500	| 	$29,600
+| 	75	| 	1,172	| 	$11,250 	| 	3,500	| 	$22,500 	| 	3,500	| 	$30,000
+| 	76	| 	1,188	| 	$11,400 	| 	3,500	| 	$22,800 	| 	3,500	| 	$30,400
+| 	77	| 	1,203	| 	$11,550 	| 	3,500	| 	$23,100 	| 	3,500	| 	$30,800
+| 	78	| 	1,219	| 	$11,700 	| 	3,500	| 	$23,400 	| 	3,500	| 	$31,200
+| 	79	| 	1,234	| 	$11,850 	| 	3,500	| 	$23,700 	| 	3,500	| 	$31,600
+| 	80	| 	1,250	| 	$12,000 	| 	3,500	| 	$24,000 	| 	3,500	| 	$32,000
+| 	81	| 	1,266	| 	$12,150 	| 	3,500	| 	$24,300 	| 	3,500	| 	$32,400
+| 	82	| 	1,281	| 	$12,300 	| 	3,500	| 	$24,600 	| 	3,500	| 	$32,800
+| 	83	| 	1,297	| 	$12,450 	| 	3,500	| 	$24,900 	| 	3,500	| 	$33,200
+| 	84	| 	1,313	| 	$12,600 	| 	3,500	| 	$25,200 	| 	3,500	| 	$33,600
+| 	85	| 	1,328	| 	$12,750 	| 	3,500	| 	$25,500 	| 	3,500	| 	$34,000
+| 	86	| 	1,344	| 	$12,900 	| 	3,500	| 	$25,800 	| 	3,500	| 	$34,400
+| 	87	| 	1,359	| 	$13,050 	| 	3,500	| 	$26,100 	| 	3,500	| 	$34,800
+| 	88	| 	1,375	| 	$13,200 	| 	3,500	| 	$26,400 	| 	3,500	| 	$35,200
+| 	89	| 	1,391	| 	$13,350 	| 	3,500	| 	$26,700 	| 	3,500	| 	$35,600
+| 	90	| 	1,406	| 	$13,500 	| 	3,500	| 	$27,000 	| 	3,500	| 	$36,000
+| 	91	| 	1,422	| 	$13,650 	| 	3,500	| 	$27,300 	| 	3,500	| 	$36,400
+| 	92	| 	1,438	| 	$13,800 	| 	3,500	| 	$27,600 	| 	3,500	| 	$36,800
+| 	93	| 	1,453	| 	$13,950 	| 	3,500	| 	$27,900 	| 	3,500	| 	$37,200
+| 	94	| 	1,469	| 	$14,100 	| 	3,500	| 	$28,200 	| 	3,500	| 	$37,600
+| 	95	| 	1,484	| 	$14,250 	| 	3,500	| 	$28,500 	| 	3,500	| 	$38,000
+| 	96	| 	1,500	| 	$14,400 	| 	3,500	| 	$28,800 	| 	3,500	| 	$38,400
+| 	97	| 	1,516	| 	$14,550 	| 	3,500	| 	$29,100 	| 	3,500	| 	$38,800
+| 	98	| 	1,531	| 	$14,700 	| 	3,500	| 	$29,400 	| 	3,500	| 	$39,200
+| 	99	| 	1,547	| 	$14,850 	| 	3,500	| 	$29,700 	| 	3,500	| 	$39,600
+| 	100	| 	1,563	| 	$15,000 	| 	3,500	| 	$30,000 	| 	3,500	| 	$40,000
+|===
+
+=== Example 1
+
+For example, your application needs 25 TB of capacity and 100 MB/s of bandwidth. At 25 TB of capacity, the Standard service level would provide 391 MB/s of bandwidth at a cost of $3,750, making Standard the most suitable service level.
+
+image:diagram_service_level_quota_example1.png[Service level and quota selection, example 1]
+
+=== Example 2
+
+For example, your application needs 12 TB of capacity and 800 MB of peak bandwidth.  Although the Extreme service level can meet the demands of the application at the 12 TB mark, it is more cost-effective to select 14 TB at the Premium service level, resulting in a saving of $600 per month.
+
+image:diagram_service_level_quota_example2.png[Service level and quota selection, example 2]

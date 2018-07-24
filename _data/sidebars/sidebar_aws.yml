@@ -49,5 +49,7 @@ entries:
     entries:
       - title: AWS security group settings for Windows AD servers
         url: /reference_security_groups_windows_ad_servers.html
+      - title: Selecting the appropriate service level and quota
+        url: /reference_selecting_service_level_and_quota.html
   - title: Notices
     url: /reference_notices.html

@@ -28,3 +28,5 @@ You can modify existing volumes, including changing the volume name, quota, or s
 * Service level
 +
 Changing the service level is nondisruptive and does not affect client data access.
++
+link:reference_selecting_service_level_and_quota.html[Selecting the appropriate service level and quota]
