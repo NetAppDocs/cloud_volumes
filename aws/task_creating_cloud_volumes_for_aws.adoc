@@ -55,9 +55,9 @@ Select an existing snapshot to create a volume.
 +
 Select *Standard*, *Premium*, or *Extreme*.
 +
-** _Standard_ provides 1000 IOPS per TB (16k IO) and 16 MB of throughput per TB.
-** _Premium_ provides 4000 IOPS per TB (16k IO) and 64 MB of throughput per TB.
-** _Extreme_ provides 8000 IOPS per TB (16k IO) and 128 MB of throughput per TB.
+** _Standard_ provides 1000 IOPS per TB (16k IO) and 16 MB/s of throughput per TB.
+** _Premium_ provides 4000 IOPS per TB (16k IO) and 64 MB/s of throughput per TB.
+** _Extreme_ provides 8000 IOPS per TB (16k IO) and 128 MB/s of throughput per TB.
 +
 link:reference_selecting_service_level_and_quota.html[Selecting the appropriate service level and quota]
 
