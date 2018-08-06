@@ -19,6 +19,7 @@ link:concept_overview.html[Cloud Volumes Service for AWS overview]
 
 == Perform top tasks
 
+* link:task_selecting_region.html[Selecting the region]
 * link:task_creating_cloud_volumes_for_aws.html[Creating Cloud Volumes]
 * link:task_mounting_cloud_volumes_for_aws.html[Mounting a Cloud Volume]
 * link:task_creating_on_demand_snapshots.html[Creating an on-demand snapshot for a Cloud Volume]
