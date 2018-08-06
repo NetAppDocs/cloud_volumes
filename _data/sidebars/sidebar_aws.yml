@@ -5,6 +5,8 @@ entries:
     entries:
       - title: Overview
         url: /concept_overview.html
+      - title: Selecting the region
+        url: /task_selecting_region.html
       - title: Creating Cloud Volumes
         url: /task_creating_cloud_volumes_for_aws.html
       - title: Mounting a Cloud Volume
