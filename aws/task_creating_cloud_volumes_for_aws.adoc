@@ -18,7 +18,7 @@ summary: You create Cloud Volumes from the NetApp Cloud Orchestrator site.
 You create Cloud Volumes from the NetApp Cloud Orchestrator site.
 
 .Before you begin
-You must have selected the region where you want to use for the service. 
+You must have selected the region where you want to use the service. 
 
 link:task_selecting_region.html[Selecting the region]
 
