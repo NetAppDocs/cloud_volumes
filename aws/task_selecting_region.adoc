@@ -24,4 +24,4 @@ Cloud Volumes Service is available in several AWS regions, but the user interfac
 This selection process is similar to how you change regions in the AWS console.
 +
 image::diagram_selecting_region.png[Sync relationships]
-. If you want to use other regions, repeat the above step.
+. Repeat the above step for each additional region you want to use.
