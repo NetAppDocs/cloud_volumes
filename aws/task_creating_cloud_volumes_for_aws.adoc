@@ -83,11 +83,11 @@ Click to add additional export policy rules.
 image::diagram_create_volume_4.png[Add export policy rule]
 * *Enable data encryption*
 +
-If you selected SMB or Dual-protocol, you can enable data encryption by selecting the checkbox. Selecting the checkbox enables SMB session encryption on a per share basis.
+For SMB or Dual-protocol, you can enable SMB session encryption by checking this box.
 
 * *Active Directory*
 +
-If you selected SMB or Dual-protocol, you can integrate the volume with a Windows Active Directory server by providing the following information:
+For SMB or Dual-protocol, you can integrate the volume with a Windows Active Directory server by providing the following information:
 
 ** *DNS server*
 +
