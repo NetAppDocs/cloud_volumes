@@ -22,10 +22,13 @@ A Cloud Sync relationship enables you to sync data to or from the Cloud Volume.
 +
 <<task_creating_cloud_sync_data_broker.adoc#,Creating a Cloud Sync data broker>>
 * The data broker IP address must have been added to the export policy for both the source and the target volumes.
-+ 
++
 The export policy on the target volume must allow write access to the data broker.
 +
 <<task_creating_additional_export_policy_rules.adoc#,Creating additional export policy rules>>
+
+.About this task
+The Cloud Sync functionality that is integrated with Cloud Volumes Service currently supports only NFSv3. If you want to sync between SMB volumes, you use the https://cloudsync.netapp.com[Cloud Sync Service^] directly (cloudsync.netapp.com).
 
 .Steps
 . Go to the Sync page or the Sync tab for a volume on the Volumes page.
