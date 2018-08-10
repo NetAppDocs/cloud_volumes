@@ -15,10 +15,10 @@ summary: NetApp Cloud Sync is integrated with NetApp Cloud Volumes Service for A
 
 
 [.lead]
-NetApp Cloud Sync is integrated with NetApp Cloud Volumes Service for AWS to enable fast data syncing over NFS to or from a Cloud Volume.  A Cloud Sync data broker enables you to create a Cloud Sync relationship for syncing data.
+NetApp Cloud Sync is integrated with NetApp Cloud Volumes Service for AWS to enable fast data syncing over NFS to or from a Cloud Volume.  A Cloud Sync data broker enables you to create a Cloud Sync relationship for syncing data. 
 
 .About this task
-If you already have a Cloud Sync data broker in the same AWS Virtual Private Cloud (VPC) that you use for your Cloud Volumes account, you can skip this task.
+If you already have a Cloud Sync data broker in the same AWS Virtual Private Cloud (VPC) that you use for your Cloud Volumes account, you can skip this task. 
 
 https://docs.netapp.com/us-en/cloudsync/[NetApp Cloud Sync Documentation^]
 
@@ -63,4 +63,4 @@ After the data broker is created, it is marked with a green dot to indicate that
 
 
 .After you finish
-Continue with <<task_creating_cloud_sync_relationship.adoc#,Creating a Cloud Sync Relationship>>.
+Continue with <<task_creating_cloud_sync_relationship.adoc#,Creating a Cloud Sync Relationship>>
