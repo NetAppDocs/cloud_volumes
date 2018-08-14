@@ -7,7 +7,8 @@ entries:
     entries:
       - title: Overview
         url: /concept_overview.html
-      - title: Creating a Cloud Volume
+      - title: Activating support entitlement and accessing support
+        url: /task_activating_support_entitlement.html
       - title: Selecting the region
         url: /task_selecting_region.html
       - title: Creating Cloud Volumes
