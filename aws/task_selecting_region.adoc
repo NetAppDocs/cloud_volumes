@@ -2,7 +2,7 @@
 sidebar: sidebar_aws
 permalink: aws/task_selecting_region.html
 keywords: Cloud Volumes Service for AWS, regions
-summary: Cloud Volumes Service is available in several AWS regions, but the user interface (UI) is specific to a region. You must specify the region where you want to use for the service before you create a Cloud Volume.
+summary: Cloud Volumes Service is available in several AWS regions, but the user interface (UI) is specific to a region. You must specify the region where you want to use the service before you create a Cloud Volume.
 ---
 
 = Selecting the region
@@ -15,7 +15,7 @@ summary: Cloud Volumes Service is available in several AWS regions, but the user
 
 
 [.lead]
-Cloud Volumes Service is available in several AWS regions, but the user interface (UI) is specific to a region. You must specify the region where you want to use for the service before you create a Cloud Volume.
+Cloud Volumes Service is available in several AWS regions, but the user interface (UI) is specific to a region. You must specify the region where you want to use the service before you create a Cloud Volume.
 
 .Steps
 
