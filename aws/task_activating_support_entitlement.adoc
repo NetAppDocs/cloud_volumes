@@ -31,13 +31,15 @@ image::diagram_support_page.png[Display Support page]
 
 . In the Support page, verify that your subscription status shows `not registered`.
 +
+If you do not see the subscription status and your NetApp subscription ID, refresh the browser page.
++
 image::diagram_support_status_not_registered.png[Support status not registered]
 . Register your NetApp subscription ID to activate support entitlement:
 +
-.. If you are new to NetApp or do not have an existing NSS account, go to the  https://register.netapp.com[Cloud Data Services Support Registration^] page (register.netapp.com) to create a NetApp Support Site (NSS) account.
+** If you are new to NetApp or do not have an existing NSS account, go to the  https://register.netapp.com[Cloud Data Services Support Registration^] page (register.netapp.com) to create an NSS account and activate support for the service.
 +
 You will be prompted to provide your NetApp subscription ID and your AWS customer ID.
-.. From the Cloud Volumes Service UI, click **Activate support** and enter your NSS credentials (username and password) to activate support entitlement for your NetApp subscription ID.
+** If you have an NSS account, click **Activate support** and enter your NSS credentials (username and password) from the Cloud Volumes Service UI to activate support entitlement for your NetApp subscription ID.
 +
 image::diagram_support_activate.png[Activate support]
 +
