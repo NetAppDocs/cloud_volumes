@@ -6,6 +6,7 @@ summary: You can delete a cloud volume that is no longer needed.
 ---
 
 = Deleting a cloud volume
+
 :toc: macro
 :hardbreaks:
 :nofooter:
