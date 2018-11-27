@@ -14,6 +14,7 @@ summary: Once you have access to Cloud Volumes Service shortly after subscribing
 
 
 [.lead]
+
 Once you have access to Cloud Volumes Service shortly after subscribing in AWS marketplace, it is strongly recommended that you activate support entitlement. Activating support entitlement enables you to access technical support over online chat, web ticketing system, and phone.
 
 The default support level is self-service until serial number activation and registration is completed.
