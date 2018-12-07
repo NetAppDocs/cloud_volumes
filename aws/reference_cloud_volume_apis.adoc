@@ -63,7 +63,7 @@ The following example displays information about all volumes:
 
 NOTE: Piping the command through `jq` improves the formatting of the `json` output. You might need to install `jq` on your system.
 
-[source]
+[source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v1/FileSystems | jq
 [
 {
@@ -88,12 +88,12 @@ link:media/list-cv.sh[Script to list cloud volumes in an account]
 ==== Listing the details for a specific volume
 Each volume has an ID called `fileSystemId`, for example, `07c9ab6c-b655-a9fe-f904-b9b97ef9baaa`. Including the ID in the API call provides details for the specific volume:
 
-[source]
+[source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v1/FileSystems/07c9ab6c-b655-a9fe-f904-b9b97ef9baaa
 
 To see the network details for the volume, you can add `MountTargets` to the `GET` call:
 
-[source]
+[source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v1/FileSystems/07c9ab6c-b655-a9fe-f904-b9b97ef9baaa/MountTargets
 
 link:media/info-cv.sh[Script to display the details of a cloud volume by mountpoint]
@@ -101,7 +101,7 @@ link:media/info-cv.sh[Script to display the details of a cloud volume by mountpo
 ==== Creating a volume
 The following example uses a `POST` call to create a volume called `Test`, in region `us-west`, with an `allocated capacity` of 100 GB and exported using `nfsv3`:
 
-[source]
+[source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v1/FileSystems -d '
 {
 	"name": "Test",
@@ -118,7 +118,7 @@ link:media/create-cv.sh[Script to create a cloud volume]
 ==== Updating a volume
 The following example uses a `PUT` call to update a volume called `Test`, change the service level to `extreme`, and change the allocated capacity to 500 GB:
 
-[source]
+[source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X PUT <api_url>/v1/FileSystems/cdef5090-aa5e-c2cf-6bba-f77d259a37f8 -d '
 {
 	"creationToken": "grahams-test-volume4",
@@ -132,7 +132,7 @@ link:media/update-cv.sh[Script to update a cloud volume]
 ==== Deleting a volume
 The following example uses a `DELETE` call to delete a volume specified by `fileSystemId`:
 
-[source]
+[source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url>/v1/FileSystems/08b0578d-465f-6c1a-bf8c-f40098b6451b
 
 link:media/delete-cv.sh[Script to delete a cloud volume by mountpoint]
@@ -142,7 +142,7 @@ IMPORTANT: Use with caution. This API call deletes the volume and all its data.
 ==== Creating a snapshot
 The following example uses a `POST` call to create a snapshot called `snappy` for a specific volume:
 
-[source]
+[source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v1/FileSystems/07c9ab6c-b655-a9fe-f904-b9b97ef9baaa/Snapshots -d '
 {
 	"name": "snappy",
@@ -154,7 +154,7 @@ link:media/snap-cv.sh[Script to create snapshots of a cloud volume by mountpoint
 ==== Listing snapshots for a specific volume
 The following example uses a `GET` call to list the snapshots for  a specific volume:
 
-[source]
+[source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v1/FileSystems/07c9ab6c-b655-a9fe-f904-b9b97ef9baaa/Snapshots
 
 link:media/get-snaps.sh[Script to list snapshots of a cloud volume by mountpoint]
@@ -162,7 +162,7 @@ link:media/get-snaps.sh[Script to list snapshots of a cloud volume by mountpoint
 ==== Reverting a snapshot
 The following example uses a `POST` call to revert a volume from a snapshot specified by `snapshotId` and `fileSystemId`:
 
-[source]
+[source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v1/FileSystems/cdef5090-aa5e-c2cf-6bba-f77d259a37f8/Revert -d '
 {
 	"snapshotId": "e19c5b72-daee-aa22-159d-a24702907fad",
@@ -177,7 +177,7 @@ IMPORTANT: Use with caution.  This API call causes any data written after the sn
 ==== Creating a new volume from a snapshot
 The following example uses a `POST` call to create a new volume specified by `snapshotId`:
 
-[source]
+[source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v1/FileSystems -d '
 {
 	"snapshotId": "e19c5b72-daee-aa22-159d-a24702907fad",
@@ -192,7 +192,7 @@ link:media/create-cv.sh[Script to create a cloud volume]
 ==== Deleting a snapshot
 The following example uses a `DELETE` call to delete a snapshot specified by `snapshotId`:
 
-[source]
+[source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url>/v1/FileSystems/07c9ab6c-b655-a9fe-f904-b9b97ef9baaa/Snapshots/7b8d84e0-1dc7-fad3-1e6e-1a27968f1e6d
 
 link:media/delete-snap.sh[Script to delete a snapshot of a cloud volume by mountpoint and snapshotId]

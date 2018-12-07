@@ -1,12 +1,11 @@
 ---
 sidebar: sidebar_aws
 permalink: aws/reference_notices.html
-keywords: Cloud Volumes Service for AWS, notices
-summary: The notice files provide information about third-party copyright and licenses that are used in NetApp Cloud Volumes Service for AWS.
+keywords: Cloud Volumes Service for AWS, notices, copyrights, trademarks, patents, privacy, open source
+summary: Legal notices provide access to copyright statements, trademarks, patents, and more.
 ---
 
-= Notices for NetApp Cloud Volumes Service for AWS
-:toc: macro
+= Legal notices
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -14,7 +13,31 @@ summary: The notice files provide information about third-party copyright and li
 :imagesdir: ./media/
 
 [.lead]
-The notice files provide information about third-party copyright and licenses that are used in NetApp Cloud Volumes Service for AWS.
+Legal notices provide access to copyright statements, trademarks, patents, and more.
 
-* link:media/notice_cloud_volumes_aws_215-13854_A0_UR001.pdf[Notice for NetApp Cloud Volumes Service]
-* link:media/notice_ONTAP_9.4.pdf[Notice for ONTAP]
+== Copyright
+
+http://www.netapp.com/us/legal/copyright.aspx[^]
+
+== Trademarks
+
+NETAPP, the NETAPP logo, and the marks listed on the NetApp Trademarks page are trademarks of NetApp, Inc. Other company and product names may be trademarks of their respective owners.
+
+http://www.netapp.com/us/legal/netapptmlist.aspx[^]
+
+== Patents
+
+A current list of NetApp owned patents can be found at:
+
+https://www.netapp.com/us/media/patents-page.pdf[^]
+
+== Privacy policy
+
+https://www.netapp.com/us/legal/privacypolicy/index.aspx[^]
+
+== Open source
+
+Notice files provide information about third-party copyright and licenses used in NetApp software.
+
+* link:media/notice_cloud_volumes_aws_215-13854_A0_UR001.pdf[Notice for NetApp Cloud Volumes Service^]
+* link:media/notice_ONTAP_9.4.pdf[Notice for ONTAP^]
