@@ -2,10 +2,10 @@
 sidebar: sidebar_aws
 permalink: aws/reference_cloud_volume_apis.html
 keywords: Cloud Volumes Service for AWS, APIs
-summary: The Cloud Volume capabilities that are available through the web UI are also available through RESTful APIs.  The APIs enable you to create and manage cloud volumes and develop provisioning scripts and tools.
+summary: The Cloud Volumes capabilities that are available through the web UI are also available through RESTful APIs.  The APIs enable you to create and manage cloud volumes and develop provisioning scripts and tools.
 ---
 
-= Cloud Volume APIs
+= Cloud Volumes APIs
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: The Cloud Volume capabilities that are available through the web UI are
 :imagesdir: ./media/
 
 [.lead]
-The Cloud Volume capabilities that are available through the web UI are also available through RESTful APIs. The APIs enable you to create and manage cloud volumes and develop provisioning scripts and tools.
+The Cloud Volumes capabilities that are available through the web UI are also available through RESTful APIs. The APIs enable you to create and manage cloud volumes and develop provisioning scripts and tools.
 
 == Finding the API URL, API key, and Secret key
 [[finding_urL_key_secretKey]]
@@ -51,8 +51,8 @@ The APIs are listed by function, for example:
 
 link:media/fsid-cv.sh[Script to find Cloud Volumes Service fileSystemId by mountpoint]
 
-== Using the Cloud Volume APIs
-This section shows you how to use the Cloud Volume APIs.  The examples use curl from a Linux bash shell. You need to replace `<api_url>`, `<api_key>`, and `<secret_key>` with the values you recorded from <<finding_urL_key_secretKey, Finding the API URL, API key, and Secret key>>.
+== Using the Cloud Volumes APIs
+This section shows you how to use the Cloud Volumes APIs.  The examples use curl from a Linux bash shell. You need to replace `<api_url>`, `<api_key>`, and `<secret_key>` with the values you recorded from <<finding_urL_key_secretKey, Finding the API URL, API key, and Secret key>>.
 
 === Syntax
 `*curl -s -H  accept:application/json  -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X [GET,POST,PUT,DELETE] <api_url>/v1/<command>*`
@@ -147,7 +147,7 @@ curl -s -H accept:application/json -H "Content-type: application/json" -H api-ke
 {
 	"name": "snappy",
 	"region": "us-west"
-}
+}'
 
 link:media/snap-cv.sh[Script to create snapshots of a cloud volume by mountpoint]
 
