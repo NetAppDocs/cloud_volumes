@@ -20,6 +20,9 @@ NetApp periodically updates Cloud Volumes Service for AWS to bring you new featu
 
 NetApp periodically updates the Cloud Volumes Service to bring you new features, enhancements, and bug fixes.
 
+=== December 2018
+* NetApp Cloud Sync support is now available from the Cloud Volumes Service user interface in all supported regions
+
 === November 2018
 * Support for SMB 2.1 protocol
 * Support in the following AWS regions: ap-northeast-1 (Tokyo), ap-southeast-2 (Sydney), and eu-west-2 (London)
@@ -44,13 +47,9 @@ These known limitations identify platforms or features that are not fully suppor
 +
 *Workaround*: Retry the task or refresh the screen to correctly list the objects.
 
-* *Issue*: Sync capabilities between source and target volumes are not available from the Cloud Volumes Service user interface in all regions.
+* *Issue*: The AWS Directory Service cannot be used as the Active Directory service for SMB Cloud Volumes. The message "Error when creating - Failed to create the Active Directory machine account" will be displayed.
 +
-*Workaround*: Cloud Volumes Sync relationships can be set up for Cloud Volumes by directly accessing the NetApp Cloud Sync service. Contact aws-bundles-support@netapp.com for any Cloud Sync related billing questions.
-
-* *Issue*: Cloud Volumes Sync relationships cannot be created from the Cloud Volumes user interface (version v1.0.120) as the Cloud Volume export is not discovered correctly.
-+
-*Workaround*: Sync relationships can be set up for Cloud Volumes by directly accessing the NetApp Cloud Sync service. Contact aws-bundles-support@netapp.com for any Cloud Sync related billing questions.
+*Workaround*: Integrate to a Windows Active Directory server when using SMB Cloud Volumes. The AWS Directory Service is planned to be supported at a later date.
 
 * *Issue*: 403 errors are intermittently received in response to an API call.
 +

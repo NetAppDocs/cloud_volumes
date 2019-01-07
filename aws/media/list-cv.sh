@@ -1,9 +1,9 @@
 #! /bin/bash
 
 # script to list the NetApp Cloud Volumes in an account
-# Written by Graham Smith, NetApp July 2018
-# requires bash, jq and curl
-# Version 0.0.1
+# Written by Graham Smith, NetApp January 2019
+# requires bash, jq (optional), and curl
+# Version 0.2
 
 #set -x
 
@@ -28,8 +28,13 @@ fi
 source $c
 
 # get filesystem info
-filesystems=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/v1/FileSystems)
+filesystems=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/FileSystems)
 
 # Show info
-echo $filesystems |jq -r ''
+
+if [ $(command -v jq) ]; then
+	echo $filesystems |jq -r ''
+else
+	echo $filesystems
+fi
 

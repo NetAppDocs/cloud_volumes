@@ -1,21 +1,21 @@
 #! /bin/bash
 
 # script to update service level and allocated size of NetApp Cloud Volume by mountpoint
-# Written by Graham Smith, NetApp Sept 2018
+# Written by Graham Smith, NetApp January 2019
 # requires bash, jq and curl
-# Version 0.0.1
+# Version 0.3
 
 #set -x
 
-usage() { echo "Usage: $0 [-m <mountpoint> ] [-s <standard|premium|extreme> ] [ -a allocated_size_in_GB (100 to 100000) ] [-c <config-file>]" 1>&2; exit 1; }
+usage() { echo "Usage: $0 [-m <mountpoint> ] [-l <standard|premium|extreme> ] [ -a allocated_size_in_GB (100 to 100000) ] [-c <config-file>]" 1>&2; exit 1; }
 
-while getopts ":m:s:a:c:" o; do
+while getopts ":m:l:a:c:" o; do
     case "${o}" in
         m)
             m=${OPTARG}
             ;;
-		s)
-		    s=${OPTARG}
+		l)
+		    l=${OPTARG}
             ;;
 		a)
 		    a=${OPTARG}
@@ -30,25 +30,25 @@ while getopts ":m:s:a:c:" o; do
 done
 shift $((OPTIND-1))
 
-if [ -z "${m}" ] || [ -z "${c}" ] || [ -z "${s}" ] || [ -z "${a}" ]; then
+if [ -z "${m}" ] || [ -z "${c}" ] || [ -z "${l}" ] || [ -z "${a}" ]; then
     usage
 fi
 
-if [ $s != "standard" ] && [ $s != "premium" ] && [ $s != "extreme" ]; then
+if [ $l != "standard" ] && [ $l != "premium" ] && [ $l != "extreme" ]; then
     usage
 fi
 
-if [ $s = "standard" ]; then
-    s=basic
+if [ $l = "standard" ]; then
+    l=basic
 fi
 
-if [ $s = "premium" ]; then
-    s=standard
+if [ $l = "premium" ]; then
+    l=standard
 fi
 
-if [[ $a != ?(-)+([0-9]) ]]; then
-    usage
-fi
+#if [[ $a != ?(-)+([0-9]) ]]; then
+#    usage
+#fi
 
 if (( $a < 100 || $a > 1000000 )); then
     usage
@@ -62,7 +62,7 @@ source $c
 time=$(date +%Y%m%d%H%M%S)
 
 # get filesystem info
-filesystems=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/v1/FileSystems)
+filesystems=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/FileSystems)
 
 # get filesystemIds
 ids=$(echo $filesystems |jq -r ''|grep fileSystemId |cut -d '"' -f 4)
@@ -84,4 +84,4 @@ if [ "${#fileSystemId}" == "0" ]; then
 fi
 
 # Update
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X PUT $url/v1/FileSystems/$fileSystemId -d '{"creationToken": "'$m'","region": "'$region'","serviceLevel": "'$s'","quotaInBytes": '$a'}' | jq -r
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X PUT $url/FileSystems/$fileSystemId -d '{"creationToken": "'$m'","region": "'$region'","serviceLevel": "'$l'","quotaInBytes": '$a'}' | jq -r

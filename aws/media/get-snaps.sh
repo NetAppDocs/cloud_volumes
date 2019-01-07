@@ -1,9 +1,9 @@
 #! /bin/bash
 
 # script to list the snapshots of a NetApp Cloud Volume by mountpoint
-# Written by Graham Smith, NetApp July 2018
+# Written by Graham Smith, NetApp January 2019
 # requires bash, jq and curl
-# Version 0.0.1
+# Version 0.2
 
 #set -x
 
@@ -31,7 +31,7 @@ fi
 source $c
 
 # get filesystem info
-filesystems=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/v1/FileSystems)
+filesystems=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/FileSystems)
 
 # get filesystemIds
 ids=$(echo $filesystems |jq -r ''|grep fileSystemId |cut -d '"' -f 4)
@@ -50,7 +50,7 @@ if [ "${#fileSystemId}" == "0" ]; then
 fi
 
 # Show snapshots info
-snapshots=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/v1/FileSystems/$fileSystemId/Snapshots)
+snapshots=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/FileSystems/$fileSystemId/Snapshots)
 
 echo 
 echo "Snapshots details for " $m

@@ -1,9 +1,9 @@
 #! /bin/bash
 
 # script to delete a snapshot of NetApp Cloud Volume by mountpoint and snapshotId
-# Written by Graham Smith, NetApp July 2018
+# Written by Graham Smith, NetApp January 2019
 # requires bash, jq and curl
-# Version 0.0.1
+# Version 0.2
 
 #set -x
 
@@ -34,7 +34,7 @@ fi
 source $c
 
 # get filesystem info
-filesystems=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/v1/FileSystems)
+filesystems=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/FileSystems)
 
 # get filesystemIds
 ids=$(echo $filesystems |jq -r ''|grep fileSystemId |cut -d '"' -f 4)
@@ -53,7 +53,7 @@ if [ "${#fileSystemId}" == "0" ]; then
 fi
 
 # Delete snapshot
-snapshot=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X DELETE $url/v1/FileSystems/$fileSystemId/Snapshots/$s)
+snapshot=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X DELETE $url/FileSystems/$fileSystemId/Snapshots/$s)
 
 if [ "${#snapshot}" == "0" ]; then
 	echo "Please check that the snapshot exists"

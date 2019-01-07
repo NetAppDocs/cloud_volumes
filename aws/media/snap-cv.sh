@@ -1,9 +1,9 @@
 #! /bin/bash
 
 # script to create a snapshot of a NetApp Cloud Volume by mountpoint
-# Written by Graham Smith, NetApp July 2018
+# Written by Graham Smith, NetApp January 2019
 # requires bash, jq and curl
-# Version 0.0.1
+# Version 0.2
 
 #set -x
 
@@ -33,7 +33,7 @@ source $c
 time=$(date +%Y%m%d%H%M%S)
 
 # get filesystem info
-filesystems=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/v1/FileSystems)
+filesystems=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/FileSystems)
 
 # get filesystemIds
 ids=$(echo $filesystems |jq -r ''|grep fileSystemId |cut -d '"' -f 4)
@@ -44,7 +44,8 @@ if [ "${#ids}" == "0" ]; then
 fi
 
 # get region
-region=$(echo $filesystems |jq -r '' | grep -i -B 1 $m |grep region |cut -d '"' -f 4)
+region=$(echo $filesystems |jq -r '' | grep -i -A 10 $m |grep region |cut -d '"' -f 4)
+echo $region
 
 # Find matching filesystemId
 fileSystemId=$(echo $filesystems |jq -r ''| grep -i -B 10 $m |grep fileSystemId | cut -d '"' -f 4)
@@ -55,4 +56,4 @@ if [ "${#fileSystemId}" == "0" ]; then
 fi
 
 # Create snapshot
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X POST $url/v1/FileSystems/$fileSystemId/Snapshots -d '{"name": "snap_'$time'","region": "'$region'"}' |jq -r '' 
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X POST $url/FileSystems/$fileSystemId/Snapshots -d '{"name": "snap_'$time'","region": "'$region'"}' |jq -r '' 

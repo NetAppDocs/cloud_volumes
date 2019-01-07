@@ -1,9 +1,9 @@
 #! /bin/bash
 
 # script to revert to a snapshot of a NetApp Cloud Volume by mountpoint and snapshotId
-# Written by Graham Smith, NetApp July 2018
+# Written by Graham Smith, NetApp January 2019
 # requires bash, jq and curl
-# Version 0.0.1
+# Version 0.2
 
 #set -x
 
@@ -34,7 +34,7 @@ fi
 source $c
 
 # get filesystem info
-filesystems=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/v1/FileSystems)
+filesystems=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/FileSystems)
 
 # get filesystemIds
 ids=$(echo $filesystems |jq -r ''|grep fileSystemId |cut -d '"' -f 4)
@@ -54,7 +54,7 @@ fi
 
 # if $s = last, find the Id of the last snapshot
 if [ $s == "last" ];then
-	snapshots=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/v1/FileSystems/$fileSystemId/Snapshots)
+	snapshots=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X GET $url/FileSystems/$fileSystemId/Snapshots)
 	s=$(echo $snapshots | jq -r ''|grep snapshotId |tail -1 | cut -d '"' -f 4)
     echo $s
 fi
@@ -63,7 +63,7 @@ fi
 region=$(echo $filesystems |jq -r '' | grep -i -B 1 $m |grep region |cut -d '"' -f 4)
 
 # Revert snapshot
-snapshot=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X POST $url/v1/FileSystems/$fileSystemId/Revert -d '
+snapshot=$(curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:$apikey -H secret-key:$secretkey -X POST $url/FileSystems/$fileSystemId/Revert -d '
 {"snapshotId": "'$s'",
 "fileSystemId": "'$fileSystemId'",
 "region": "'$region'"}'

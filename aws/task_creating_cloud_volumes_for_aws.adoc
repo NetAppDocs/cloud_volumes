@@ -94,6 +94,8 @@ Click *+ Add export policy rule* if you want to define additional export policy 
 
 If you selected SMB or Dual-protocol, you can choose to integrate the volume with a Windows Active Directory server in the *Active Directory* section.
 
+*Note:* The AWS Directory Service is currently not supported for Cloud Volumes. You must select a Windows AD server.
+
 . In the *DNS server* field, enter the IP address of the DNS server that you want to use.
 . In the *Domain* field, enter the domain for the SMB share.
 . In the *NetBIOS* field, enter a NetBIOS name for the SMB server that will be created.
