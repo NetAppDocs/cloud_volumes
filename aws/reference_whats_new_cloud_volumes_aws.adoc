@@ -20,6 +20,11 @@ NetApp periodically updates Cloud Volumes Service for AWS to bring you new featu
 
 NetApp periodically updates the Cloud Volumes Service to bring you new features, enhancements, and bug fixes.
 
+=== January 2019
+* NetApp Cloud Volumes Service is now publicly available on the https://aws.amazon.com/marketplace/pp/B07MF4GHYW?qid=1548352732912&sr=0-1&ref_=srh_res_product_title[AWS Marketplace^]
+* Access from on-prem clients is now supported via AWS Direct Connect and Virtual Private Gateways
+* A service status webpage is now available at https://status.services.cloud.netapp.com/ so you can verify availability of the CVS service in each supported region
+
 === December 2018
 * NetApp Cloud Sync support is now available from the Cloud Volumes Service user interface in all supported regions
 
