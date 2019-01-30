@@ -73,7 +73,7 @@ While you would select your service level based on your general, high-level busi
 * How much storage space the applications need
 * How much storage bandwidth per second the applications or the users require
 
-Allocated capacity is specified in GBs.  A volume's allocated capacity can be set within the range of 1 GB to 100,000 GB (equivalent to 100 TBs).
+Allocated capacity is specified in GBs.  A volume's allocated capacity can be set within the range of 100 GB to 100,000 GB (equivalent to 100 TBs).
 
 == Bandwidth
 

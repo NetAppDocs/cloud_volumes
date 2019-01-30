@@ -52,7 +52,7 @@ After your NetApp serial number is activated, the **Support** page shows the sta
 
 image::diagram_support_status_registered.png[Support status registered]
 
-This is a one-time support registration for the applicable Cloud Volumes Service serial number. Any new Cloud Volumes Service subscription and subsequent new serial number requires support activation as well. If you have an questions or problems with support registration, contact us at cvs-support@netapp.com.
+This is a one-time support registration for the applicable Cloud Volumes Service serial number. Any new Cloud Volumes Service subscription and subsequent new serial number requires support activation as well. If you have any questions or problems with support registration, contact us at cvs-support@netapp.com.
 
 === Option 2: New NetApp customer with no existing NetApp Support Site (NSS) SSO account
 
@@ -78,7 +78,7 @@ image::diagram_support_new_customer_reg.png[New Customer Registration Form]
 +
 . As a new NetApp customer, you also need to create a NetApp Support Site (NSS) user account for future support activations and for access to the support portal for technical support chat and web ticketing. Go to the http://now.netapp.com/newuser/[NetApp Support Registration site] to perform this task. You can provide your newly registered Cloud Volumes Service serial number to expedite the process.
 
-This is a one-time support registration for the applicable Cloud Volumes Service serial number. Any new Cloud Volumes Service subscription and subsequent new serial number requires support activation as well. If you have an questions or problems with support registration, contact us at cvs-support@netapp.com.
+This is a one-time support registration for the applicable Cloud Volumes Service serial number. Any new Cloud Volumes Service subscription and subsequent new serial number requires support activation as well. If you have any questions or problems with support registration, contact us at cvs-support@netapp.com.
 
 == Obtaining support information
 

@@ -42,6 +42,158 @@ By default, the AWS security group applied to an EC2 Windows instance does not c
 | w32time |	123 | UDP
 |===
 
-If you are deploying and managing your AD installation domain controllers and member servers on an AWS EC2 instance, you will require several security group rules to allow traffic for the Cloud Volumes Service. We have provided an example of how to implement these rules for AD application as part of the AWS CloudFormation template.
+If you are deploying and managing your AD installation domain controllers and member servers on an AWS EC2 instance, you will require several security group rules to allow traffic for the Cloud Volumes Service. Below is an example of how to implement these rules for AD applications as part of the AWS CloudFormation template.
 
-Click https://github.com/prabuarjunan/AD-SG-json/blob/master/CVS-AD-json[here^] to access the code in a GitHub repository.
+[source,json]
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Description" : "Security Group for AD",
+    "Parameters" :
+    {
+    	"VPC" :
+    	{
+    		"Type" : "AWS::EC2::VPC::Id",
+    		"Description" : "VPC where the Security Group will belong:"
+    	},
+    	"Name" :
+    	{
+    		"Type" : "String",
+    		"Description" : "Name Tag of the Security Group:"
+    	},
+    	"Description" :
+    	{
+    		"Type" : "String",
+    		"Description" : "Description Tag of the Security Group:",
+            "Default" : "Security Group for Active Directory for CVS "
+    	},
+        "CIDRrangeforTCPandUDP" :
+    	{
+    		"Type" : "String",
+    		"Description" : "CIDR Range for the UDP ports 445,138,464,389,53,123 and for the TCP ports 464,339,3389,3268,88,636,9389,445 and 0-65535: *CIDR range format: 10.0.0.0/24"
+    	}
+    },
+    "Resources" :
+    {
+    	"ADSGWest" :
+    	{
+    		"Type" : "AWS::EC2::SecurityGroup",
+    		"Properties" :
+    		{
+    			"GroupDescription" : {"Ref" : "Description"},
+    			"VpcId" : { "Ref" : "VPC" },
+                "SecurityGroupIngress" : [
+                    {
+                        "IpProtocol" : "udp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "445",
+                        "ToPort" : "445"
+                    },
+                    {
+                        "IpProtocol" : "udp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "138",
+                        "ToPort" : "138"
+                    },
+                    {
+                        "IpProtocol" : "udp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "464",
+                        "ToPort" : "464"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "464",
+                        "ToPort" : "464"
+                    },
+                    {
+                        "IpProtocol" : "udp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "389",
+                        "ToPort" : "389"
+                    },
+                    {
+                        "IpProtocol" : "udp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "53",
+                        "ToPort" : "53"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "339",
+                        "ToPort" : "339"
+                    },
+                    {
+                        "IpProtocol" : "udp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "123",
+                        "ToPort" : "123"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "3389",
+                        "ToPort" : "3389"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "3268",
+                        "ToPort" : "3268"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "88",
+                        "ToPort" : "88"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "636",
+                        "ToPort" : "636"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "3269",
+                        "ToPort" : "3269"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "53",
+                        "ToPort" : "53"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "0",
+                        "ToPort" : "65535"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "9389",
+                        "ToPort" : "9389"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : {"Ref" : "CIDRrangeforTCPandUDP"},
+                        "FromPort" : "445",
+                        "ToPort" : "445"
+                    }
+                ]
+    		}
+    	}
+    },
+    "Outputs" :
+    {
+        "SecurityGroupID" :
+        {
+            "Description" : "Security Group ID",
+            "Value" : { "Ref" : "ADSGWest" }
+        }
+    }
+}
