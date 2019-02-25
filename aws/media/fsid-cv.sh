@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # script to find NetApp Cloud Volumes Service fileSystemId by mountpoint
-# Written by Graham Smith, NetApp January 2019
+# Written by Graham Smith, NetApp July 2018
 # requires bash, jq and curl
 # Version 0.0.1
 

@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # script to list the NetApp Cloud Volumes in an account
-# Written by Graham Smith, NetApp January 2019
+# Written by Graham Smith, NetApp Jan 2019
 # requires bash, jq (optional), and curl
 # Version 0.2
 

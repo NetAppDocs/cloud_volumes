@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Script to create a NetApp Cloud Volume
-# Written by Graham Smith, NetApp January 2019
+# Written by Graham Smith, NetApp Jan 2018
 # requires bash, jq (optional) and curl
 # Version 0.2
 
