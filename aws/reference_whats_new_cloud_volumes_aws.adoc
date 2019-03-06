@@ -20,6 +20,9 @@ NetApp periodically updates Cloud Volumes Service for AWS to bring you new featu
 
 NetApp periodically updates the Cloud Volumes Service to bring you new features, enhancements, and bug fixes.
 
+=== March 2019
+* Added support for Microsoft Active Directory in the AWS Cloud (AWS Managed Microsoft AD) for SMB cloud volumes.
+
 === February 2019
 * Beta release of Cloud Backup Service for US-WEST-2: link:reference_cloud_backup_service_intro.html[Managing backups using Cloud Backup Service (beta for US-WEST-2)]
 
@@ -54,10 +57,6 @@ These known limitations identify platforms or features that are not fully suppor
 * *Issue*: An error message "There was a problem listing volumes: Authentication failure" and "There was a problem listing mount targets: [object Object]" may be intermittently displayed.
 +
 *Workaround*: Retry the task or refresh the screen to correctly list the objects.
-
-* *Issue*: The AWS Directory Service cannot be used as the Active Directory service for SMB Cloud Volumes. The message "Error when creating - Failed to create the Active Directory machine account" will be displayed.
-+
-*Workaround*: Integrate to a Windows Active Directory server when using SMB Cloud Volumes. The AWS Directory Service is planned to be supported at a later date.
 
 * *Issue*: 403 errors are intermittently received in response to an API call.
 +

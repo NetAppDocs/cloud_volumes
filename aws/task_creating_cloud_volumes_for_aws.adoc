@@ -86,25 +86,36 @@ Click *+ Add export policy rule* if you want to define additional export policy 
 
 == Enable data encryption (optional)
 
-. If you selected SMB or Dual-protocol, you can enable SMB session encryption by checking the box for the *Enable data encryption* field.
+. If you selected SMB or Dual-protocol, you can enable SMB session encryption by checking the box for the *Enable SMB3 Protocol Encryption* field.
 +
 *Note:* Do not enable encryption if SMB 2.1 clients need to mount the volume.
 
 == Integrate the volume with an Active Directory server (SMB only)
 
-If you selected SMB or Dual-protocol, you can choose to integrate the volume with a Windows Active Directory server in the *Active Directory* section.
+If you selected SMB or Dual-protocol, you can choose to integrate the volume with a Windows Active Directory server or an AWS Managed Microsoft AD in the *Active Directory* section.
 
-*Note:* The AWS Directory Service is currently not supported for Cloud Volumes. You must select a Windows AD server.
+In the *Available settings* field, select an existing Active Directory server or add a new AD server.
 
-. In the *DNS server* field, enter the IP address of the DNS server that you want to use.
+To configure a connection to a new AD server:
+
+. In the *DNS server* field, enter the IP address of the DNS server.
 . In the *Domain* field, enter the domain for the SMB share.
++
+When using AWS Managed Microsoft AD, use the value from the "Directory DNS name" field.
 . In the *NetBIOS* field, enter a NetBIOS name for the SMB server that will be created.
+. In the *Organizational unit* field, enter "CN=Computers" for connections to your own Windows Active Directory server.
++
+When using AWS Managed Microsoft AD, the Organizational unit must be entered in the format "OU=<NetBIOS_name>". For example, *OU=AWSmanagedAD*.
++
+To use a nested OU you must call out the lowest level OU first up to the highest level OU. For example: *OU=THIRDLEVEL,OU=SECONDLEVEL,OU=FIRSTLEVEL*.
 . In the *Username* field, enter a username for your Active Directory server.
 +
 You can use any username that is authorized to create machine accounts in the Active Directory domain to which you are joining the SMB server.
 . In the *Password* field, enter the password for the AD username that you specified in Username.
 +
 image::diagram_create_volume_ad.png[Active Directory]
++
+See the link:media/cvs_aws_ds_smb_setup.pdf[AWS Directory service setup with NetApp Cloud Volumes Service for AWS^] guide for detailed instructions for using AWS Managed Microsoft AD.
 +
 IMPORTANT: You should follow the guidance on AWS security group settings to enable cloud volumes to integrate with Windows Active Directory servers correctly. See <<reference_security_groups_windows_ad_servers.adoc#,AWS security group settings for Windows AD servers>> for more information.
 
