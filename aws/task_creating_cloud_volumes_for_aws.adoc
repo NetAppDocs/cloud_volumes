@@ -90,7 +90,7 @@ Click *+ Add export policy rule* if you want to define additional export policy 
 +
 *Note:* Do not enable encryption if SMB 2.1 clients need to mount the volume.
 
-== Integrate the volume with an Active Directory server (SMB only)
+== Integrate the volume with an Active Directory server (SMB and Dual Protocol)
 
 If you selected SMB or Dual-protocol, you can choose to integrate the volume with a Windows Active Directory server or an AWS Managed Microsoft AD in the *Active Directory* section.
 
@@ -118,6 +118,8 @@ image::diagram_create_volume_ad.png[Active Directory]
 See the link:media/cvs_aws_ds_smb_setup.pdf[AWS Directory service setup with NetApp Cloud Volumes Service for AWS^] guide for detailed instructions for using AWS Managed Microsoft AD.
 +
 IMPORTANT: You should follow the guidance on AWS security group settings to enable cloud volumes to integrate with Windows Active Directory servers correctly. See <<reference_security_groups_windows_ad_servers.adoc#,AWS security group settings for Windows AD servers>> for more information.
++
+*Note:* UNIX users mounting the volume using NFS will be authenticated as Windows user "root" for UNIX root and "pcuser" for all other users. Make sure that these user accounts exist in your Active Directory prior to mounting a dual protocol volume when using NFS.
 
 == Create a Snapshot policy (optional)
 
