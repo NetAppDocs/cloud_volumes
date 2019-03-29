@@ -224,7 +224,7 @@ curl -s -H accept:application/json -H "Content-type: application/json" -H api-ke
 	"serviceLevel": "extreme"
 }'
 
-link:media/clone-cv.sh[Script to clone a cloud volume]
+link:media/clone-cv.py[Script to clone a cloud volume]
 
 ==== Deleting a snapshot
 The following example uses a `DELETE` call to delete a snapshot specified by `snapshotId`:

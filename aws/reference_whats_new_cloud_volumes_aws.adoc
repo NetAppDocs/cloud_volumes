@@ -23,6 +23,7 @@ NetApp periodically updates the Cloud Volumes Service to bring you new features,
 === March 2019
 * Added support for Microsoft Active Directory in the AWS Cloud (AWS Managed Microsoft AD) for SMB cloud volumes.
 * The control plane for us-east-1 and us-west-1 now have their own UI URL and API endpoint. Previously these regions shared the same control plane.
+* Sample Python scripts have been added for RESTful API support: link:reference_cloud_volume_apis.html[Cloud Volumes APIs]
 
 === February 2019
 * Beta release of Cloud Backup Service for US-WEST-2: link:reference_cloud_backup_service_intro.html[Managing backups using Cloud Backup Service (beta for US-WEST-2)]
@@ -40,7 +41,7 @@ NetApp periodically updates the Cloud Volumes Service to bring you new features,
 * Support in the following AWS regions: ap-northeast-1 (Tokyo), ap-southeast-2 (Sydney), and eu-west-2 (London)
 
 === September 2018
-* RESTful API support and online examples: link:reference_cloud_volume_apis.html[Cloud Volume APIs]
+* RESTful API support and online examples: link:reference_cloud_volume_apis.html[Cloud Volumes APIs]
 * Support in the following AWS regions: eu-central-1 (Frankfurt) and eu-west-1 (Ireland)
 
 === August 2018

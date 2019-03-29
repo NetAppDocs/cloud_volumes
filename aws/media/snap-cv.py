@@ -66,7 +66,7 @@ if not fsid :
 	print('Mountpoint '+args.mountpoint[0] + ' does not exist')
 	sys.exit(1)
 
-time=(datetime.datetime.utcnow())
+now=(datetime.datetime.utcnow())
 
 # take a volume of volume
 def take_snap(fsid, url, data, head):
@@ -78,7 +78,7 @@ def take_snap(fsid, url, data, head):
 	print(highlight(details, JsonLexer(), TerminalFormatter()))
 
 data = {
-	"name": "snap-"+str(time),
+	"name": "snap-"+str(now),
 	"fileSystemId": fsid,
 	"region": region
 		}
