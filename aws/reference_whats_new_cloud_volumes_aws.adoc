@@ -56,10 +56,6 @@ NetApp periodically updates the Cloud Volumes Service to bring you new features,
 
 These known limitations identify platforms or features that are not fully supported.
 
-* *Issue*: An error message "There was a problem listing volumes: Authentication failure" and "There was a problem listing mount targets: [object Object]" may be intermittently displayed.
+* *Issue*: In release v1.1.81 the API endpoint is no longer listed on the API access page.
 +
-*Workaround*: Retry the task or refresh the screen to correctly list the objects.
-
-* *Issue*: 403 errors are intermittently received in response to an API call.
-+
-*Workaround*: Retry the API call.
+*Workaround*: You can determine the endpoint from the URL in the browser window appended with ":8080/v1/"; meaning port *8080*, path */v1/*. For example, for the us-west-1 region, the API endpoint is https://cv.us-west-1.netapp.com:8080/v1/
