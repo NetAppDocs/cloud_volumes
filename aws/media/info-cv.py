@@ -24,10 +24,10 @@ else:
 
 if args.mountpoint:
 	if len(args.mountpoint)!=1:
-		print('a volume mountpoint is require')
+		print('a volume mountpoint is required')
 		sys.exit(1)
 else:
-	print('a volume mountpoint is require')
+	print('a volume mountpoint is required')
 	sys.exit(1)
 
 conf=args.config[0]

@@ -25,10 +25,10 @@ else:
 
 if args.mountpoint:
 	if len(args.mountpoint)!=1:
-		print('a volume mountpoint is require')
+		print('a volume mountpoint is required')
 		sys.exit(1)
 else:
-	print('a volume mountpoint is require')
+	print('a volume mountpoint is required')
 	sys.exit(1)
 
 conf=args.config[0]
@@ -68,7 +68,7 @@ if not fsid :
 
 now=(datetime.datetime.utcnow())
 
-# take a volume of volume
+# take a snapshot of volume
 def take_snap(fsid, url, data, head):
 	url = url+'/'+fsid+'/Snapshots'
 	data_json = json.dumps(data)
@@ -84,5 +84,3 @@ data = {
 		}
 
 take_snap(fsid, url, data, head)
-
-

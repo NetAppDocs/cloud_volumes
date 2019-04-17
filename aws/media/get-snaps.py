@@ -24,10 +24,10 @@ else:
 
 if args.mountpoint:
 	if len(args.mountpoint)!=1:
-		print('a volume mountpoint is require')
+		print('a volume mountpoint is required')
 		sys.exit(1)
 else:
-	print('a volume mountpoint is require')
+	print('a volume mountpoint is required')
 	sys.exit(1)
 
 conf=args.config[0]
@@ -66,7 +66,7 @@ if not fsid :
 	print('Mountpoint '+args.mountpoint[0] + ' does not exist')
 	sys.exit(1)
 
-# delete snapshot
+# get snapshots
 def getsnaps(fsid, url, head):
 	url = url+'/'+fsid+'/Snapshots'
 	req = requests.get(url, headers = head)
