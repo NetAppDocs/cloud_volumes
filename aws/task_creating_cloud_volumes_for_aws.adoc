@@ -35,7 +35,7 @@ You must have the following information available when creating your first cloud
 
 If you have not configured the required AWS networking components, see the link:media/cvs_aws_account_setup.pdf[NetApp Cloud Volumes Service for AWS Account Setup^] guide for details.
 
-*Note:* When planning to create an SMB volume, you must have a Windows Active Directory server available to which you can connect. You will enter this information when creating the volume.
+*Note:* When planning to create an SMB volume, you must have a Windows Active Directory server available to which you can connect. You will enter this information when creating the volume. Also, make sure that the Admin user is able to create a machine account in the Organizational unit (OU) path specified.
 
 == Enter volume details
 

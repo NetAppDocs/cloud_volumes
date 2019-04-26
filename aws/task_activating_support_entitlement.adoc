@@ -82,7 +82,7 @@ This is a one-time support registration for the applicable Cloud Volumes Service
 
 == Obtaining support information
 
-NetApp provides support for Cloud Volumes Service in a variety of ways. Extensive free self-support options are available 24x7, such as knowledgebase (KB) articles or the NetApp community. The Cloud Volumes Service subscription purchased from the AWS SaaS marketplace includes software warranty support that includes technical support chat, email, phone, or web ticketing. You must activate support for each NetApp serial number in order to use these non self-service support options. A NetApp Support Site (NSS) SSO account is required for chat and web ticketing along with case management.
+NetApp provides support for Cloud Volumes Service in a variety of ways. Extensive free self-support options are available 24x7, such as knowledgebase (KB) articles or the NetApp community. The Cloud Volumes Service subscription purchased from the AWS SaaS marketplace includes remote technical support via chat, email, web ticketing, or phone. You must first activate support for each NetApp serial number in order to use these non self-service support options. A NetApp Support Site (NSS) SSO account is required for chat and web ticketing along with case management.
 
 You can access support options from the Cloud Volumes Service UI by selecting the **Support** tab from the main menu. The support options available to you depend on whether you are in Trial mode or Subscription mode.
 
@@ -117,7 +117,7 @@ This will open a support ticket as well.
 Select Cloud Data Services > Cloud Volumes Service AWS
 
 * https://www.netapp.com/us/contact-us/support.aspx[Phone]
-For P1 issues on original call or existing tickets
+For reporting new issues or calling about existing tickets. This method is best for P1 or immediate assistance.
 
 You can also request sales support by clicking on the https://www.netapp.com/us/forms/sales-contact.aspx[Contact sales] link.
 
@@ -131,12 +131,3 @@ image::diagram_support_list_registered_systems.png[View Installed Systems]
 ==  Obtaining support for Cloud Backup Service beta feature
 
 You must have accepted the terms and conditions for using the Cloud Backup Service beta software.  Because this is a beta feature, all questions or technical support issues related to Cloud Backup Service must be directed through email at mailto:cvs-support@netapp.com[cvs-support@netapp.com]. A NetApp engineer will then assist with any problems you are experiencing.
-
-== Deactivating support
-
-If you ever need to deactivate support for your subscription, click **Deactivate support** from the Support page, type `deactivate` as prompted, and click **Deactivate support** again to confirm.
-
-NOTE: NetApp recommends that you do not deactivate support for your subscription unless you are certain that you no longer need the service.
-If you mistakenly deactivated support, you can create a web ticket to reactivate the subscription.
-
-image::diagram_support_deactivate.png[Deactivate support]
