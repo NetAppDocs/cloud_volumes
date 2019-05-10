@@ -21,7 +21,7 @@ The following known issues and limitations exist in Cloud Volumes Service for AW
 *Workaround*: You can determine the endpoint from the URL in the browser window appended with ":8080/v1/"; meaning port *8080*, path */v1/*. For example, for the us-west-1 region, the API endpoint is https://cv.us-west-1.netapp.com:8080/v1/
 
 * *Issue*: The service level names in the RESTful APIs do not match the names defined in the user interface. Use the correct name when defining the service level using the APIs.
-
++
 [cols=2*,options="header",cols="50,50",width="50%"]
 |===
 | UI Service Level Name
@@ -30,5 +30,5 @@ The following known issues and limitations exist in Cloud Volumes Service for AW
 | Premium | standard
 | Extreme | extreme
 |===
-
++
 See link:reference_selecting_service_level_and_quota.html[Selecting the appropriate service levels] for more information on service levels.
