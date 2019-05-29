@@ -16,6 +16,16 @@ summary: The following known issues and limitations exist in Cloud Volumes Servi
 [.lead]
 The following known issues and limitations exist in Cloud Volumes Service for AWS.
 
+* *Issue*: When creating a Cloud Volume, the export path specified in the *Volume path* field cannot include an underscore '_'.
++
+*Workaround*: At this time, specify an export path without an underscore.
+
+* *Issue*: Creating a volume from an existing snapshot may take over an hour if the parent volume has a lot of data (100s of GBs). In some cases the process could time out.
+
+* *Issue*: The amount of space a Cloud Volume is currently using is not reported in the API response. The *usedBytes* key currently will always have a value of '0'.
++
+*Workaround*: You can determine the used capacity per volume from an EC2 client using the *df* command from a Linux command, or by viewing the properties from a Windows client.
+
 * *Issue*: The service level names in the RESTful APIs do not match the names defined in the user interface. Use the correct name when defining the service level using the APIs.
 +
 [cols=2*,options="header",cols="50,50",width="50%"]
