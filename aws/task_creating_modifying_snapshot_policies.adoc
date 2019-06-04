@@ -2,7 +2,7 @@
 sidebar: sidebar_aws
 permalink: aws/task_creating_modifying_snapshot_policies.html
 keywords: Cloud Volumes Service for AWS, snapshot policies
-summary: You can create or modify a snapshot policy as necessary for a cloud volume.
+summary: You can create or modify a snapshot policy as necessary for a cloud volume. You can also temporarily disable snapshots from being created while retaining your defined policy settings.
 ---
 
 = Creating or modifying a snapshot policy
@@ -15,26 +15,22 @@ summary: You can create or modify a snapshot policy as necessary for a cloud vol
 
 
 [.lead]
-You can create or modify a snapshot policy as necessary for a cloud volume.
+You can create or modify a snapshot policy as necessary for a cloud volume. You can also temporarily disable snapshots from being created while retaining your defined policy settings.
 
 .Steps
 . From the Volumes page, click the volume name, and then select *Snapshot policy*.
-+
-Snapshot policies can be Hourly, Daily, Weekly, or Monthly.
-+
-Active policies are marked with a green dot. Inactive policies are marked with a red dot.
 
+. Click the *Enabled* button to *ON* to create a policy or to re-enable a policy that had been temporarily disabled.
++
+Click the *Enabled* button to *OFF* to temporarily disable snapshots from being created.
 . Select *Hourly*, *Daily*, *Weekly*, or *Monthly* to specify the frequency for creating snapshots.
++
+Configured policies are marked with a green dot. Undefined policies are marked with a red dot.
 . Select the number of snapshots to keep.
-. Select the time when the snapshot should be taken:
+. Select the day, hour, and minute when the snapshots should be taken.
 +
-* Select *Minute* for hourly snapshots.
-* Select *Hour* and *Minute* for daily snapshots.
-* Select *Weekday/s*, *Hour*, and *Minutes* for weekly snapshots.
-* Select *Day/s* of month, *Hour*, and *Minutes* for monthly snapshots.
-+
-image:diagram_snapshot_policy_1.png[Snapshot policy]
+image:diagram_snapshot_policy_modify.png[Snapshot policy]
 
-. If you need to create additional snapshot policies, repeat steps 2 through 4.
+. If you need to create additional snapshot policies for this volume, repeat steps 3 through 5.
 
 . Click *Save changes*.
