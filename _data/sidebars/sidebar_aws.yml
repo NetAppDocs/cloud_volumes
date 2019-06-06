@@ -33,6 +33,8 @@ entries:
         url: /task_creating_on_demand_snapshots.html
       - title: Creating or modifying a snapshot policy
         url: /task_creating_modifying_snapshot_policies.html
+      - title: Disabling a snapshot policy
+        url: /task_disabling_snapshot_policy.html
       - title: Deleting a snapshot
         url: /task_deleting_snapshots.html
       - title: Restoring a snapshot to a new volume

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar_aws
+permalink: aws/task_disabling_snapshot_policy.html
+keywords: Cloud Volumes Service for AWS, snapshot policies
+summary: If you want to stop snapshots from being created for a short period of time while retaining your snapshot policy settings, you can disable the snapshot policy.
+---
+
+= Disabling a snapshot policy
+:toc: macro
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+You can disable a snapshot policy to stop snapshots from being created for a short period of time while retaining your snapshot policy settings.
+
+.Steps
+. From the Volumes page, click the volume name, and then select *Snapshot policy*.
+. Click the *Enabled* button to *OFF* to disable snapshots from being created.
++
+image:diagram_snapshot_policy_button.png[Snapshot policy Enable button]
+
+. Click *Save changes*.
+
+When you want to re-enable the snapshot policy, click the *Enabled* button to *ON* and click *Save changes*.
