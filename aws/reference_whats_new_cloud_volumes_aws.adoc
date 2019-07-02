@@ -16,41 +16,37 @@ summary: NetApp periodically updates Cloud Volumes Service for AWS to bring you 
 [.lead]
 NetApp periodically updates Cloud Volumes Service for AWS to bring you new features and enhancements.
 
-== New features and updates
-
-NetApp periodically updates the Cloud Volumes Service to bring you new features, enhancements, and bug fixes.
-
-=== July 2019
+== July 2019
 * The user interface now displays the used capacity per volume.
 * The API has been updated to report used capacity, and total inodes and used inodes.
 * The API has been updated to use the same service levels names as the user interface (Standard, Premium, and Extreme).
 * The sample Python scripts have been updated to match the updated APIs (link:reference_cloud_volume_apis.html[Cloud Volumes APIs]).
 
-=== March 2019
+== March 2019
 * Added support for Microsoft Active Directory in the AWS Cloud (AWS Managed Microsoft AD) for SMB cloud volumes.
 * The control plane for us-east-1 and us-west-1 now have their own UI URL and API endpoint. Previously these regions shared the same control plane.
 * Sample Python scripts have been added for RESTful API support: link:reference_cloud_volume_apis.html[Cloud Volumes APIs]
 
-=== February 2019
+== February 2019
 * Beta release of Cloud Backup Service for US-WEST-2: link:reference_cloud_backup_service_intro.html[Managing backups using Cloud Backup Service (beta for US-WEST-2)]
 
-=== January 2019
+== January 2019
 * NetApp Cloud Volumes Service is now publicly available on the https://aws.amazon.com/marketplace/pp/B07MF4GHYW?qid=1548352732912&sr=0-1&ref_=srh_res_product_title[AWS Marketplace^]
 * Access from on-prem clients is now supported via AWS Direct Connect and Virtual Private Gateways
 * A service status webpage is now available at https://status.services.cloud.netapp.com/ so you can verify availability of the CVS service in each supported region
 
-=== December 2018
+== December 2018
 * NetApp Cloud Sync support is now available from the Cloud Volumes Service user interface in all supported regions
 
-=== November 2018
+== November 2018
 * Support for SMB 2.1 protocol
 * Support in the following AWS regions: ap-northeast-1 (Tokyo), ap-southeast-2 (Sydney), and eu-west-2 (London)
 
-=== September 2018
+== September 2018
 * RESTful API support and online examples: link:reference_cloud_volume_apis.html[Cloud Volumes APIs]
 * Support in the following AWS regions: eu-central-1 (Frankfurt) and eu-west-1 (Ireland)
 
-=== August 2018
+== August 2018
 * Ability to select data encryption for SMB shares
 * Ability to select the security styles of NTFS or UNIX for shares exported via both NFS and SMB
 * Display for NFS and SMB mount instructions for shares exported via both NFS and SMB

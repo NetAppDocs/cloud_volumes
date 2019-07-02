@@ -76,7 +76,7 @@ curl -s -H accept:application/json -H "Content-type: application/json" -H api-ke
 	"region": "us-west-1",
 	"creationToken": "prickly-bellicose-archimedes",
 	"quotaInBytes": 1000000000000,
-	"serviceLevel": "basic",
+	"serviceLevel": "standard",
 	"snapReserve": 0,
 	"timezone": "PT",
 	"usedBytes": 0
@@ -107,7 +107,7 @@ curl -s -H accept:application/json -H "Content-type: application/json" -H api-ke
 	"name": "Test",
 	"creationToken": "grahams-test-volume3",
 	"region": "us-west-1",
-	"serviceLevel": "basic",
+	"serviceLevel": "standard",
 	"quotaInBytes": 100000000000,
 	"exportPolicy": {"rules": [{"ruleIndex": 1,"allowedClients": "0.0.0.0/0","unixReadOnly": false,"unixReadWrite": true,"cifs": false,"nfsv3": true,"nfsv4": false}]},
 	"labels": ["test"]
@@ -189,7 +189,7 @@ curl -s -H accept:application/json -H "Content-type: application/json" -H api-ke
 link:media/snapshot-policy.py[Script to create snapshot policies for a cloud volume by mountpoint]
 
 ==== Listing snapshots for a specific volume
-The following example uses a `GET` call to list the snapshots for  a specific volume:
+The following example uses a `GET` call to list the snapshots for a specific volume:
 
 [source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v1/FileSystems/07c9ab6c-b655-a9fe-f904-b9b97ef9baaa/Snapshots
