@@ -77,11 +77,6 @@ if args.service_level:
 	if (args.service_level)[0] != 'standard' and (args.service_level)[0] != 'premium' and (args.service_level)[0] != 'extreme':
 		print('Service level must be standard, premium or extreme')
 		sys.exit(1)
-	else:
-		if (args.service_level)[0] == 'standard':
-			(args.service_level)[0] = 'basic'
-		elif (args.service_level)[0] == 'premium':
-			(args.service_level)[0] = 'standard'
 
 # set export to default
 export = '0.0.0.0/0'
