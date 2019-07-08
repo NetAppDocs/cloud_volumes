@@ -17,6 +17,7 @@ summary: NetApp periodically updates Cloud Volumes Service for AWS to bring you 
 NetApp periodically updates Cloud Volumes Service for AWS to bring you new features and enhancements.
 
 == July 2019
+* Creating a volume from a snapshot is now rapid, and the volume is available within seconds regardless of the amount of data in the parent volume.
 * The user interface now displays the used capacity per volume.
 * The API has been updated to report used capacity, and total inodes and used inodes.
 * The API has been updated to use the same service levels names as the user interface (Standard, Premium, and Extreme).

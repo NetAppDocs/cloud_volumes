@@ -19,5 +19,3 @@ The following known issues and limitations exist in Cloud Volumes Service for AW
 * *Issue*: When creating a Cloud Volume, the export path specified in the *Volume path* field cannot include an underscore '_'.
 +
 *Workaround*: At this time, specify an export path without an underscore.
-
-* *Issue*: Creating a volume from an existing snapshot may take over an hour if the parent volume has a lot of data (100s of GBs). In some cases the process could time out.
