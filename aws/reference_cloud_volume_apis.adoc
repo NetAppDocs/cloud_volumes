@@ -218,13 +218,13 @@ The following example uses a `POST` call to create a new volume based on a snaps
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v1/FileSystems -d '
 {
 	"snapshotId": "e19c5b72-daee-aa22-159d-a24702907fad",
-	"name": "Clone",
-	"creationToken": "perfectly-cloned-volume",
+	"name": "Copy",
+	"creationToken": "perfectly-copied-volume",
 	"region": "us-west-1",
 	"serviceLevel": "extreme"
 }'
 
-link:media/clone-cv.py[Script to clone a cloud volume]
+link:media/copy-cv.py[Script to copy a cloud volume]
 
 ==== Deleting a snapshot
 The following example uses a `DELETE` call to delete a snapshot specified by `snapshotId`:
