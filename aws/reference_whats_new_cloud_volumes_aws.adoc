@@ -16,12 +16,15 @@ summary: NetApp periodically updates Cloud Volumes Service for AWS to bring you 
 [.lead]
 NetApp periodically updates Cloud Volumes Service for AWS to bring you new features and enhancements.
 
+== August 2019
+* Added sample Python scripts for Active Directory functions  (link:reference_cloud_volume_apis.html[Cloud Volumes APIs]).
+
 == July 2019
 * Creating a volume from a snapshot is now rapid, and the volume is available within seconds regardless of the amount of data in the parent volume.
 * The user interface now displays the used capacity per volume.
 * The API has been updated to report used capacity, and total inodes and used inodes.
 * The API has been updated to use the same service levels names as the user interface (Standard, Premium, and Extreme).
-* The sample Python scripts have been updated to match the updated APIs (link:reference_cloud_volume_apis.html[Cloud Volumes APIs]).
+* The sample Python scripts have been updated to match the updated APIs.
 
 == March 2019
 * Added support for Microsoft Active Directory in the AWS Cloud (AWS Managed Microsoft AD) for SMB cloud volumes.

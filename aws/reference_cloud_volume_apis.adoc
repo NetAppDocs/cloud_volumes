@@ -283,7 +283,6 @@ NOTE: You cannot unjoin a directory service that is in use; status "in use".
 
 [source,json]
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url/v1/Storage/ActiveDirectory/c64ecb4f-da51-be61-f017-b2dda78f7167 |jq
-
 {
   "DNS": "172.32.2.16",
   "UUID": "c64ecb4f-da51-be61-f017-b2dda78f7167",
