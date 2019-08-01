@@ -235,3 +235,68 @@ curl -s -H accept:application/json -H "Content-type: application/json" -H api-ke
 link:media/delete-snap.py[Script to delete a snapshot of a cloud volume by mountpoint and snapshotId]
 
 IMPORTANT: Use with caution. This API call deletes the snapshot and all its data.
+
+==== Joining a directory service
+The following example uses a `POST` call to join a directory service and provides the DNS IP address, domain, the NetBIOS name for the SMB server, the username and password for a directory service admin, and the organizational unit (optional and defaults to CN=Computers).
+
+[source,json]
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url/v1/Storage/ActiveDirectory -d '
+{
+    "DNS": "172.32.2.16",
+    "domain": "cv-pm.local",
+    "netBIOS": "frankfurt",
+    "organizationalUnit": "OU=Cloud Servers,DC=nas-cloud,DC=local",
+    "password": "secret",
+    "region": "eu-central-1",
+    "username": "Administrator"
+}'
+
+link:media/join-ad.py[Script to join a directory service]
+
+==== Viewing directory service integration
+The following example uses a `GET` call to display the configuration for directory service integration.
+
+[source,json]
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url/v1/Storage/ActiveDirectory | jq
+[
+  {
+    "DNS": "172.32.2.16",
+    "UUID": "576a520c-54a2-e3a6-2e3e-89d68bab4035",
+    "createdAt": "2019-07-30T20:08:10.000Z",
+    "domain": "cv-pm.local",
+    "netBIOS": "frankfurt",
+    "organizationalUnit": "OU=Cloud Servers,DC=nas-cloud,DC=local",
+    "password": "****************",
+    "region": "eu-central-1",
+    "status": "in use",
+    "updatedAt": "2019-07-30T20:08:10.000Z",
+    "username": "Administrator"
+  }
+]
+
+link:media/get-ad.py[Script to view directory service integration]
+
+==== Unjoining a directory service
+The following example uses a `DELETE` call to unjoin a directory service integration. This requires the UUID for the current join, which can be found using the `GET` call listed above.
+
+NOTE: You cannot unjoin a directory service that is in use; status "in use".
+
+[source,json]
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url/v1/Storage/ActiveDirectory/c64ecb4f-da51-be61-f017-b2dda78f7167 |jq
+
+{
+  "DNS": "172.32.2.16",
+  "UUID": "c64ecb4f-da51-be61-f017-b2dda78f7167",
+  "createdAt": "2019-07-30T19:53:38.000Z",
+  "deletedAt": "2019-07-30T20:06:57.746Z",
+  "domain": "cv-pm.local",
+  "netBIOS": "frankfurt",
+  "organizationalUnit": "OU=Cloud Servers,DC=nas-cloud,DC=local",
+  "password": "****************",
+  "region": "eu-central-1",
+  "status": "deleted",
+  "updatedAt": "2019-07-30T20:06:57.778Z",
+  "username": "Administrator"
+}
+
+link:media/unjoin-ad.py[Script to unjoin a directory service]

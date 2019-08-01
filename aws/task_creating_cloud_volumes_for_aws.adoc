@@ -111,9 +111,11 @@ To use a nested OU you must call out the lowest level OU first up to the highest
 . In the *Username* field, enter a username for your Active Directory server.
 +
 You can use any username that is authorized to create machine accounts in the Active Directory domain to which you are joining the SMB server.
-. In the *Password* field, enter the password for the AD username that you specified in Username.
+. In the *Password* field, enter the password for the AD username that you specified.
 +
 image::diagram_create_volume_ad.png[Active Directory]
++
+See https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/designing-the-site-topology[Designing a site topology for Active Directory Domain Services^] for guidelines about designing an optimal Microsoft AD implementation.
 +
 See the link:media/cvs_aws_ds_smb_setup.pdf[AWS Directory service setup with NetApp Cloud Volumes Service for AWS^] guide for detailed instructions for using AWS Managed Microsoft AD.
 +

@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 import requests
+import urllib.request
 import json
-import argparse
 import sys
+import re
+import argparse
 from pygments import highlight
 from pygments.lexers import JsonLexer
 from pygments.formatters import TerminalFormatter
@@ -21,6 +23,7 @@ else:
 
 conf=args.config[0]
 file = open(conf, 'r')
+fsid = False
 
 # read config files for keys and api endpoint
 for line in file:
@@ -32,19 +35,30 @@ for line in file:
 		url=str(line.split("=")[1].rstrip('\n'))
 
 # create header
-headers = {}
-headers['api-key'] = apikey
-headers['secret-key'] = secretkey
-headers['content-type'] = 'application/json'
+head = {}
+head['api-key'] = apikey
+head['secret-key'] = secretkey
+head['content-type'] = 'application/json'
 
-command = 'FileSystems'
+command = 'Storage/ActiveDirectory'
 url = url+command
 
-# get filesystems
-req = requests.get(url, headers = headers)
-filesystems = json.dumps(req.json(), indent=4)
+# get AD uuid
+uuid = None
+req = requests.get(url, headers = head)
+data = (req.json())
+for i in data:
+	uuid=i['UUID']
+if uuid is None:
+	print("No Active Directory joined")
+	sys.exit(1)
 
-print(highlight(filesystems, JsonLexer(), TerminalFormatter()))
+# delete AD
+def delete_ad(uuid, url, head):
+	url = url+'/'+uuid
+	req = requests.delete(url, headers = head)
+	details = json.dumps(req.json(), indent=4)
+	print('Unjoining Active Directory')
+	print(highlight(details, JsonLexer(), TerminalFormatter()))
 
-vols=(len(req.json()))
-print('There are '+str(vols)+' volumes')
+delete_ad(uuid, url, head)

@@ -37,14 +37,11 @@ headers['api-key'] = apikey
 headers['secret-key'] = secretkey
 headers['content-type'] = 'application/json'
 
-command = 'FileSystems'
+command = 'Storage/ActiveDirectory'
 url = url+command
 
-# get filesystems
+# get ActiveDirectory settings
 req = requests.get(url, headers = headers)
-filesystems = json.dumps(req.json(), indent=4)
+ad = json.dumps(req.json(), indent=4)
 
-print(highlight(filesystems, JsonLexer(), TerminalFormatter()))
-
-vols=(len(req.json()))
-print('There are '+str(vols)+' volumes')
+print(highlight(ad, JsonLexer(), TerminalFormatter()))
