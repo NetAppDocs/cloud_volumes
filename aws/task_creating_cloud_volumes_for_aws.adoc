@@ -30,7 +30,6 @@ You must have the following information available when creating your first cloud
 
 * *AWS account ID*: A 12-digit Amazon account identifier with no dashes.
 * *Classless Inter-Domain Routing (CIDR) Block*: An unused IPv4 CIDR block. The network must be a /28, and it must also fall within the ranges reserved for private networks (RFC 1918). Do not choose a network that overlaps your VPC CIDR allocations.
-* *Autonomous System Number (ASN)*: When using a Virtual Private Gateway, use that ASN. When using a Direct Connect Gateway, use that ASN.
 *	You must have selected the correct region where you want to use the service. See  link:task_selecting_region.html[Selecting the region].
 
 If you have not configured the required AWS networking components, see the link:media/cvs_aws_account_setup.pdf[NetApp Cloud Volumes Service for AWS Account Setup^] guide for details.
@@ -68,7 +67,6 @@ Security styles affect the file permission type used and how permissions can be 
 If this is the first time you have created a cloud volume in this AWS region, the *Network* section is displayed so you can connect your Cloud Volumes account to your AWS account:
 
 . In the *CIDR (IPv4)* field, enter the desired IPv4 range for the region. The network must be a /28. The network must also fall within the ranges reserved for private networks (RFC 1918).  Do not choose a network that overlaps your VPC CIDR allocations.
-. In the *Autonomous System Number (ASN)* field, enter the ASN. When using a VGW in your AWS configuration, use that ASN. When using a Direct Connect Gateway, use that ASN.
 . In the *AWS account ID* field, enter your 12-digit Amazon account identifier with no dashes.
 +
 image::diagram_create_volume_network.png[Configure network settings]
