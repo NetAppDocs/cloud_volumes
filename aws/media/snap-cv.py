@@ -66,7 +66,7 @@ if not fsid :
 	print('Mountpoint '+args.mountpoint[0] + ' does not exist')
 	sys.exit(1)
 
-now=(datetime.datetime.utcnow())
+now=(datetime.datetime.utcnow().strftime("%Y%m%d%H%M%S"))
 
 # take a snapshot of volume
 def take_snap(fsid, url, data, head):
