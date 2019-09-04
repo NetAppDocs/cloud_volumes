@@ -15,7 +15,7 @@ summary: You can get started with the Cloud Volumes Service for AWS by completin
 [.lead]
 You can get started with the Cloud Volumes Service for AWS by completing a few quick steps.
 
-*Note:* You must have configured the required AWS networking components prior to creating a cloud volume. See the link:media/cvs_aws_account_setup.pdf[NetApp Cloud Volumes Service for AWS Account Setup guide (English)^] or link:media/cvs_aws_account_setup_jaJP.pdf[NetApp Cloud Volumes Service for AWS Account Setup guide (Japanese)^] if you have not yet completed these steps.
+*Note:* You must have configured the required AWS networking components prior to creating a cloud volume. See the _NetApp Cloud Volumes Service for AWS Account Setup Guide_ link:media/cvs_aws_account_setup.pdf[[EN^]]|link:media/cvs_aws_account_setup_jaJP.pdf[[JA^]] if you have not yet completed these steps.
 
 [discrete]
 === image:number1.png[The number 1] link:task_selecting_region.html[Select the region]

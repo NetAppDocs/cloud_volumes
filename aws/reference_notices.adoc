@@ -40,4 +40,4 @@ https://www.netapp.com/us/legal/privacypolicy/index.aspx[^]
 Notice files provide information about third-party copyright and licenses used in NetApp software.
 
 * link:media/notice_cloud_volumes_aws.pdf[Notice for NetApp Cloud Volumes Service^]
-* link:media/notice_ONTAP_9.4.pdf[Notice for ONTAP^]
+* link:media/notice_ONTAP_95.pdf[Notice for ONTAP^]
