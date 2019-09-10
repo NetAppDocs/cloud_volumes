@@ -16,6 +16,11 @@ summary: NetApp periodically updates Cloud Volumes Service for AWS to bring you 
 [.lead]
 NetApp periodically updates Cloud Volumes Service for AWS to bring you new features and enhancements.
 
+== September 2019
+* Cloud Volumes Service now supports up to 100 million files per volume. The maximum file count is increased by 20 million for each Terabyte allocated up to 100 million. The maximum may be increased to higher than 100 million via a customer support request.
+* Cloud volume names now support up to 253 characters; an increase from the previous limit of 64 characters.
+*	The user interface now displays the service level per volume in the volume list page.
+
 == August 2019
 * Cloud Volumes Service now provides up to 4,500 MB/s, instead of 3,500 MB/s, at certain capacity levels. See link:reference_selecting_service_level_and_quota.html#cost-comparison-for-service-levels-and-allocated-capacity[Selecting the service level and the allocated capacity] for details.
 * Added API examples and sample Python scripts for Active Directory functions (link:reference_cloud_volume_apis.html[Cloud Volumes APIs]).
@@ -50,10 +55,3 @@ NetApp periodically updates Cloud Volumes Service for AWS to bring you new featu
 == September 2018
 * RESTful API support and online examples: link:reference_cloud_volume_apis.html[Cloud Volumes APIs]
 * Support in the following AWS regions: eu-central-1 (Frankfurt) and eu-west-1 (Ireland)
-
-== August 2018
-* Ability to select data encryption for SMB shares
-* Ability to select the security styles of NTFS or UNIX for shares exported via both NFS and SMB
-* Display for NFS and SMB mount instructions for shares exported via both NFS and SMB
-* Support for multiple Active Directory servers
-* Support in the following AWS regions: us-east-1 (N. Virginia), us-west-1 (N. California), and us-west-2 (Oregon)

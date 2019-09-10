@@ -16,6 +16,6 @@ summary: The following known issues and limitations exist in Cloud Volumes Servi
 [.lead]
 The following known issues and limitations exist in Cloud Volumes Service for AWS.
 
-* *Issue*: When creating a Cloud Volume, the export path specified in the *Volume path* field cannot include an underscore '_'.
+* *Issue*: A cloud volume will fail to be created via the API if 'nfsv4: true' is set, as currently the Cloud Volumes Service does not support NFSv4.
 +
-*Workaround*: At this time, specify an export path without an underscore.
+*Workaround*: Make sure 'nfsv4: false' is set when creating cloud volumes via the API.
