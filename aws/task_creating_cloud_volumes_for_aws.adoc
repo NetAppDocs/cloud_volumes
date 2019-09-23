@@ -51,10 +51,10 @@ image::diagram_create_volume_1.png[Create Volume page]
 . (Optional) In the *Create from snapshot* field, select the name of an existing snapshot that will be used to create a volume.
 . In the *Service level* field, select the level of performance for the volume: *Standard*, *Premium*, or *Extreme*.
 +
-See link:reference_selecting_service_level_and_quota.html[Selecting the appropriate service level and allocated capacity] for details.
-. In the *Allocated capacity* field, select the size of the volume.
+See link:reference_selecting_service_level_and_quota.html#service-levels[Selecting the service level] for details.
+. In the *Allocated capacity* field, select the capacity required. Note that the number of available inodes is dependent on allocated capacity.
 +
-link:reference_selecting_service_level_and_quota.html[Selecting the appropriate service level and allocated capacity]
+See link:reference_selecting_service_level_and_quota.html#allocated-capacity[Selecting the allocated capacity] for details.
 . If you selected Dual-protocol, you can select the security style in the *Security style* field by selecting *NTFS* or *UNIX* from the drop-down menu.
 +
 Security styles affect the file permission type used and how permissions can be modified.

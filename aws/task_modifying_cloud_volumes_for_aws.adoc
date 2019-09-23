@@ -29,5 +29,7 @@ You can modify existing volumes, including changing the volume name, allocated c
 * Service level
 +
 Changing the service level is not disruptive and does not affect client data access.
-+
-link:reference_selecting_service_level_and_quota.html[Selecting the appropriate service level and allocated capacity]
+
+Note that the number of available inodes is dependent on allocated capacity.
+
+See link:reference_selecting_service_level_and_quota.html[Selecting the appropriate service level and allocated capacity] for details.

@@ -75,6 +75,15 @@ While you would select your service level based on your general, high-level busi
 
 Allocated capacity is specified in GBs.  A volume's allocated capacity can be set within the range of 100 GB to 100,000 GB (equivalent to 100 TBs).
 
+=== Number of inodes
+Volumes less than or equal to 1 TB can use up to 20 million inodes. The number of inodes increase by 20 million for each TB you allocate, up to a maximum of 100 million inodes.
+
+* \<= 1TB = 20 million inodes
+* >1 TB to 2 TB = 40 million inodes
+* >2 TB to 3 TB = 60 million inodes
+* >3 TB to 4 TB = 80 million inodes
+* >4 TB to 5 TB = 100 million inodes
+
 == Bandwidth
 
 The combination of both the service level and the allocated capacity you select determines the maximum bandwidth for the volume.
