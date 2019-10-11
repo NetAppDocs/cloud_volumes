@@ -82,7 +82,7 @@ Volumes less than or equal to 1 TB can use up to 20 million inodes. The number o
 * >1 TB to 2 TB = 40 million inodes
 * >2 TB to 3 TB = 60 million inodes
 * >3 TB to 4 TB = 80 million inodes
-* >4 TB to 5 TB = 100 million inodes
+* >4 TB to 100 TB = 100 million inodes
 
 == Bandwidth
 
