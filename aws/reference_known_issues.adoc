@@ -19,3 +19,8 @@ The following known issues and limitations exist in Cloud Volumes Service for AW
 * *Issue*: A cloud volume will fail to be created via the API if 'nfsv4: true' is set, as currently the Cloud Volumes Service does not support NFSv4.
 +
 *Workaround*: Make sure 'nfsv4: false' is set when creating cloud volumes via the API.
+
+* *Issue*: After the update to release v1.147.1 of the Cloud Volumes Service, the Export path for volumes may not be displayed in the Web UI.
++
+*Workaround*: Create a new volume, then refresh the Web browser, the Export paths will then be displayed. The new volume can be deleted afterwards.
+This issue will be resolved in a future update.
