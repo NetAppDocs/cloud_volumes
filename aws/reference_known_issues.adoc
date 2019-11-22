@@ -16,6 +16,10 @@ summary: The following known issues and limitations exist in Cloud Volumes Servi
 [.lead]
 The following known issues and limitations exist in Cloud Volumes Service for AWS.
 
+* *Issue*: Creating a new volume from a snapshot may fail with the message 'Unable to set volume attribute "files" for volume _<volume>_ ... Reason: New count must be larger than current allocated count of _<number>_'.
++
+*Workaround*: This issue occurs when trying to create a volume from a snapshot that currently has more files allocated to it than the new volume would be assigned for its allocated capacity. See link:reference_selecting_service_level_and_quota.html#allocated-capacity[Selecting the allocated capacity] for details.
+
 * *Issue*: A cloud volume will fail to be created via the API if 'nfsv4: true' is set, as currently the Cloud Volumes Service does not support NFSv4.
 +
 *Workaround*: Make sure 'nfsv4: false' is set when creating cloud volumes via the API.
