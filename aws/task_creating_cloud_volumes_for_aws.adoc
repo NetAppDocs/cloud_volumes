@@ -62,7 +62,8 @@ Security styles affect the file permission type used and how permissions can be 
 ** UNIX uses NFSv3 mode bits, and only NFS clients can modify permissions.
 ** NTFS uses NTFS ACLs, and only SMB clients can modify permissions.
 +
-. In the *Show snapshot directory* field, keep the default where you can view the Snaphot directory for this volume, or uncheck the box to hide the list of Snapshot copies.
+. In the *Show snapshot directory* field, keep the default where you can view the Snapshot directory for this volume, or uncheck the box to hide the list of Snapshot copies.
+
 == Enter network details (one-time setting per AWS region)
 
 If this is the first time you have created a cloud volume in this AWS region, the *Network* section is displayed so you can connect your Cloud Volumes account to your AWS account:
