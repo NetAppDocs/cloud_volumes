@@ -48,20 +48,21 @@ image::diagram_create_volume_1.png[Create Volume page]
 . In the  *Region* field, select the AWS region where you want to create the volume. This region must match the region you configured on AWS.
 . In the *Timezone* field, select your time zone.
 . In the *Volume path* field, specify the path you want to use or accept the automatically generated path.
-. (Optional) In the *Create from snapshot* field, select the name of an existing snapshot that will be used to create a volume.
 . In the *Service level* field, select the level of performance for the volume: *Standard*, *Premium*, or *Extreme*.
 +
 See link:reference_selecting_service_level_and_quota.html#service-levels[Selecting the service level] for details.
 . In the *Allocated capacity* field, select the capacity required. Note that the number of available inodes is dependent on allocated capacity.
 +
 See link:reference_selecting_service_level_and_quota.html#allocated-capacity[Selecting the allocated capacity] for details.
+. In the *NFS version* field, select *NFSv3*, *NFSv4.1*, or *Both* depending on your requirements.
 . If you selected Dual-protocol, you can select the security style in the *Security style* field by selecting *NTFS* or *UNIX* from the drop-down menu.
 +
 Security styles affect the file permission type used and how permissions can be modified.
 +
 ** UNIX uses NFSv3 mode bits, and only NFS clients can modify permissions.
 ** NTFS uses NTFS ACLs, and only SMB clients can modify permissions.
-
++
+. In the *Show snapshot directory* field, keep the default where you can view the Snaphot directory for this volume, or uncheck the box to hide the list of Snapshot copies.
 == Enter network details (one-time setting per AWS region)
 
 If this is the first time you have created a cloud volume in this AWS region, the *Network* section is displayed so you can connect your Cloud Volumes account to your AWS account:
@@ -77,6 +78,7 @@ If you selected NFS or Dual-protocol, you can create an export policy in the *Ex
 
 . In the *Allowed clients* field, specify the allowed clients by using an IP address or Classless Inter-Domain Routing (CIDR).
 . In the *Access* field, select *Read & Write* or *Read only*.
+. In the *Protocols* field, select the protocol (or protocols if the volume allows both NFSv3 and NFSv4.1 access) used for user access.
 +
 image::diagram_create_volume_4.png[Add export policy rule]
 
@@ -100,7 +102,7 @@ To configure a connection to a new AD server:
 . In the *Domain* field, enter the domain for the SMB share.
 +
 When using AWS Managed Microsoft AD, use the value from the "Directory DNS name" field.
-. In the *NetBIOS* field, enter a NetBIOS name for the SMB server that will be created.
+. In the *SMB Server NetBIOS* field, enter a NetBIOS name for the SMB server that will be created.
 . In the *Organizational unit* field, enter "CN=Computers" for connections to your own Windows Active Directory server.
 +
 When using AWS Managed Microsoft AD, the Organizational unit must be entered in the format "OU=<NetBIOS_name>". For example, *OU=AWSmanagedAD*.
