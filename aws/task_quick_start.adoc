@@ -30,4 +30,4 @@ Create the cloud volume in the AWS cloud by specifying the size and service leve
 [discrete]
 === image:number3.png[The number 3] link:task_mounting_cloud_volumes_for_aws.html[Mount the cloud volume]
 [role="quick-margin-para"]
-Mount the cloud volume to your AWS instance using NFSv3 for Linux and UNIX clients, or SMB for Windows clients.
+Mount the cloud volume to your AWS instance using NFS for Linux and UNIX clients, or SMB for Windows clients.

@@ -16,6 +16,11 @@ summary: NetApp periodically updates Cloud Volumes Service for AWS to bring you 
 [.lead]
 NetApp periodically updates Cloud Volumes Service for AWS to bring you new features and enhancements.
 
+== December 2019
+* Cloud Volumes Service now supports NFSv4.1 in addition to NFSv3 and SMB. A volume can be exported over any or all of the supported protocols. NFSv4.1 is a stateful protocol and provides improved file locking, ACLs for better compatibility between Linux and Windows, and many other improvements.
+* Cloud Volumes can be configured so that the .snapshot directory (previous version in Windows) can be hidden or shown.
+* An Overview page is now available per volume that displays QoS settings, data usage, and performance information such as bandwidth, IOPS, and latency.
+
 == September 2019
 * Cloud Volumes Service now supports up to 100 million files per volume. The maximum file count is increased by 20 million for each Terabyte allocated up to 100 million. The maximum may be increased to higher than 100 million via a customer support request.
 * Cloud volume names now support up to 253 characters; an increase from the previous limit of 64 characters.
