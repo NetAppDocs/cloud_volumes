@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 import requests
-import urllib.request
 import json
 import sys
-import re
 import argparse
-import datetime
 from pygments import highlight
 from pygments.lexers import JsonLexer
 from pygments.formatters import TerminalFormatter
@@ -13,8 +10,10 @@ from pygments.formatters import TerminalFormatter
 parser = argparse.ArgumentParser()
 parser.add_argument("-c","--config", nargs='+', help="config file")
 parser.add_argument("-m","--mountpoint", nargs='+', help="mountpoint")
+parser.add_argument("-e","--export", action='append', nargs='+', help="protocol <nfs3|nfs41|nfs3+41|smb|nfs3+smb|nfs41+smb|nfs3+41+smb> and for nfs3|41 a valid CIDR and rw|ro")
 parser.add_argument("-a","--allocation", type=int, help="allocated_size_in_GB (100 to 100000") 
 parser.add_argument("-l","--service_level", nargs='+', help="service level <standard|premium|extreme>")
+parser.add_argument("-hs","--hide_snapshot", action='store_true', help="hide the snapshot directory")
 parser.add_argument("-t","--tag", nargs='+', help="tag (optional)")
 args = parser.parse_args()
 
@@ -33,25 +32,6 @@ if args.mountpoint:
 else:
 	print('a volume mountpoint is required')
 	sys.exit(1)
-
-if args.allocation:
-	if (args.allocation)<100 or (args.allocation)>100000:
-		print('Allocation size must be between 100 to 100000 GB')
-		sys.exit(1)
-	else:
-		args.allocation = args.allocation * 1000000000
-
-if args.service_level:
-	if (args.service_level)[0] != 'standard' and (args.service_level)[0] != 'premium' and (args.service_level)[0] != 'extreme':
-		print('Service level must be standard, premium or extreme')
-		sys.exit(1)
-else:
-		print('Service level must be standard, premium or extreme')
-		sys.exit(1)
-
-tag = ''
-if args.tag:
-	tag = args.tag[0]
 
 conf=args.config[0]
 file = open(conf, 'r')
@@ -88,7 +68,7 @@ if not fsid :
 	print('Mountpoint '+args.mountpoint[0] + ' does not exist')
 	sys.exit(1)
 
-time=(datetime.datetime.utcnow())
+data = { "creationToken": args.mountpoint[0], "region": region}
 
 # update volume 
 def update(fsid, url, data, head):
@@ -99,12 +79,70 @@ def update(fsid, url, data, head):
 	print('Updated volume '+args.mountpoint[0])
 	print(highlight(details, JsonLexer(), TerminalFormatter()))
 
-data = {
-	"creationToken": args.mountpoint[0],
-	"region": region,
-	"serviceLevel": args.service_level[0],
-	"quotaInBytes": args.allocation,
-	"labels": [tag]
-		}
+if args.allocation:
+	if (args.allocation)<100 or (args.allocation)>100000:
+		print('Allocation size must be between 100 to 100000 GB')
+		sys.exit(1)
+	else:
+		args.allocation = args.allocation * 1000000000
+	data.update({"quotaInBytes": args.allocation})
+
+if args.service_level:
+	if (args.service_level)[0] != 'standard' and (args.service_level)[0] != 'premium' and (args.service_level)[0] != 'extreme':
+		print('Service level must be standard, premium or extreme')
+		sys.exit(1)
+	data.update({"serviceLevel": args.service_level[0]})
+
+if args.hide_snapshot:
+	snapshot_directory = False
+else:
+	snapshot_directory = True
+data.update({"snapshotDirectory": snapshot_directory})
+
+if args.tag:
+	tag = args.tag[0]
+	data.update({"labels": [tag]})
+
+if args.export:
+	rule=[]
+
+	for r in range (0, len(args.export)):
+		if (args.export[r][0]) == 'smb' or (args.export[r][0]) == 'nfs3+smb' or (args.export[r][0]) == 'nfs41+smb' or (args.export[r][0]) == 'nfs3+41+smb':
+			print('Can not update exports on an SMB volume')
+			sys.exit(1)
+
+	for r in range (0, len(args.export)):
+		if (args.export[r][0]) != 'nfs3' and (args.export[r][0]) !='nfs41' and (args.export[r][0]) !='nfs3+41' and (args.export[r][0]) !='smb' and (args.export[r][0]) != 'nfs3+smb' and (args.export[r][0]) != 'nfs41+smb' and (args.export[r][0]) != 'nfs3+41+smb':
+			print('First argument should be nfs3, nfs41, nfs3+41, smb, nfs3+smb, nfs41+smb or nfs3+41+smb')
+			sys.exit(1)
+
+		if (len(args.export[r])) < 3:
+			print('For nfs please provide a CIDR and rw|ro')
+			sys,exit(1)
+		if (args.export[r][0]) == 'nfs3':
+			nfs3, nfs41, cifs = True, False, False
+		elif (args.export[r][0]) == 'nfs41':
+			nfs3, nfs41, cifs = False, True, False
+		elif (args.export[r][0]) == 'nfs3+41':
+			nfs3, nfs41, cifs = True, True, False
+		elif (args.export[r][0]) == 'nfs3+smb':
+			nfs3, nfs41, cifs = True, False, True
+		elif (args.export[r][0]) == 'nfs41+smb':
+			nfs3, nfs41, cifs = False, True, True
+		else :
+			nfs3, nfs41, cifs = True, True, True
+		export = (args.export[r][1])
+		if (args.export[r][2]) != 'ro' and (args.export[r][2]) != 'rw':
+			print('ro (read only) or rw (read write) must be provided')
+			sys.exit(1)
+		elif (args.export[r][2]) == 'ro':
+			rw, ro = False, True
+		else: 
+			rw, ro = True, False
+		rule_index=r+1
+		index = {"ruleIndex": rule_index,"allowedClients": export,"unixReadOnly": ro,"unixReadWrite": rw,"cifs": cifs,"nfsv3": nfs3,"nfsv4": nfs41,}
+		rule.append(index)
+		rules = {"rules": rule}
+		data.update({"exportPolicy": rules})
 
 update(fsid, url, data, head)
