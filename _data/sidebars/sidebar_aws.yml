@@ -35,6 +35,8 @@ entries:
         url: /task_creating_modifying_snapshot_policies.html
       - title: Disabling a snapshot policy
         url: /task_disabling_snapshot_policy.html
+      - title: Reverting a volume from a snapshot
+        url: /task_reverting_volume_to_snapshot.html
       - title: Deleting a snapshot
         url: /task_deleting_snapshots.html
       - title: Restoring a snapshot to a new volume

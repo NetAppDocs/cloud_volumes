@@ -18,7 +18,7 @@ NetApp periodically updates Cloud Volumes Service for AWS to bring you new featu
 
 == January 2020
 * Cloud Volumes Service now supports SMB multichannel which uses multiple network connections simultaneously to provide increased performance. Multichannel is enabled by default on Windows clients, but requires that the EC2 instance uses a network adapter that support RSS (Receive Side Scaling).
-* Reverting a volume from a snapshot is now available from the Cloud Volumes Service user interface. This enables you to revert volumes to a point in time snapshot without requiring clients to remount.
+* Reverting a volume from a snapshot is now available from the Cloud Volumes Service user interface. This enables you to revert volumes to a point in time snapshot without requiring clients to remount. See link:task_reverting_volume_to_snapshot.html[Reverting a volume from a snapshot] for details.
 
 == December 2019
 * Cloud Volumes Service now supports NFSv4.1 in addition to NFSv3 and SMB. A volume can be exported over any or all of the supported protocols. NFSv4.1 is a stateful protocol and provides improved file locking, ACLs for better compatibility between Linux and Windows, and many other improvements.
