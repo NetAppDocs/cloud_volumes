@@ -15,8 +15,10 @@ summary: You can revert a volume to an earlier point in time from an existing sn
 
 
 [.lead]
-You can revert a volume to an earlier point in time from an existing snapshot. When you revert a volume, the content of the snapshot overwrites the existing volume configuration. Any changes that were made to the data in the volume after the snapshot was created are lost.
-+
+You can revert a volume to an earlier point in time from an existing snapshot.
+
+When you revert a volume, the content of the snapshot overwrites the existing volume configuration. Any changes that were made to the data in the volume after the snapshot was created are lost.
+
 Note that clients do not need to remount the volume after the revert operation.
 
 .Steps
