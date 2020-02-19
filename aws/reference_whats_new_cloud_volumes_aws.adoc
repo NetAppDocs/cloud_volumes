@@ -16,6 +16,10 @@ summary: NetApp periodically updates Cloud Volumes Service for AWS to bring you 
 [.lead]
 NetApp periodically updates Cloud Volumes Service for AWS to bring you new features and enhancements.
 
+== February 2020
+* The NetApp Cloud Volumes Service is now available as a Metered (pay as you go) subscription in the AWS Marketplace. See the Marketplace listing for more details at: https://aws.amazon.com/marketplace/pp/B0848MXK74
+Note that the original monthly and annual subscription plans are still available.
+
 == January 2020
 * Cloud Volumes Service now supports SMB multichannel which uses multiple network connections simultaneously to provide increased performance. Multichannel is enabled by default on Windows clients, but requires that the EC2 instance uses a network adapter that support RSS (Receive Side Scaling).
 * Reverting a volume from a snapshot is now available from the Cloud Volumes Service user interface. This enables you to revert volumes to a point in time snapshot without requiring clients to remount. See link:task_reverting_volume_to_snapshot.html[Reverting a volume from a snapshot] for details.
@@ -53,14 +57,3 @@ NetApp periodically updates Cloud Volumes Service for AWS to bring you new featu
 * NetApp Cloud Volumes Service is now publicly available on the https://aws.amazon.com/marketplace/pp/B07MF4GHYW?qid=1548352732912&sr=0-1&ref_=srh_res_product_title[AWS Marketplace^]
 * Access from on-prem clients is now supported via AWS Direct Connect and Virtual Private Gateways
 * A service status webpage is now available at https://status.services.cloud.netapp.com/ so you can verify availability of the CVS service in each supported region
-
-== December 2018
-* NetApp Cloud Sync support is now available from the Cloud Volumes Service user interface in all supported regions
-
-== November 2018
-* Support for SMB 2.1 protocol
-* Support in the following AWS regions: ap-northeast-1 (Tokyo), ap-southeast-2 (Sydney), and eu-west-2 (London)
-
-== September 2018
-* RESTful API support and online examples: link:reference_cloud_volume_apis.html[Cloud Volumes APIs]
-* Support in the following AWS regions: eu-central-1 (Frankfurt) and eu-west-1 (Ireland)
