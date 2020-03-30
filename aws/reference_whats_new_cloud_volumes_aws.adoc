@@ -16,8 +16,13 @@ summary: NetApp periodically updates Cloud Volumes Service for AWS to bring you 
 [.lead]
 NetApp periodically updates Cloud Volumes Service for AWS to bring you new features and enhancements.
 
+== March 2020
+* Cloud Volumes Service now supports a maximum I/O size of 1 MiB for NFSv3 and NFSv4.1 mounts. Previously the maximum I/O size was 64 KiB. Increasing the I/O size may improve performance for some workloads.
+To increase the I/O size, use the mount options "rsize" and/or "wsize", for example:
+`mount -o nfsvers=4.1,rsize=1048576,wsize=1048576 172.25.0.4:/vol1 /mnt/cv`
+
 == February 2020
-* The NetApp Cloud Volumes Service is now available as a Metered (pay as you go) subscription in the AWS Marketplace. See the Marketplace listing for more details at: https://aws.amazon.com/marketplace/pp/B0848MXK74
+* Cloud Volumes Service is now available as a Metered (pay as you go) subscription in the AWS Marketplace. See the Marketplace listing for more details at: https://aws.amazon.com/marketplace/pp/B0848MXK74
 Note that the original monthly and annual subscription plans are still available.
 
 == January 2020

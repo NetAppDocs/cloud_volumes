@@ -33,6 +33,8 @@ NFS example:
 +
 image:diagram_mount_instructions_nfs.png[Mount instructions for NFS]
 +
+Note that the maximum I/O size defined by the rsize and wsize options is 1048576, however 65536 is the recommended default for most use cases.
++
 SMB example:
 +
 image:diagram_mount_instructions_smb.png[Mount instructions for SMB]
