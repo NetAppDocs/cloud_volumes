@@ -1,3 +1,4 @@
+prefix: aws
 entries:
   - title: Cloud Volumes Service for AWS docs
     url: /index.html
