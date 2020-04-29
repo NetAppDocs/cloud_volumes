@@ -120,7 +120,7 @@ See https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/designin
 +
 See the link:media/cvs_aws_ds_smb_setup.pdf[AWS Directory service setup with NetApp Cloud Volumes Service for AWS^] guide for detailed instructions for using AWS Managed Microsoft AD.
 +
-IMPORTANT: You should follow the guidance on AWS security group settings to enable cloud volumes to integrate with Windows Active Directory servers correctly. See <<reference_security_groups_windows_ad_servers.adoc#,AWS security group settings for Windows AD servers>> for more information.
+IMPORTANT: You should follow the guidance on AWS security group settings to enable cloud volumes to integrate with Windows Active Directory servers correctly. See link:reference_security_groups_windows_ad_servers.html[AWS security group settings for Windows AD servers] for more information.
 +
 *Note:* UNIX users mounting the volume using NFS will be authenticated as Windows user "root" for UNIX root and "pcuser" for all other users. Make sure that these user accounts exist in your Active Directory prior to mounting a dual protocol volume when using NFS.
 
@@ -153,4 +153,4 @@ After the interfaces and other networking components are created, the volume you
 image:diagram_create_volume_3.png[A volume is created]
 
 .After you finish
-Continue with <<task_mounting_cloud_volumes_for_aws.adoc#,Mounting a cloud volume>>.
+Continue with link:task_mounting_cloud_volumes_for_aws.html[Mounting a cloud volume].
