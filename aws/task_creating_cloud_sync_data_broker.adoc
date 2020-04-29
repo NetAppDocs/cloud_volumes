@@ -63,4 +63,4 @@ After the data broker is created, it is marked with a green dot to indicate that
 
 
 .After you finish
-Continue with <<task_creating_cloud_sync_relationship.adoc#,Creating a Cloud Sync Relationship>>.
+Continue with link:task_creating_cloud_sync_relationship.html[Creating a Cloud Sync Relationship].

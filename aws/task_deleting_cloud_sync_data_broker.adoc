@@ -25,7 +25,7 @@ To delete the data broker instance in AWS, you must go to the AWS console for yo
 .Before you begin
 All Cloud Sync relationships that use the data broker must have already been deleted before you can delete the data broker.
 
-<<task_deleting_cloud_sync_relationship.adoc#,Deleting a Cloud Sync Relationship>>
+link:task_deleting_cloud_sync_relationship.html[Deleting a Cloud Sync Relationship]
 
 .Steps
 
