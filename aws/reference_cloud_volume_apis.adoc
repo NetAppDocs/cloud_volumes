@@ -52,7 +52,7 @@ The APIs are listed by function, for example:
 link:media/fsid.py[Script to find Cloud Volumes Service fileSystemId by mountpoint]
 
 == Using the Cloud Volumes APIs
-This section shows you how to use the Cloud Volumes APIs.  The examples use curl from a Linux bash shell. You need to replace `<api_url>`, `<api_key>`, and `<secret_key>` with the values you recorded from link:finding_urL_key_secretKey[Finding the API URL, API key, and Secret key].
+This section shows you how to use the Cloud Volumes APIs.  The examples use curl from a Linux bash shell. You need to replace `<api_url>`, `<api_key>`, and `<secret_key>` with the values you recorded from <<finding_urL_key_secretKey, Finding the API URL, API key, and Secret key>>.
 
 === Syntax
 `*curl -s -H  accept:application/json  -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X [GET,POST,PUT,DELETE] <api_url>/v1/<command>*`
