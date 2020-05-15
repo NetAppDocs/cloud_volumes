@@ -20,6 +20,10 @@ The following known issues and limitations exist in Cloud Volumes Service for AW
 +
 *Workaround*: This issue occurs when trying to create a volume from a snapshot that currently has more files allocated to it than the new volume would be assigned for its allocated capacity. You must increase the allocated capacity for the new volume to assign enough files (inodes). See link:reference_selecting_service_level_and_quota.html#allocated-capacity[Selecting the allocated capacity] for details.
 
+* *Issue*: The network virtual interfaces will be deleted automatically in CVS regions that have no volumes after 72 hours. When creating a new volume, you will need to re-provide the AWS account # and CIDR.
++
+*Workaround*: To avoid the network virtual interfaces from being deleted during periods of inactivity, leave at least one volume and lower the allocation and service level to minimize cost.
+
 * *Issue*: Users with expired subscriptions cannot log in to the Cloud Volumes Service user interface or interact with the API.
 +
 *Workaround*: Go to the AWS Marketplace page for the Cloud Volumes Service and renew your subscription.
