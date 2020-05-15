@@ -99,7 +99,7 @@ In the *Available settings* field, select an existing Active Directory server or
 
 To configure a connection to a new AD server:
 
-. In the *DNS server* field, enter the IP address of the DNS server.
+. In the *DNS server* field, enter the IP address(es) of the DNS server(s). Use a comma to separate the IP addresses when referencing multiple servers, for example, 172.31.25.223, 172.31.2.74.
 . In the *Domain* field, enter the domain for the SMB share.
 +
 When using AWS Managed Microsoft AD, use the value from the "Directory DNS name" field.
