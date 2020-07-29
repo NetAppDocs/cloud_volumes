@@ -16,6 +16,14 @@ summary: NetApp periodically updates Cloud Volumes Service for AWS to bring you 
 [.lead]
 NetApp periodically updates Cloud Volumes Service for AWS to bring you new features and enhancements.
 
+== July 2020
+* The Cloud Volumes Service now supports wider RFC 1918 private network ranges between /16 and /28. Previously only /28 ranges where supported.
+* The 'Sync' feature now integrates directly with the Cloud Sync UI to provide increased functionality.
+* Volumes can be converted to and from NSFv3, NFSv4.1, and both NFSv3 and NFSv4.1 via API calls.
+* ACLs are now enabled for NFSv4.1 volumes.
+* The Cloud Volumes Service is now certified with SOC 2 type 1.
+* The Cloud Volumes Service is now available in Singapore (ap-southeast-1).
+
 == March 2020
 * Cloud Volumes Service now supports a maximum I/O size of 1 MiB for NFSv3 and NFSv4.1 mounts. Previously the maximum I/O size was 64 KiB. Increasing the I/O size may improve performance for some workloads.
 To increase the I/O size, use the mount options "rsize" and/or "wsize", for example:
@@ -49,16 +57,3 @@ Note that the original monthly and annual subscription plans are still available
 * The API has been updated to report used capacity, and total inodes and used inodes.
 * The API has been updated to use the same service levels names as the user interface (Standard, Premium, and Extreme).
 * The sample Python scripts have been updated to match the updated APIs.
-
-== March 2019
-* Added support for Microsoft Active Directory in the AWS Cloud (AWS Managed Microsoft AD) for SMB cloud volumes.
-* The control plane for us-east-1 and us-west-1 now have their own UI URL and API endpoint. Previously these regions shared the same control plane.
-* Sample Python scripts have been added for RESTful API support: link:reference_cloud_volume_apis.html[Cloud Volumes APIs]
-
-== February 2019
-* Beta release of Cloud Backup Service for US-WEST-2: link:reference_cloud_backup_service_intro.html[Managing backups using Cloud Backup Service (beta for US-WEST-2)]
-
-== January 2019
-* NetApp Cloud Volumes Service is now publicly available on the https://aws.amazon.com/marketplace/pp/B07MF4GHYW?qid=1548352732912&sr=0-1&ref_=srh_res_product_title[AWS Marketplace^]
-* Access from on-prem clients is now supported via AWS Direct Connect and Virtual Private Gateways
-* A service status webpage is now available at https://status.services.cloud.netapp.com/ so you can verify availability of the CVS service in each supported region
