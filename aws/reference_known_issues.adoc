@@ -17,7 +17,7 @@ summary: The following known issues and limitations exist in Cloud Volumes Servi
 The following known issues and limitations exist in Cloud Volumes Service for AWS.
 
 * *Issue*: If an existing volume only supports NFSv3, and a volume is created or converted with NFSv4.1 or both NFSv3 and NFSv4.1 support, then the existing volume may not be mountable without specifying the NFS version (vers=3).
-
++
 *Workaround*: Either add the option to specify the NFS version to the mount command, for example, `mount -o vers=3 ...` or ensure all volumes are converted to support NFSv4.1. Note that Linux clients will default to NFSv4.1 unless the version is specified.
 
 * *Issue*: Creating a new volume from a snapshot may fail with the message 'Unable to set volume attribute "files" for volume _<volume>_ …​ Reason: New count must be larger than current allocated count of _<number>_'.
