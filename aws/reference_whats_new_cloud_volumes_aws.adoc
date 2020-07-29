@@ -22,6 +22,7 @@ NetApp periodically updates Cloud Volumes Service for AWS to bring you new featu
 * Volumes can be converted to and from NSFv3, NFSv4.1, and both NFSv3 and NFSv4.1 via API calls.
 * ACLs are now enabled for NFSv4.1 volumes.
 * The Cloud Volumes Service is now certified with SOC 2 type 1.
+* The Cloud Volumes Service is now available in Singapore (ap-southeast-1).
 
 == March 2020
 * Cloud Volumes Service now supports a maximum I/O size of 1 MiB for NFSv3 and NFSv4.1 mounts. Previously the maximum I/O size was 64 KiB. Increasing the I/O size may improve performance for some workloads.
