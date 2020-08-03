@@ -12,16 +12,15 @@ from pygments.lexers import JsonLexer
 from pygments.formatters import TerminalFormatter
 
 parser = argparse.ArgumentParser()
+parser.add_argument("-a","--allocation", type=int, help="allocated_size_in_GB (100 to 100000") 
 parser.add_argument("-c","--config", nargs='+', help="config file")
-parser.add_argument("-n","--name", nargs='+', help="name")
+parser.add_argument("-e","--export", action='append', nargs='+', help="protocol <nfs3|nfs41|nfs3+41|smb|nfs3+smb|nfs41+smb|nfs3+41+smb> and for nfs3|41 a valid CIDR and rw|ro")
+parser.add_argument("-hs","--hide_snapshot", action='store_true', help="hide the snapshot directory")
+parser.add_argument("-l","--service_level", nargs='+', help="service level <standard|premium|extreme>")
 parser.add_argument("-m","--mountpoint", nargs='+', help="mountpoint")
 parser.add_argument("-N","--new_mountpoint", nargs='+', help="new mountpoint for the copy")
+parser.add_argument("-n","--name", nargs='+', help="name")
 parser.add_argument("-r","--region", nargs='+', help="region")
-parser.add_argument("-a","--allocation", type=int, help="allocated_size_in_GB (100 to 100000") 
-parser.add_argument("-l","--service_level", nargs='+', help="service level <standard|premium|extreme>")
-parser.add_argument("-e","--export", nargs='+', help="provide valid CIDR for export, defaults to 0.0.0.0/0")
-parser.add_argument("-w","--rw_ro", nargs='+', help="rw or ro")
-parser.add_argument("-p","--protocol", nargs='+', help="<nfs3|nfs41|nfs3+41|smb|nfs3+smb|nfs41+smb|nfs3+41+smb>")
 parser.add_argument("-t","--tag", nargs='+', help="tag (optional)")
 args = parser.parse_args()
 
@@ -40,6 +39,11 @@ if args.name:
 else:
 	print('a name is required')
 	sys.exit(1)
+
+if args.hide_snapshot:
+	snapshot_directory = False
+else:
+	snapshot_directory = True
 
 if args.service_level:
 	if len(args.service_level)!=1:
@@ -78,25 +82,6 @@ if args.service_level:
 		print('Service level must be standard, premium or extreme')
 		sys.exit(1)
 
-# set export to default
-export = '0.0.0.0/0'
-if args.export:
-	export = args.export[0]
-
-if args.rw_ro:
-	if (args.rw_ro)[0] != 'ro' and (args.rw_ro)[0] != 'rw':
-		print('ro (read only) or rw (read write) must be provided')
-		sys.exit(1)
-	elif (args.rw_ro)[0] == 'ro':
-		ro = True
-		rw = False
-	else:
-		ro = False
-		rw = True
-else:
-	print('ro (read only) or rw (read write) must be provided')
-	sys.exit(1)
-
 if args.region:
 	if (args.region)[0] != 'us-east-1' and (args.region)[0] != 'us-west-1' and (args.region)[0] != 'us-west-2' and (args.region)[0] != 'eu-central-1' and (args.region)[0] != 'eu-west-1' and (args.region)[0] != 'eu-west-2' and (args.region)[0] != 'ap-northeast-1' and (args.region)[0] != 'ap-southeast-2':
 		print('Please select an available region')
@@ -105,42 +90,13 @@ else:
 	print('Please select an available region')
 	sys.exit(1)
 
-if args.protocol:
-	if (args.protocol)[0] != 'nfs3' and (args.protocol)[0] !='nfs41' and (args.protocol)[0] !='nfs3+41' and (args.protocol)[0] !='smb' and (args.protocol)[0] != 'nfs3+smb' and (args.protocol)[0] != 'nfs41+smb' and (args.protocol)[0] != 'nfs3+41+smb':
-		print('Please choose nfs3, nfs41, nfs3+41, smb, nfs3+smb, nfs41+smb, nfs3+41+smb')
-		sys.exit(1)
-	elif (args.protocol)[0] == 'nfs3':
-		nfs3, nfs41, cifs = True, False, False
-		rule = {"rules": [{"ruleIndex": 1,"allowedClients": export,"unixReadOnly": ro,"unixReadWrite": rw,"cifs": cifs,"nfsv3": nfs3,"nfsv4": nfs41 }]}
-	elif (args.protocol)[0] == 'nfs41':
-		nfs3, nfs41, cifs = False, True, False
-		rule = {"rules": [{"ruleIndex": 1,"allowedClients": export,"unixReadOnly": ro,"unixReadWrite": rw,"cifs": cifs,"nfsv3": nfs3,"nfsv4": nfs41 }]}
-	elif (args.protocol)[0] == 'nfs3+41':
-		nfs3, nfs41, cifs = True, True, False
-		rule = {"rules": [{"ruleIndex": 1,"allowedClients": export,"unixReadOnly": ro,"unixReadWrite": rw,"cifs": cifs,"nfsv3": nfs3,"nfsv4": nfs41 }]}
-	elif (args.protocol)[0] == 'smb':
-		nfs3, nfs41, cifs = False, False, True
-		rule = {"rules": []}
-	elif (args.protocol)[0] == 'nfs3+smb':
-		nfs3, nfs41, cifs = True, False, True
-		rule = {"rules": [{"ruleIndex": 1,"allowedClients": export,"unixReadOnly": ro,"unixReadWrite": rw,"cifs": cifs,"nfsv3": nfs3,"nfsv4": nfs41 }]}
-	elif (args.protocol)[0] == 'nfs41+smb':
-		nfs3, nfs41, cifs = False, True, True
-		rule = {"rules": [{"ruleIndex": 1,"allowedClients": export,"unixReadOnly": ro,"unixReadWrite": rw,"cifs": cifs,"nfsv3": nfs3,"nfsv4": nfs41 }]}
-	else:
-		nfs3, nfs41, cifs = True, True, True
-		rule = {"rules": [{"ruleIndex": 1,"allowedClients": export,"unixReadOnly": ro,"unixReadWrite": rw,"cifs": cifs,"nfsv3": nfs3,"nfsv4": nfs41 }]}
-
-
-snapshot = {}
-
 tag = ''
 if args.tag:
 	tag = args.tag[0]
 
 conf=args.config[0]
 file = open(conf, 'r')
-fsid = False
+volid = False
 
 # read config files for keys and api endpoint
 for line in file:
@@ -150,6 +106,7 @@ for line in file:
 		secretkey=(line.split("=")[1].rstrip('\n'))
 	if 'url' in line:
 		url=str(line.split("=")[1].rstrip('\n'))
+		url=(url.replace("v1", "v2"))
 
 # create header
 head = {}
@@ -157,26 +114,28 @@ head['api-key'] = apikey
 head['secret-key'] = secretkey
 head['content-type'] = 'application/json'
 
-command = 'FileSystems'
+command = 'Volumes'
 url = url+command
 
+# get Volumes
 req = requests.get(url, headers = head)
 vols=(len(req.json()))
 
-# search for filesystemId
+# search for VolumeId
 for vol in range(0, vols):
 	if ((req.json()[vol])['creationToken']) == args.mountpoint[0]:
-		fsid = ((req.json()[vol])['fileSystemId'])
+		volid = ((req.json()[vol])['volumeId'])
 		region = ((req.json()[vol])['region'])
-if not fsid :
+if not volid :
 	print('Mountpoint '+args.mountpoint[0] + ' does not exist')
 	sys.exit(1)
 
 now=(datetime.datetime.utcnow().strftime("%Y%m%d%H%M%S"))
+snapshot={}
 
 # take a snapshot of the parent volume
-def take_snap(fsid, url, data, head):
-	url = url+'/'+fsid+'/Snapshots'
+def take_snap(volid, url, data, head):
+	url = url+'/'+volid+'/Snapshots'
 	data_json = json.dumps(data)
 	req = requests.post(url, headers = head, data = data_json)
 	details = json.dumps(req.json(), indent=4)
@@ -187,14 +146,75 @@ def take_snap(fsid, url, data, head):
 
 data = {
 	"name": "snap-"+str(now),
-	"fileSystemId": fsid,
+	"fileSystemId": volid,
 	"region": region
 		}
 
-take_snap(fsid, url, data, head)
+take_snap(volid, url, data, head)
+
+if args.export:
+	rule=[]
+
+	for r in range (0, len(args.export)):
+		if (args.export[r][0]) == 'smb':
+			rules = {"rules": []}
+			protocols = [ 'CIFS' ]
+			data = {
+				"name": args.name[0],
+				"creationToken": args.mountpoint[0],
+				"region": args.region[0],
+				"serviceLevel": args.service_level[0],
+				"quotaInBytes": args.allocation,
+				"exportPolicy": rules,
+				"protocolTypes": protocols,
+				"snapshotId": snapshot,
+				"snapshotDirectory": snapshot_directory,
+				"labels": [tag]
+				}
+			create(volid, url, data, head)
+			sys.exit(1)
+	
+	for r in range (0, len(args.export)):
+		if (args.export[r][0]) != 'nfs3' and (args.export[r][0]) !='nfs41' and (args.export[r][0]) !='nfs3+41' and (args.export[r][0]) !='smb' and (args.export[r][0]) != 'nfs3+smb' and (args.export[r][0]) != 'nfs41+smb' and (args.export[r][0]) != 'nfs3+41+smb':
+			print('First argument should be nfs3, nfs41, nfs3+41, smb, nfs3+smb, nfs41+smb or nfs3+41+smb')
+			sys.exit(1)
+
+		if (len(args.export[r])) < 3:
+			print('For nfs please provide a CIDR and rw|ro')
+			sys,exit(1)
+		if (args.export[r][0]) == 'nfs3':
+			nfs3, nfs41, cifs = True, False, False
+			protocols = [ 'NFSv3' ]
+		elif (args.export[r][0]) == 'nfs41':
+			nfs3, nfs41, cifs = False, True, False
+			protocols = [ 'NFSv4' ]
+		elif (args.export[r][0]) == 'nfs3+41':
+			nfs3, nfs41, cifs = True, True, False
+			protocols = [ 'NFSv3', 'NFSv4' ]
+		elif (args.export[r][0]) == 'nfs3+smb':
+			nfs3, nfs41, cifs = True, False, True
+			protocols = [ 'NFSv3', 'CIFS' ]
+		elif (args.export[r][0]) == 'nfs41+smb':
+			nfs3, nfs41, cifs = False, True, True
+			protocols = [ 'NFSv4', 'CIFS' ]
+		else :
+			nfs3, nfs41, cifs = True, True, True
+			protocols = [ 'NFSv3', 'NFSv4', 'CIFS' ]
+		export = (args.export[r][1])
+		if (args.export[r][2]) != 'ro' and (args.export[r][2]) != 'rw':
+			print('ro (read only) or rw (read write) must be provided')
+			sys.exit(1)
+		elif (args.export[r][2]) == 'ro':
+			rw, ro = False, True
+		else: 
+			rw, ro = True, False
+		rule_index=r+1
+		index = {"ruleIndex": rule_index,"allowedClients": export,"unixReadOnly": ro,"unixReadWrite": rw,"cifs": cifs,"nfsv3": nfs3,"nfsv4": nfs41}
+		rule.append(index)
+		rules = {"rules": rule}
 
 # create volume from snapshot
-def create(fsid, url, data, head):
+def create(volid, url, data, head):
 	data_json = json.dumps(data)
 	req = requests.post(url, headers = head, data = data_json)
 	details = json.dumps(req.json(), indent=4)
@@ -207,18 +227,20 @@ data = {
 	"region": args.region[0],
 	"serviceLevel": args.service_level[0],
 	"quotaInBytes": args.allocation,
-	"exportPolicy": rule,
+	"exportPolicy": rules,
+	"protocolTypes": protocols,
 	"snapshotId": snapshot['snapshot'][0],
+	"snapshotDirectory": snapshot_directory,
 	"labels": [tag]
-		}
+	}
 
 # test if snapshot is available
 time.sleep(1)
-surl = url+'/'+fsid+'/Snapshots/'+snapshot['snapshot'][0]
+surl = url+'/'+volid+'/Snapshots/'+snapshot['snapshot'][0]
 req = requests.get(surl, headers = head)
 status = json.dumps(req.json(), indent=4)
 while ((req.json())['lifeCycleState']) != 'available':
 	time.sleep(1)
 	req = requests.get(surl, headers = head)
 
-create(fsid, url, data, head)
+create(volid, url, data, head)

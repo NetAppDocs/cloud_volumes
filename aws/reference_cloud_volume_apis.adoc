@@ -55,7 +55,7 @@ link:media/fsid.py[Script to find Cloud Volumes Service fileSystemId by mountpoi
 This section shows you how to use the Cloud Volumes APIs.  The examples use curl from a Linux bash shell. You need to replace `<api_url>`, `<api_key>`, and `<secret_key>` with the values you recorded from <<finding_urL_key_secretKey, Finding the API URL, API key, and Secret key>>.
 
 === Syntax
-`*curl -s -H  accept:application/json  -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X [GET,POST,PUT,DELETE] <api_url>/v1/<command>*`
+`*curl -s -H  accept:application/json  -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X [GET,POST,PUT,DELETE] <api_url>/v2/<command>*`
 
 === Examples
 ==== Listing volumes
@@ -64,45 +64,21 @@ The following example displays information about all volumes:
 NOTE: Piping the command through `jq` improves the formatting of the `json` output. You might need to install `jq` on your system.
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v1/FileSystems | jq
-[
-{
-	"created": "2018-07-05T18:58:23.000Z",
-	"fileSystemId": "07c9ab6c-b655-a9fe-f904-b9b97ef9baaa",
-	"lifeCycleState": "available",
-	"lifeCycleStateDetails": "Available for use",
-	"name": "SMB",
-	"ownerId": "d38839c3-a37f-4426-9ef9-ae7569e59f1d",
-	"region": "us-west-1",
-	"creationToken": "prickly-bellicose-archimedes",
-	"quotaInBytes": 1000000000000,
-	"serviceLevel": "standard",
-	"snapReserve": 0,
-	"timezone": "PT",
-	"usedBytes": 0
-}
-]
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v2/Volumes | jq
 
 link:media/list-cv.py[Script to list cloud volumes in an account]
 
 ==== Listing the details for a specific volume
-Each volume has an ID called `fileSystemId`, for example, `07c9ab6c-b655-a9fe-f904-b9b97ef9baaa`. Including the ID in the API call provides details for the specific volume:
+Each volume has an ID called `volumeId`, for example, `07c9ab6c-b655-a9fe-f904-b9b97ef9baaa`. Including the ID in the API call provides details for the specific volume:
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v1/FileSystems/07c9ab6c-b655-a9fe-f904-b9b97ef9baaa
-
-To see the network details for the volume, you can add `MountTargets` to the `GET` call:
-
-[source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v1/FileSystems/07c9ab6c-b655-a9fe-f904-b9b97ef9baaa/MountTargets
-
-link:media/info-cv.py[Script to display the details of a cloud volume by mountpoint]
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v2/Volumes/<volumeId> | jq
 
 ==== Creating a volume
 The following example uses a `POST` call to create a volume called `Test`, in region `us-west-1`, with an `allocated capacity` of 100 GB and exported using `nfsv3`:
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v1/FileSystems -d '
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v2/Volumes -d '
 {
 	"name": "Test",
 	"creationToken": "grahams-test-volume3",
@@ -110,30 +86,29 @@ curl -s -H accept:application/json -H "Content-type: application/json" -H api-ke
 	"serviceLevel": "standard",
 	"quotaInBytes": 100000000000,
 	"exportPolicy": {"rules": [{"ruleIndex": 1,"allowedClients": "0.0.0.0/0","unixReadOnly": false,"unixReadWrite": true,"cifs": false,"nfsv3": true,"nfsv4": false}]},
+	"protocolTypes": ["NFSv3"],
 	"labels": ["test"]
 }'
 
 link:media/create-cv.py[Script to create a cloud volume]
 
 ==== Updating a volume
-The following example uses a `PUT` call to update a volume called `Test`, change the service level to `extreme`, and change the allocated capacity to 500 GB:
+The following example uses a `PUT` call to update a volume called `Test`, change the service level to `extreme`, and change the allocated capacity to 600 GB:
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X PUT <api_url>/v1/FileSystems/cdef5090-aa5e-c2cf-6bba-f77d259a37f8 -d '
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X PUT <api_url>/v2/Volumes/<volumeId> -d '
 {
-	"creationToken": "grahams-test-volume4",
-	"region": "us-west-1",
 	"serviceLevel": "extreme",
-	"quotaInBytes": 500000000000
+	"quotaInBytes": 600000000000
 }'
 
 link:media/update-cv.py[Script to update a cloud volume]
 
 ==== Deleting a volume
-The following example uses a `DELETE` call to delete a volume specified by `fileSystemId`:
+The following example uses a `DELETE` call to delete a volume specified by `volumeId`:
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url>/v1/FileSystems/08b0578d-465f-6c1a-bf8c-f40098b6451b
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url>/v2/Volumes/<volumeId>
 
 link:media/delete-cv.py[Script to delete a cloud volume by mountpoint]
 
@@ -143,10 +118,9 @@ IMPORTANT: Use with caution. This API call deletes the volume and all its data.
 The following example uses a `POST` call to create a snapshot called `snappy` for a specific volume:
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v1/FileSystems/07c9ab6c-b655-a9fe-f904-b9b97ef9baaa/Snapshots -d '
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v2/Volumes/<volumeId>/Snapshots -d '
 {
-	"name": "snappy",
-	"region": "us-west-1"
+	"name": "<snapshot-name>"
 }'
 
 link:media/snap-cv.py[Script to create snapshots of a cloud volume by mountpoint]
@@ -155,35 +129,18 @@ link:media/snap-cv.py[Script to create snapshots of a cloud volume by mountpoint
 The following example uses a `PUT` call to create snapshot policies for a specific volume:
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X PUT <api_url>/v1/FileSystems/07c9ab6c-b655-a9fe-f904-b9b97ef9baaa/ -d '
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X PUT <api_url>/v2/Volumes/<volumeId>/ -d '
 {
-	"creationToken": "nfs1",
-	"region": "us-west-1",
 	"snapshotPolicy": {
+        "dailySchedule": {},
+        "enabled": true,
         "hourlySchedule": {
-            "minute": 10,
-            "snapshotsToKeep": 12
-		        },
-        "dailySchedule": {
-            "hour": 10,
-            "minute": 20,
-            "snapshotsToKeep": 20
-		        },
-        "enabled": True,
-        "weeklySchedule": {
-            "day": Monday,Thursday,Saturday,
-            "hour": 12,
-            "minute": 30,
-            "snapshotsToKeep": 4
-				},
-        "monthlySchedule": {
-            "daysOfMonth": 1,14,28,
-            "hour": 00,
-            "minute": 00,
-            "snapshotsToKeep": 12
-		        }
-			}
-		}
+            "minute": 33,
+            "snapshotsToKeep": 24
+        },
+        "monthlySchedule": {},
+        "weeklySchedule": {}
+    }
 }'
 
 link:media/snapshot-policy.py[Script to create snapshot policies for a cloud volume by mountpoint]
@@ -192,36 +149,35 @@ link:media/snapshot-policy.py[Script to create snapshot policies for a cloud vol
 The following example uses a `GET` call to list the snapshots for a specific volume:
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v1/FileSystems/07c9ab6c-b655-a9fe-f904-b9b97ef9baaa/Snapshots
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v2/Volumes/<volumeId>/Snapshots
 
 link:media/get-snaps.py[Script to list snapshots of a cloud volume by mountpoint]
 
 ==== Reverting a snapshot
-The following example uses a `POST` call to revert a volume from a snapshot specified by `snapshotId` and `fileSystemId`:
+The following example uses a `POST` call to revert a volume from a snapshot specified by `snapshotId` and `volumeId`:
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v1/FileSystems/cdef5090-aa5e-c2cf-6bba-f77d259a37f8/Revert -d '
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v2/Volumes/<volumeId>/Revert -d '
 {
-	"snapshotId": "e19c5b72-daee-aa22-159d-a24702907fad",
-	"fileSystemId": "cdef5090-aa5e-c2cf-6bba-f77d259a37f8",
-	"region": "us-west-1"
+	"snapshotId": "<snapshotId>"
 }'
 
 link:media/revert-snap.py[Script to revert to a snapshot of a cloud volume by mountpoint and snapshotId]
 
-IMPORTANT: Use with caution.  This API call causes any data written after the snapshot to be lost.
+IMPORTANT: Use with caution.  This API call causes any data written after the date of that snapshot to be lost.
 
 ==== Creating a new volume from a snapshot
 The following example uses a `POST` call to create a new volume based on a snapshot of an existing volume, specified by `snapshotId`:
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v1/FileSystems -d '
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v2/Volumes -d '
 {
-	"snapshotId": "e19c5b72-daee-aa22-159d-a24702907fad",
+	"snapshotId": "<snapshotId>",
 	"name": "Copy",
 	"creationToken": "perfectly-copied-volume",
 	"region": "us-west-1",
-	"serviceLevel": "extreme"
+	"serviceLevel": "extreme",
+	"protocolTypes": ["NFSv3"]
 }'
 
 link:media/copy-cv.py[Script to copy a cloud volume]
@@ -230,7 +186,7 @@ link:media/copy-cv.py[Script to copy a cloud volume]
 The following example uses a `DELETE` call to delete a snapshot specified by `snapshotId`:
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url>/v1/FileSystems/07c9ab6c-b655-a9fe-f904-b9b97ef9baaa/Snapshots/7b8d84e0-1dc7-fad3-1e6e-1a27968f1e6d
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url>/v2/Volumes/<volumeId>/Snapshots/<snapshotId>
 
 link:media/delete-snap.py[Script to delete a snapshot of a cloud volume by mountpoint and snapshotId]
 
@@ -240,15 +196,15 @@ IMPORTANT: Use with caution. This API call deletes the snapshot and all its data
 The following example uses a `POST` call to join a directory service and provides the DNS IP address, domain, the NetBIOS name for the SMB server, the username and password for a directory service admin, and the organizational unit (optional and defaults to CN=Computers).
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url/v1/Storage/ActiveDirectory -d '
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url/v2/Storage/ActiveDirectory -d '
 {
-    "DNS": "172.32.2.16",
-    "domain": "cv-pm.local",
-    "netBIOS": "frankfurt",
-    "organizationalUnit": "OU=Cloud Servers,DC=nas-cloud,DC=local",
-    "password": "secret",
-    "region": "eu-central-1",
-    "username": "Administrator"
+	"DNS": "<ip-address>",
+	"domain": "<domain>",
+	"netBIOS": "<netbios-name>",
+	"organizationalUnit": "OU=Cloud Servers,DC=nas-cloud,DC=local",
+	"password": "secret",
+	"region": "us-west-1",
+	"username": "Administrator"
 }'
 
 link:media/join-ad.py[Script to join a directory service]
@@ -257,22 +213,7 @@ link:media/join-ad.py[Script to join a directory service]
 The following example uses a `GET` call to display the configuration for directory service integration.
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url/v1/Storage/ActiveDirectory | jq
-[
-  {
-    "DNS": "172.32.2.16",
-    "UUID": "576a520c-54a2-e3a6-2e3e-89d68bab4035",
-    "createdAt": "2019-07-30T20:08:10.000Z",
-    "domain": "cv-pm.local",
-    "netBIOS": "frankfurt",
-    "organizationalUnit": "OU=Cloud Servers,DC=nas-cloud,DC=local",
-    "password": "****************",
-    "region": "eu-central-1",
-    "status": "in use",
-    "updatedAt": "2019-07-30T20:08:10.000Z",
-    "username": "Administrator"
-  }
-]
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url/v2/Storage/ActiveDirectory
 
 link:media/get-ad.py[Script to view directory service integration]
 
@@ -282,20 +223,6 @@ The following example uses a `DELETE` call to unjoin a directory service integra
 NOTE: You cannot unjoin a directory service that is in use; status "in use".
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url/v1/Storage/ActiveDirectory/c64ecb4f-da51-be61-f017-b2dda78f7167 |jq
-{
-  "DNS": "172.32.2.16",
-  "UUID": "c64ecb4f-da51-be61-f017-b2dda78f7167",
-  "createdAt": "2019-07-30T19:53:38.000Z",
-  "deletedAt": "2019-07-30T20:06:57.746Z",
-  "domain": "cv-pm.local",
-  "netBIOS": "frankfurt",
-  "organizationalUnit": "OU=Cloud Servers,DC=nas-cloud,DC=local",
-  "password": "****************",
-  "region": "eu-central-1",
-  "status": "deleted",
-  "updatedAt": "2019-07-30T20:06:57.778Z",
-  "username": "Administrator"
-}
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url/v2/Storage/ActiveDirectory/<UUID>
 
 link:media/unjoin-ad.py[Script to unjoin a directory service]

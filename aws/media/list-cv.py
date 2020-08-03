@@ -30,6 +30,7 @@ for line in file:
 		secretkey=(line.split("=")[1].rstrip('\n'))
 	if 'url' in line:
 		url=str(line.split("=")[1].rstrip('\n'))
+		url=(url.replace("v1", "v2"))
 
 # create header
 headers = {}
@@ -37,14 +38,14 @@ headers['api-key'] = apikey
 headers['secret-key'] = secretkey
 headers['content-type'] = 'application/json'
 
-command = 'FileSystems'
+command = 'Volumes'
 url = url+command
 
-# get filesystems
+# get volumes
 req = requests.get(url, headers = headers)
-filesystems = json.dumps(req.json(), indent=4)
+volumes = json.dumps(req.json(), indent=4)
 
-print(highlight(filesystems, JsonLexer(), TerminalFormatter()))
+print(highlight(volumes, JsonLexer(), TerminalFormatter()))
 
 vols=(len(req.json()))
 print('There are '+str(vols)+' volumes')

@@ -32,49 +32,48 @@ else:
 
 conf=args.config[0]
 file = open(conf, 'r')
-fsid = False
+volid = False
 
 # read config files for keys and api endpoint
 for line in file:
 	if 'apikey' in line:
 		apikey=(line.split("=")[1].rstrip('\n'))
-#		print(apikey)
 	if 'secretkey' in line:
 		secretkey=(line.split("=")[1].rstrip('\n'))
-#		print(secretkey)
 	if 'url' in line:
 		url=str(line.split("=")[1].rstrip('\n'))
-#		print(url)
+		url=(url.replace("v1", "v2"))
 
 head = {}
 head['api-key'] = apikey
 head['secret-key'] = secretkey
 head['content-type'] = 'application/json'
 
-command = 'FileSystems'
+command = 'Volumes'
 url = url+command
 
-# get filesystems
+# get Volumes
 req = requests.get(url, headers = head)
 vols=(len(req.json()))
 
-# search for filesystemId
+# search for VolumeId
 for vol in range(0, vols):
 	if ((req.json()[vol])['creationToken']) == args.mountpoint[0]:
-		fsid = ((req.json()[vol])['fileSystemId'])
-if not fsid :
+		volid = ((req.json()[vol])['volumeId'])
+		region = ((req.json()[vol])['region'])
+if not volid :
 	print('Mountpoint '+args.mountpoint[0] + ' does not exist')
 	sys.exit(1)
 
 # get snapshots
-def getsnaps(fsid, url, head):
-	url = url+'/'+fsid+'/Snapshots'
+def getsnaps(volid, url, head):
+	url = url+'/'+volid+'/Snapshots'
 	req = requests.get(url, headers = head)
 	details = json.dumps(req.json(), indent=4)
 	print('Snapshots in volume '+args.mountpoint[0])
 	print(highlight(details, JsonLexer(), TerminalFormatter()))
 
 
-getsnaps(fsid, url, head)
+getsnaps(volid, url, head)
 
 

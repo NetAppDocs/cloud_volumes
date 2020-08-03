@@ -32,7 +32,7 @@ else:
 
 conf=args.config[0]
 file = open(conf, 'r')
-fsid = False
+volid = False
 
 # read config files for keys and api endpoint
 for line in file:
@@ -42,44 +42,34 @@ for line in file:
 		secretkey=(line.split("=")[1].rstrip('\n'))
 	if 'url' in line:
 		url=str(line.split("=")[1].rstrip('\n'))
+		url=(url.replace("v1", "v2"))
 
 head = {}
 head['api-key'] = apikey
 head['secret-key'] = secretkey
 head['content-type'] = 'application/json'
 
-command = 'FileSystems'
+command = 'Volumes'
 url = url+command
 
-# get filesystems
+# get volumes
 req = requests.get(url, headers = head)
 vols=(len(req.json()))
 
-# search for filesystemId
+# search for volume
 for vol in range(0, vols):
 	if ((req.json()[vol])['creationToken']) == args.mountpoint[0]:
-		fsid = ((req.json()[vol])['fileSystemId'])
-if not fsid :
+		volid = ((req.json()[vol])['volumeId'])
+if not volid :
 	print('Mountpoint '+args.mountpoint[0] + ' does not exist')
 	sys.exit(1)
 
 # get volume details
-def getdetails(fsid, url, head):
-	url = url+'/'+fsid
+def getdetails(volid, url, head):
+	url = url+'/'+volid
 	req = requests.get(url, headers = head)
 	details = json.dumps(req.json(), indent=4)
 	print('Volume Details')
 	print(highlight(details, JsonLexer(), TerminalFormatter()))
 
-# get network details
-def getnetwork(fsid, url, head):
-	url = url+'/'+fsid+'/MountTargets'
-	req = requests.get(url, headers = head)
-	details = json.dumps(req.json(), indent=4)
-	print('Network Details')
-	print(highlight(details, JsonLexer(), TerminalFormatter()))
-
-getdetails(fsid, url, head)
-getnetwork(fsid, url, head)
-
-
+getdetails(volid, url, head)

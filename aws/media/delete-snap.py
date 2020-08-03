@@ -41,7 +41,7 @@ else:
 
 conf=args.config[0]
 file = open(conf, 'r')
-fsid = False
+volid = False
 
 # read config files for keys and api endpoint
 for line in file:
@@ -51,6 +51,7 @@ for line in file:
 		secretkey=(line.split("=")[1].rstrip('\n'))
 	if 'url' in line:
 		url=str(line.split("=")[1].rstrip('\n'))
+		url=(url.replace("v1", "v2"))
 
 # create header
 head = {}
@@ -58,29 +59,30 @@ head['api-key'] = apikey
 head['secret-key'] = secretkey
 head['content-type'] = 'application/json'
 
-command = 'FileSystems'
+command = 'Volumes'
 url = url+command
 
-# get filesystems
+# get Volumes
 req = requests.get(url, headers = head)
 vols=(len(req.json()))
 
-# search for filesystemId
+# search for VolumeId
 for vol in range(0, vols):
 	if ((req.json()[vol])['creationToken']) == args.mountpoint[0]:
-		fsid = ((req.json()[vol])['fileSystemId'])
-if not fsid :
+		volid = ((req.json()[vol])['volumeId'])
+		region = ((req.json()[vol])['region'])
+if not volid :
 	print('Mountpoint '+args.mountpoint[0] + ' does not exist')
 	sys.exit(1)
 
 # delete snapshot
-def delete_snap(fsid, url, head):
-	url = url+'/'+fsid+'/Snapshots/'+args.snapshot[0]
+def delete_snap(volid, url, head):
+	url = url+'/'+volid+'/Snapshots/'+args.snapshot[0]
 	req = requests.delete(url, headers = head)
 	details = json.dumps(req.json(), indent=4)
 	print('Deleting snapshot '+ args.snapshot[0])
 	print(highlight(details, JsonLexer(), TerminalFormatter()))
 
-delete_snap(fsid, url, head)
+delete_snap(volid, url, head)
 
 
