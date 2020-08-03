@@ -129,7 +129,7 @@ link:media/snap-cv.py[Script to create snapshots of a cloud volume by mountpoint
 The following example uses a `PUT` call to create snapshot policies for a specific volume:
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X PUT <api_url>/v2/Volumes/<volumeId>/ -d '
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X PUT <api_url>/v2/Volumes/<volumeId> -d '
 {
 	"snapshotPolicy": {
         "dailySchedule": {},
