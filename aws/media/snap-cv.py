@@ -33,7 +33,7 @@ else:
 
 conf=args.config[0]
 file = open(conf, 'r')
-fsid = False
+volid = False
 
 # read config files for keys and api endpoint
 for line in file:
@@ -43,6 +43,7 @@ for line in file:
 		secretkey=(line.split("=")[1].rstrip('\n'))
 	if 'url' in line:
 		url=str(line.split("=")[1].rstrip('\n'))
+		url=(url.replace("v1", "v2"))
 
 # create header
 head = {}
@@ -50,27 +51,27 @@ head['api-key'] = apikey
 head['secret-key'] = secretkey
 head['content-type'] = 'application/json'
 
-command = 'FileSystems'
+command = 'Volumes'
 url = url+command
 
-# get filesystems
+# get Volumes
 req = requests.get(url, headers = head)
 vols=(len(req.json()))
 
-# search for filesystemId
+# search for VolumeId
 for vol in range(0, vols):
 	if ((req.json()[vol])['creationToken']) == args.mountpoint[0]:
-		fsid = ((req.json()[vol])['fileSystemId'])
+		volid = ((req.json()[vol])['volumeId'])
 		region = ((req.json()[vol])['region'])
-if not fsid :
+if not volid :
 	print('Mountpoint '+args.mountpoint[0] + ' does not exist')
 	sys.exit(1)
 
 now=(datetime.datetime.utcnow().strftime("%Y%m%d%H%M%S"))
 
 # take a snapshot of volume
-def take_snap(fsid, url, data, head):
-	url = url+'/'+fsid+'/Snapshots'
+def take_snap(volid, url, data, head):
+	url = url+'/'+volid+'/Snapshots'
 	data_json = json.dumps(data)
 	req = requests.post(url, headers = head, data = data_json)
 	details = json.dumps(req.json(), indent=4)
@@ -79,8 +80,8 @@ def take_snap(fsid, url, data, head):
 
 data = {
 	"name": "snap-"+str(now),
-	"fileSystemId": fsid,
+	"volumeId": volid,
 	"region": region
 		}
 
-take_snap(fsid, url, data, head)
+take_snap(volid, url, data, head)

@@ -20,6 +20,7 @@ NetApp periodically updates Cloud Volumes Service for AWS to bring you new featu
 * The Cloud Volumes Service now supports wider RFC 1918 private network ranges between /16 and /28. Previously only /28 ranges where supported.
 * The 'Sync' feature now integrates directly with the Cloud Sync UI to provide increased functionality.
 * Volumes can be converted to and from NSFv3, NFSv4.1, and both NFSv3 and NFSv4.1 via API calls.
+* The API examples and sample Python scripts have been updated to the v2 API. link:reference_cloud_volume_apis.html[See Cloud Volumes APIs].
 * ACLs are now enabled for NFSv4.1 volumes.
 * The Cloud Volumes Service is now certified with SOC 2 type 1.
 * The Cloud Volumes Service is now available in Singapore (ap-southeast-1).

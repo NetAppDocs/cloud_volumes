@@ -24,10 +24,10 @@ else:
 
 if args.mountpoint:
 	if len(args.mountpoint)!=1:
-		print('a volume mountpoint is require')
+		print('a volume mountpoint is required')
 		sys.exit(1)
 else:
-	print('a volume mountpoint is require')
+	print('a volume mountpoint is required')
 	sys.exit(1)
 
 conf=args.config[0]
@@ -44,7 +44,10 @@ for line in file:
 		url=str(line.split("=")[1].rstrip('\n'))
 		url=(url.replace("v1", "v2"))
 
-# create header
+standard_qos = 16
+premium_qos = 64
+extreme_qos = 128
+
 head = {}
 head['api-key'] = apikey
 head['secret-key'] = secretkey
@@ -66,12 +69,23 @@ if not volid :
 	print('Mountpoint '+args.mountpoint[0] + ' does not exist')
 	sys.exit(1)
 
-# delete volume by filesystemId
-def delete(volid, url, head):
+# get volume details
+def getqos(volid, url, head):
 	url = url+'/'+volid
-	req = requests.delete(url, headers = head)
-	details = json.dumps(req.json(), indent=4)
-	print('Deleting '+ args.mountpoint[0])
-	print(highlight(details, JsonLexer(), TerminalFormatter()))
+	req = requests.get(url, headers = head)
+	service_level=(req.json()['serviceLevel'])
+	allocated=((req.json()['quotaInBytes'])/1000000000000)
+	print('For mountpoint "' + args.mountpoint[0] + '" :') 
+	print('Service Level = ' + service_level)
+	print('Allocated Capacity = ' + str(round(allocated,4)) + ' TB')
+	if (req.json()['serviceLevel']) == 'extreme':
+		qos = (extreme_qos * allocated)
+		print('QoS throughput policy = 0-' + str(round(qos,4)) + ' MB/s')
+	if (req.json()['serviceLevel']) == 'premium':
+		qos = (premium_qos * allocated)
+		print('QoS throughput policy = 0-' + str(round(qos,4)) + ' MB/s')
+	if (req.json()['serviceLevel']) == 'standard':
+		qos = (standard_qos * allocated)
+		print('QoS throughput policy = 0-' + str(round(qos,4)) + ' MB/s')
 
-delete(volid, url, head)
+getqos(volid, url, head)

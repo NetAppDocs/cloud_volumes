@@ -8,15 +8,16 @@ from pygments.lexers import JsonLexer
 from pygments.formatters import TerminalFormatter
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-c","--config", nargs='+', help="config file")
-parser.add_argument("-n","--name", nargs='+', help="name")
-parser.add_argument("-m","--mountpoint", nargs='+', help="mountpoint")
-parser.add_argument("-r","--region", nargs='+', help="region")
 parser.add_argument("-a","--allocation", type=int, help="allocated_size_in_GB (100 to 100000") 
-parser.add_argument("-l","--service_level", nargs='+', help="service level <standard|premium|extreme>")
-parser.add_argument("-e","--export", action='append', nargs='+', help="protocol <nfs3|nfs41|nfs3+41|smb|nfs3+smb|nfs41+smb|nfs3+41+smb> and for nfs3|41 a valid CIDR and rw|ro")
-parser.add_argument("-s","--snapshot", nargs='+', help="snapshotId (optional)")
+parser.add_argument("-c","--config", nargs='+', help="config file")
+parser.add_argument("-e","--export", action='append', nargs='+', help="protocol <nfs3|nfs41|nfs3+41|smb|nfs3+smb|nfs41+smb|nfs3+41+smb> and for nfs3|41 a valid CIDR, rw|ro and optionally 'squash'")
 parser.add_argument("-hs","--hide_snapshot", action='store_true', help="hide the snapshot directory")
+parser.add_argument("-l","--service_level", nargs='+', help="service level <standard|premium|extreme>")
+parser.add_argument("-m","--mountpoint", nargs='+', help="mountpoint")
+parser.add_argument("-n","--name", nargs='+', help="name")
+parser.add_argument("-p","--protocol", nargs='+', help="Set NFS protocol <nfs3|nfs41|nfs3+41>")
+parser.add_argument("-r","--region", nargs='+', help="region")
+parser.add_argument("-s","--snapshot", nargs='+', help="snapshotId (optional)")
 parser.add_argument("-t","--tag", nargs='+', help="tag (optional)")
 args = parser.parse_args()
 
@@ -64,6 +65,26 @@ else:
 	print('Please select an available region')
 	sys.exit(1)
 
+if args.protocol:
+	if (args.protocol[0]) == 'nfs3':
+		protocols = [ 'NFSv3' ]
+	elif (args.protocol[0]) =='nfs41':
+		protocols = [ 'NFSv4' ]
+	elif (args.protocol[0]) =='nfs3+41':
+		protocols = [ 'NFSv3', 'NFSv4' ]
+	elif (args.protocol[0]) =='nfs3+smb':
+		protocols = [ 'NFSv3', 'CIFS' ]
+	elif (args.protocol[0]) =='nfs41+smb':
+		protocols = [ 'NFSv4', 'CIFS' ]
+	elif (args.protocol[0]) =='nfs3+41+smb':
+		protocols = [ 'NFSv3', 'NFSv4', 'CIFS' ]
+	else:
+		print('Argument for -p should be nfs3, nfs41, nfs3+41, nfs3+smb, nfs41+smb or nfs3+41+smb' )
+		sys.exit(1)
+else:
+	print('Protocol argument is required' )
+	sys.exit(1)
+
 snapshot = ''
 if args.snapshot:
 	snapshot = args.snapshot[0]
@@ -74,7 +95,7 @@ if args.tag:
 
 conf=args.config[0]
 file = open(conf, 'r')
-fsid = False
+volid = False
 
 # read config files for keys and api endpoint
 for line in file:
@@ -84,6 +105,7 @@ for line in file:
 		secretkey=(line.split("=")[1].rstrip('\n'))
 	if 'url' in line:
 		url=str(line.split("=")[1].rstrip('\n'))
+		url=(url.replace("v1", "v2"))
 
 # create header
 head = {}
@@ -91,14 +113,14 @@ head['api-key'] = apikey
 head['secret-key'] = secretkey
 head['content-type'] = 'application/json'
 
-command = 'FileSystems'
+command = 'Volumes'
 url = url+command
 
 req = requests.get(url, headers = head)
 vols=(len(req.json()))
 
 # create volume
-def create(fsid, url, data, head):
+def create(volid, url, data, head):
 	data_json = json.dumps(data)
 	req = requests.post(url, headers = head, data = data_json)
 	details = json.dumps(req.json(), indent=4)
@@ -111,6 +133,7 @@ if args.export:
 	for r in range (0, len(args.export)):
 		if (args.export[r][0]) == 'smb':
 			rules = {"rules": []}
+			protocols = [ 'CIFS' ]
 			data = {
 				"name": args.name[0],
 				"creationToken": args.mountpoint[0],
@@ -118,11 +141,12 @@ if args.export:
 				"serviceLevel": args.service_level[0],
 				"quotaInBytes": args.allocation,
 				"exportPolicy": rules,
+				"protocolTypes": protocols,
 				"snapshotId": snapshot,
 				"snapshotDirectory": snapshot_directory,
 				"labels": [tag]
 				}
-			create(fsid, url, data, head)
+			create(volid, url, data, head)
 			sys.exit(1)
 	
 	for r in range (0, len(args.export)):
@@ -153,8 +177,14 @@ if args.export:
 			rw, ro = False, True
 		else: 
 			rw, ro = True, False
+		if (len(args.export[r])) == 4:		
+			if (args.export[r][3]) == 'squash':
+				superuser = False
+		else:
+			superuser = True
+
 		rule_index=r+1
-		index = {"ruleIndex": rule_index,"allowedClients": export,"unixReadOnly": ro,"unixReadWrite": rw,"cifs": cifs,"nfsv3": nfs3,"nfsv4": nfs41}
+		index = {"ruleIndex": rule_index,"allowedClients": export,"unixReadOnly": ro,"unixReadWrite": rw,"cifs": cifs,"nfsv3": nfs3,"nfsv4": nfs41, "superuser": superuser}
 		rule.append(index)
 		rules = {"rules": rule}
 
@@ -165,11 +195,13 @@ if args.export:
 		"serviceLevel": args.service_level[0],
 		"quotaInBytes": args.allocation,
 		"exportPolicy": rules,
+		"protocolTypes": protocols,
 		"snapshotId": snapshot,
 		"snapshotDirectory": snapshot_directory,
 		"labels": [tag]
 		}
-	create(fsid, url, data, head)
+
+	create(volid, url, data, head)
 	sys.exit(1)
 
 else:

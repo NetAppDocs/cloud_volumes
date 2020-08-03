@@ -30,6 +30,7 @@ for line in file:
 		secretkey=(line.split("=")[1].rstrip('\n'))
 	if 'url' in line:
 		url=str(line.split("=")[1].rstrip('\n'))
+		url=(url.replace("v1", "v2"))
 
 # create header
 headers = {}
