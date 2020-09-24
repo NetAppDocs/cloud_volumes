@@ -15,7 +15,7 @@ parser.add_argument("-hs","--hide_snapshot", action='store_true', help="hide the
 parser.add_argument("-l","--service_level", nargs='+', help="service level <standard|premium|extreme>")
 parser.add_argument("-m","--mountpoint", nargs='+', help="mountpoint")
 parser.add_argument("-n","--name", nargs='+', help="name")
-parser.add_argument("-p","--protocol", nargs='+', help="Set NFS protocol <nfs3|nfs41|nfs3+41>")
+parser.add_argument("-p","--protocol", nargs='+', help="Set protocol")
 parser.add_argument("-r","--region", nargs='+', help="region")
 parser.add_argument("-s","--snapshot", nargs='+', help="snapshotId (optional)")
 parser.add_argument("-t","--tag", nargs='+', help="tag (optional)")
@@ -58,7 +58,7 @@ else:
 	snapshot_directory = True
 
 if args.region:
-	if (args.region)[0] != 'us-east-1' and (args.region)[0] != 'us-west-1' and (args.region)[0] != 'us-west-2' and (args.region)[0] != 'eu-central-1' and (args.region)[0] != 'eu-west-1' and (args.region)[0] != 'eu-west-2' and (args.region)[0] != 'ap-northeast-1' and (args.region)[0] != 'ap-southeast-2':
+	if (args.region)[0] != 'us-east-1' and (args.region)[0] != 'us-west-1' and (args.region)[0] != 'us-west-2' and (args.region)[0] != 'eu-central-1' and (args.region)[0] != 'eu-west-1' and (args.region)[0] != 'eu-west-2' and (args.region)[0] != 'ap-northeast-1' and (args.region)[0] != 'ap-southeast-1' and (args.region)[0] != 'ap-southeast-2':
 		print('Please select an available region')
 		sys.exit(1)	
 else:
@@ -66,7 +66,9 @@ else:
 	sys.exit(1)
 
 if args.protocol:
-	if (args.protocol[0]) == 'nfs3':
+	if (args.protocol[0]) == 'smb':
+		protocols = [ 'CIFS' ]
+	elif (args.protocol[0]) == 'nfs3':
 		protocols = [ 'NFSv3' ]
 	elif (args.protocol[0]) =='nfs41':
 		protocols = [ 'NFSv4' ]
@@ -79,7 +81,7 @@ if args.protocol:
 	elif (args.protocol[0]) =='nfs3+41+smb':
 		protocols = [ 'NFSv3', 'NFSv4', 'CIFS' ]
 	else:
-		print('Argument for -p should be nfs3, nfs41, nfs3+41, nfs3+smb, nfs41+smb or nfs3+41+smb' )
+		print('Argument for -p should be nfs3, nfs41, nfs3+41, nfs3+smb, nfs41+smb, nfs3+41+smb or smb' )
 		sys.exit(1)
 else:
 	print('Protocol argument is required' )
