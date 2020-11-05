@@ -21,6 +21,7 @@ Cloud Volumes Service for AWS provides the following benefits:
 
 * Consistent high performance
 * Data protection without performance impacts
+* Encryption at rest by default
 * Instant cloning to support operations, development, and test workflows
 * Support for NFSv3 and NFSv4.1, SMB 2.1, 3.0, and 3.1.1 NAS protocols
 * Secure access to Linux and Windows Elastic Container Service (ECS) instances, with support including the following:
