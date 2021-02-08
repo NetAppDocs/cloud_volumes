@@ -224,3 +224,12 @@ NOTE: You cannot unjoin a directory service that is in use; status "in use".
 curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url/v2/Storage/ActiveDirectory/<UUID>
 
 link:media/unjoin-ad.py[Script to unjoin a directory service]
+
+==== Get performance statistics
+
+The following example uses a `GET` call to list the read and write IOPS, throughput, and latency statistics over a specific time period for a volume specified by `volumeId`.
+
+[source,json]
+curl -s -H accept:application/json -H 'Content-type: application/json' -H api-key:<api_key> -H secret-key:<secret_key> -X GET '<api_url>/v2/Volumes/<volumeId>/PerformanceMetrics?startDate=2021-02-05T09:00&endDate=2021-02-05T09:05&type=READ_IOPS,WRITE_IOPS,TOTAL_THROUGHPUT,AVERAGE_OTHER_LATENCY'
+
+link:media/get-perfstats.py[Script to get performance statistics of a cloud volume by mountpoint]
