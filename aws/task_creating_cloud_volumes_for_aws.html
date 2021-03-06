@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head class="at-element-marker">
+  <title>Creating a cloud volume | NetApp Cloud Docs</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Creating a cloud volume | NetApp Cloud Docs" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/cloud_volumes/aws/task_creating_cloud_volumes_for_aws.html" />
+	<meta property="og:description" content="You create cloud volumes from the NetApp Cloud Orchestrator site." />
+  <meta property="og:image" content="https://docs.netapp.com/us-en/cloud_volumes/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta name="description" content="You create cloud volumes from the NetApp Cloud Orchestrator site.">
+  <meta name="keywords" content=" Cloud Volumes Service for AWS, volumes, snapshots, service levels, allocated capacity, export policy, NFS, SMB, Active Directory, AD, Windows">
+  
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/us-en/cloud_volumes/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+  <link rel="alternate" type="application/rss+xml" title="NetApp Cloud Docs" href="/us-en/cloud_volumes/feed.xml">
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud_volumes/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/us-en/cloud_volumes/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud_volumes/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud_volumes/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud_volumes/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/us-en/cloud_volumes/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/us-en/cloud_volumes/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/us-en/cloud_volumes/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/us-en/cloud_volumes/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/us-en/cloud_volumes/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloud_volumes/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloud_volumes/css/na-pagenav.css' type='text/css'>
+
+  
+
+  
+  <link rel='stylesheet' href='/us-en/cloud_volumes/css/na-feature.css' type='text/css'>
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/us-en/cloud_volumes/js/na-search.js'></script>
+  
+
+  
+  <script src='/us-en/cloud_volumes/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/us-en/cloud_volumes/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloud_volumes/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/us-en/cloud_volumes/js/na-utility.js'></script>
+  <script src='/us-en/cloud_volumes/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/us-en/cloud_volumes/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/us-en/cloud_volumes/js/toc.js'></script>
+  <script src='/us-en/cloud_volumes/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">Product and Solutions</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">Support and Training</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Community</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Customer Stories</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" data-type="widget" data-placeholder="Search Documentation" data-no-results-found="No results were found for {query}" data-did-you-mean="Search for {suggestion}." data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?" data-results-found="{hitCount} results found"  ></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar"><!-- Start Language Selector -->
+    <div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">English</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <div class="n-language-selector-menu__header">
+            <span class="n-language-selector-menu__title">Select Your Language</span>
+          </div>
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/cloud_volumes" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li></ul>
+            </li>
+          </ul>
+          <div class="menu__footer">
+            <p>Current Language: English
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+        <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">Home</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">Documentation</a>
+        </li>
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/cloud/">Cloud Docs</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/us-en/cloud_volumes/aws">Cloud&nbsp;Volumes&nbsp;Service</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          Creating a cloud volume
+        </li>
+      </ul>
+    </div>
+
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" >
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">PDFs<span>
+    </span>
+  </a>
+</div>
+<ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><div class="n-pdf-section">
+      <span class="n-pdf-section-title">Site</span>
+    </div>
+    <li>
+      <a target="_blank" href="/us-en/cloud_volumes/pdfs/fullsite-sidebar_aws/NetApp_Cloud_Volumes_Service_for_AWS_documentation.pdf" >
+        <img src="/us-en/cloud_volumes/images/pdf.png" width="20" height="20"/>
+        NetApp Cloud Volumes Service for AWS documentation
+      </a>
+    </li>
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud_volumes/pdfs/sidebar_aws/Release_notes.pdf" >
+            <img src="/us-en/cloud_volumes/images/pdf.png" width="20" height="20"/>
+            Release notes
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud_volumes/pdfs/sidebar_aws/Getting_started.pdf" >
+            <img src="/us-en/cloud_volumes/images/pdf.png" width="20" height="20"/>
+            Getting started
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud_volumes/pdfs/sidebar_aws/Managing_cloud_volumes.pdf" >
+            <img src="/us-en/cloud_volumes/images/pdf.png" width="20" height="20"/>
+            Managing cloud volumes
+          </a>
+        </li>
+        <span>
+          
+  
+    <div class="n-pdf-section">
+  <span class="n-pdf-section-title">This page</span>
+</div>
+
+<li class="active">
+  <a target="_blank" href="/us-en/cloud_volumes/pdfs/pages/aws/task_creating_cloud_volumes_for_aws.pdf" >
+    <img src="/us-en/cloud_volumes/images/pdf.png" width="20" height="20"/>
+    Creating a cloud volume
+  </a>
+</li>
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud_volumes/pdfs/sidebar_aws/Managing_cloud_volume_snapshots.pdf" >
+            <img src="/us-en/cloud_volumes/images/pdf.png" width="20" height="20"/>
+            Managing cloud volume snapshots
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud_volumes/pdfs/sidebar_aws/Managing_export_policy_rules.pdf" >
+            <img src="/us-en/cloud_volumes/images/pdf.png" width="20" height="20"/>
+            Managing export policy rules
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud_volumes/pdfs/sidebar_aws/Managing_Cloud_Sync_for_cloud_volumes.pdf" >
+            <img src="/us-en/cloud_volumes/images/pdf.png" width="20" height="20"/>
+            Managing Cloud Sync for cloud volumes
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud_volumes/pdfs/sidebar_aws/Reference.pdf" >
+            <img src="/us-en/cloud_volumes/images/pdf.png" width="20" height="20"/>
+            Reference
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+
+</ul>
+
+<script>
+  $("#toggleContainerPdf li.active").parents('li').toggle('display');
+  $("#toggleContainerPdf li.active").parents('span.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+  });
+</script><ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="index.html">
+        Cloud Volumes Service for AWS docs
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Release notes</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="reference_whats_new_cloud_volumes_aws.html">
+        What's new
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_known_issues.html">
+        Known Issues
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Getting started</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_overview.html">
+        Prerequisites
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_quick_start.html">
+        Quick start instructions
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_activating_support_entitlement.html">
+        Activating support entitlement and accessing support
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_selecting_region.html">
+        Selecting the region
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Managing cloud volumes</div>
+      </a>
+      <ul><li class="  active "><a class="na-navbar-padding" href="task_creating_cloud_volumes_for_aws.html">
+        Creating a cloud volume
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_mounting_cloud_volumes_for_aws.html">
+        Mounting a cloud volume
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_modifying_cloud_volumes_for_aws.html">
+        Modifying a cloud volume
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_deleting_cloud_volumes_for_aws.html">
+        Deleting a cloud volume
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Managing cloud volume snapshots</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_creating_on_demand_snapshots.html">
+        Creating an on-demand snapshot for a cloud volume
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_creating_modifying_snapshot_policies.html">
+        Creating or modifying a snapshot policy
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_disabling_snapshot_policy.html">
+        Disabling a snapshot policy
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_reverting_volume_to_snapshot.html">
+        Reverting a volume from a snapshot
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_deleting_snapshots.html">
+        Deleting a snapshot
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_restoring_snapshots_to_new_volumes.html">
+        Restoring a snapshot to a new volume
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Managing export policy rules</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_modifying_export_policy_rules.html">
+        Modifying an export policy rule
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_creating_additional_export_policy_rules.html">
+        Creating additional export policy rules
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_deleting_export_policy_rules.html">
+        Deleting export policy rules
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Managing Cloud Sync for cloud volumes</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_creating_cloud_sync_data_broker.html">
+        Creating a Cloud Sync data broker
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_creating_cloud_sync_relationship.html">
+        Creating a Cloud Sync relationship
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_modifying_cloud_sync_schedule.html">
+        Modifying the Cloud Sync schedule
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_deleting_cloud_sync_relationship.html">
+        Deleting a Cloud Sync relationship
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_deleting_cloud_sync_data_broker.html">
+        Deleting a Cloud Sync data broker
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="reference_cloud_volume_apis.html">
+        Cloud Volumes APIs
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Reference</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="reference_security_groups_windows_ad_servers.html">
+        AWS security group settings for Windows AD servers
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_selecting_service_level_and_quota.html">
+        Selecting the appropriate service level and allocated capacity
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="reference_notices.html">
+        Legal notices
+      </a></li></ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      
+
+
+
+<div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Creating a cloud volume</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2020-07-29 02:29:12 +0000">07/29/2020</time>
+    
+  
+
+<span>Contributors
+  <a target="_blank" href="https://github.com/netapp-tonacki">
+    <img  class="avatar avatar-small"
+          alt="netapp-tonacki"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/38222299?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+  <a target="_blank" href="https://github.com/netapp-juliec">
+    <img  class="avatar avatar-small"
+          alt="netapp-juliec"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/35970435?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+  <span>
+    <a target="_blank" href="/us-en/cloud_volumes/pdfs/pages/aws/task_creating_cloud_volumes_for_aws.pdf" role="button">
+      <img src="/us-en/cloud_volumes/images/pdf.png" width="20" height="20"/>Download PDF of this page</a>
+  </span>
+
+
+</p>
+
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>You create cloud volumes from the NetApp Cloud Orchestrator site.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="prerequisites">Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Your AWS environment must meet certain requirements before you can create your first cloud volume. For each AWS region where you plan to deploy cloud volumes, you must have a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Virtual Private Cloud (VPC)</p>
+</li>
+<li>
+<p>Virtual Private Gateway (VGW) that is connected to your VPC</p>
+</li>
+<li>
+<p>Subnet for the VPC</p>
+</li>
+<li>
+<p>Routes defined that include the network on which cloud volumes will run</p>
+</li>
+<li>
+<p>Optionally, a Direct Connect Gateway</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You must have the following information available when creating your first cloud volume in a region:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>AWS account ID</strong>: A 12-digit Amazon account identifier with no dashes.</p>
+</li>
+<li>
+<p><strong>Classless Inter-Domain Routing (CIDR) Block</strong>: An unused IPv4 CIDR block. The network prefix must range between /16 and /28, and it must also fall within the ranges reserved for private networks (RFC 1918). Do not choose a network that overlaps your VPC CIDR allocations.</p>
+</li>
+<li>
+<p>You must have selected the correct region where you want to use the service. See  <a href="task_selecting_region.html">Selecting the region</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you have not configured the required AWS networking components, see the <a href="media/cvs_aws_account_setup.pdf" target="_blank" rel="noopener">NetApp Cloud Volumes Service for AWS Account Setup</a> guide for details.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> When planning to create an SMB volume, you must have a Windows Active Directory server available to which you can connect. You will enter this information when creating the volume. Also, make sure that the Admin user is able to create a machine account in the Organizational unit (OU) path specified.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enter-volume-details">Enter volume details</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Complete the fields at the top of the Create Volume page to define the volume name, size, service level, and more.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>After you have logged in to the <a href="https://cds-aws-bundles.netapp.com/storage/volumes" target="_blank" rel="noopener">NetApp Cloud Orchestrator</a> site with the email address that you provided during your subscription, and you have <a href="task_selecting_region.html">selected the region</a>, click the <strong>Create new volume</strong> button.</p>
+<div class="imageblock">
+<div class="content">
+<img src="./media/diagram_create_volume_1.png" alt="Create Volume page">
+</div>
+</div>
+</li>
+<li>
+<p>From the Create Volume page, select <strong>NFS</strong>, <strong>SMB</strong>, or <strong>Dual-protocol</strong> as the protocol for the volume you want to create.</p>
+</li>
+<li>
+<p>In the <strong>Name</strong> field, specify the name you want to use for the volume.</p>
+</li>
+<li>
+<p>In the  <strong>Region</strong> field, select the AWS region where you want to create the volume. This region must match the region you configured on AWS.</p>
+</li>
+<li>
+<p>In the <strong>Timezone</strong> field, select your time zone.</p>
+</li>
+<li>
+<p>In the <strong>Volume path</strong> field, specify the path you want to use or accept the automatically generated path.</p>
+</li>
+<li>
+<p>In the <strong>Service level</strong> field, select the level of performance for the volume: <strong>Standard</strong>, <strong>Premium</strong>, or <strong>Extreme</strong>.</p>
+<div class="paragraph">
+<p>See <a href="reference_selecting_service_level_and_quota.html#service-levels">Selecting the service level</a> for details.</p>
+</div>
+</li>
+<li>
+<p>In the <strong>Allocated capacity</strong> field, select the capacity required. Note that the number of available inodes is dependent on allocated capacity.</p>
+<div class="paragraph">
+<p>See <a href="reference_selecting_service_level_and_quota.html#allocated-capacity">Selecting the allocated capacity</a> for details.</p>
+</div>
+</li>
+<li>
+<p>In the <strong>NFS version</strong> field, select <strong>NFSv3</strong>, <strong>NFSv4.1</strong>, or <strong>Both</strong> depending on your requirements.</p>
+</li>
+<li>
+<p>If you selected Dual-protocol, you can select the security style in the <strong>Security style</strong> field by selecting <strong>NTFS</strong> or <strong>UNIX</strong> from the drop-down menu.</p>
+<div class="paragraph">
+<p>Security styles affect the file permission type used and how permissions can be modified.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>UNIX uses NFSv3 mode bits, and only NFS clients can modify permissions.</p>
+</li>
+<li>
+<p>NTFS uses NTFS ACLs, and only SMB clients can modify permissions.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In the <strong>Show snapshot directory</strong> field, keep the default where you can view the Snapshot directory for this volume, or uncheck the box to hide the list of Snapshot copies.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enter-network-details-one-time-setting-per-aws-region">Enter network details (one-time setting per AWS region)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If this is the first time you have created a cloud volume in this AWS region, the <strong>Network</strong> section is displayed so you can connect your Cloud Volumes account to your AWS account:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the <strong>CIDR (IPv4)</strong> field, enter the desired IPv4 range for the region. The network prefix must range between /16 and /28. The network must also fall within the ranges reserved for private networks (RFC 1918).  Do not choose a network that overlaps your VPC CIDR allocations.</p>
+</li>
+<li>
+<p>In the <strong>AWS account ID</strong> field, enter your 12-digit Amazon account identifier with no dashes.</p>
+<div class="imageblock">
+<div class="content">
+<img src="./media/diagram_create_volume_network.png" alt="Configure network settings">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enter-export-policy-rules-optional">Enter export policy rules (optional)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you selected NFS or Dual-protocol, you can create an export policy in the <strong>Export policy</strong> section to identify the clients that can access the volume:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the <strong>Allowed clients</strong> field, specify the allowed clients by using an IP address or Classless Inter-Domain Routing (CIDR).</p>
+</li>
+<li>
+<p>In the <strong>Access</strong> field, select <strong>Read &amp; Write</strong> or <strong>Read only</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Protocols</strong> field, select the protocol (or protocols if the volume allows both NFSv3 and NFSv4.1 access) used for user access.</p>
+<div class="imageblock">
+<div class="content">
+<img src="./media/diagram_create_volume_4.png" alt="Add export policy rule">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Click <strong>+ Add export policy rule</strong> if you want to define additional export policy rules.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enable-data-encryption-optional">Enable data encryption (optional)</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If you selected SMB or Dual-protocol, you can enable SMB session encryption by checking the box for the <strong>Enable SMB3 Protocol Encryption</strong> field.</p>
+<div class="paragraph">
+<p><strong>Note:</strong> Do not enable encryption if SMB 2.1 clients need to mount the volume.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="integrate-the-volume-with-an-active-directory-server-smb-and-dual-protocol">Integrate the volume with an Active Directory server (SMB and Dual Protocol)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you selected SMB or Dual-protocol, you can choose to integrate the volume with a Windows Active Directory server or an AWS Managed Microsoft AD in the <strong>Active Directory</strong> section.</p>
+</div>
+<div class="paragraph">
+<p>In the <strong>Available settings</strong> field, select an existing Active Directory server or add a new AD server.</p>
+</div>
+<div class="paragraph">
+<p>To configure a connection to a new AD server:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the <strong>DNS server</strong> field, enter the IP address(es) of the DNS server(s). Use a comma to separate the IP addresses when referencing multiple servers, for example, 172.31.25.223, 172.31.2.74.</p>
+</li>
+<li>
+<p>In the <strong>Domain</strong> field, enter the domain for the SMB share.</p>
+<div class="paragraph">
+<p>When using AWS Managed Microsoft AD, use the value from the "Directory DNS name" field.</p>
+</div>
+</li>
+<li>
+<p>In the <strong>SMB Server NetBIOS</strong> field, enter a NetBIOS name for the SMB server that will be created.</p>
+</li>
+<li>
+<p>In the <strong>Organizational unit</strong> field, enter "CN=Computers" for connections to your own Windows Active Directory server.</p>
+<div class="paragraph">
+<p>When using AWS Managed Microsoft AD, the Organizational unit must be entered in the format "OU=&lt;NetBIOS_name&gt;". For example, <strong>OU=AWSmanagedAD</strong>.</p>
+</div>
+<div class="paragraph">
+<p>To use a nested OU you must call out the lowest level OU first up to the highest level OU. For example: <strong>OU=THIRDLEVEL,OU=SECONDLEVEL,OU=FIRSTLEVEL</strong>.</p>
+</div>
+</li>
+<li>
+<p>In the <strong>Username</strong> field, enter a username for your Active Directory server.</p>
+<div class="paragraph">
+<p>You can use any username that is authorized to create machine accounts in the Active Directory domain to which you are joining the SMB server.</p>
+</div>
+</li>
+<li>
+<p>In the <strong>Password</strong> field, enter the password for the AD username that you specified.</p>
+<div class="imageblock">
+<div class="content">
+<img src="./media/diagram_create_volume_ad.png" alt="Active Directory">
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/designing-the-site-topology" target="_blank" rel="noopener">Designing a site topology for Active Directory Domain Services</a> for guidelines about designing an optimal Microsoft AD implementation.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="media/cvs_aws_ds_smb_setup.pdf" target="_blank" rel="noopener">AWS Directory service setup with NetApp Cloud Volumes Service for AWS</a> guide for detailed instructions for using AWS Managed Microsoft AD.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You should follow the guidance on AWS security group settings to enable cloud volumes to integrate with Windows Active Directory servers correctly. See <a href="reference_security_groups_windows_ad_servers.html">AWS security group settings for Windows AD servers</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> UNIX users mounting the volume using NFS will be authenticated as Windows user "root" for UNIX root and "pcuser" for all other users. Make sure that these user accounts exist in your Active Directory prior to mounting a dual protocol volume when using NFS.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-a-snapshot-policy-optional">Create a Snapshot policy (optional)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you want to create a snapshot policy for this volume, enter the details in the <strong>Snapshot policy</strong> section:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select the snapshot frequency: <strong>Hourly</strong>, <strong>Daily</strong>, <strong>Weekly</strong>, or <strong>Monthly</strong>.</p>
+</li>
+<li>
+<p>Select the number of snapshots to keep.</p>
+</li>
+<li>
+<p>Select the time when the snapshot should be taken.</p>
+<div class="imageblock">
+<div class="content">
+<img src="./media/diagram_snapshot_policy_1.png" alt="Snapshot policy">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can create additional snapshot policies by repeating the steps above, or by selecting the Snapshots tab from the left navigation area.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-the-volume">Create the volume</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Scroll down to the bottom of the page and click <strong>Create Volume</strong>.</p>
+<div class="paragraph">
+<p>If you have previously created a cloud volume in this region, the new volume appears in the Volumes page.</p>
+</div>
+<div class="paragraph">
+<p>If this is the first cloud volume you have created in this AWS region and you have entered the networking information in the Network section of this page, a Progress dialog is displayed that identifies the next steps you must follow to connect the volume with AWS interfaces.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/diagram_create_volume_interfaces_dialog.png" alt="Accept virtual interfaces dialog"></span></p>
+</div>
+</li>
+<li>
+<p>Accept the virtual interfaces as described in section 6.4 of the <a href="media/cvs_aws_account_setup.pdf#page=21" target="_blank" rel="noopener">NetApp Cloud Volumes Service for AWS Account Setup</a> guide. You must perform this task within 10 minutes or the system may time out.</p>
+<div class="paragraph">
+<p>If the interfaces do not appear within 10 minutes there may be a configuration issue; in which case you should contact support.</p>
+</div>
+<div class="paragraph">
+<p>After the interfaces and other networking components are created, the volume you created appears in the Volumes page and the Actions field is listed as Available.<br>
+<span class="image"><img src="./media/diagram_create_volume_3.png" alt="A volume is created"></span></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">After you finish</div>
+<p>Continue with <a href="task_mounting_cloud_volumes_for_aws.html">Mounting a cloud volume</a>.</p>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div class="page-nav-contribute"  >
+      <div class="page-nav-contribute-title">CONTRIBUTE</div>
+      <a target="_blank" href="https://github.com/NetAppDocs/cloud_volumes/blob/main/aws/task_creating_cloud_volumes_for_aws.adoc" class="btn btn-default githubEditButton" role="button"><img src="/us-en/cloud_volumes/images/github.png" class="github-icon" />Edit on GitHub</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/cloud_volumes/issues/new?body=Page%3A%20[Creating a cloud volume](https://docs.netapp.com/us-en/cloud_volumes/aws/task_creating_cloud_volumes_for_aws.html)" class="btn btn-default githubEditButton" role="button"><img src="/us-en/cloud_volumes/images/github.png" class="github-icon" />Request doc changes</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >Contributor's Guide</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">ON THIS PAGE</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2021 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__language">
+              <!-- <a class="n-footer__corp-link modaal" href="#n-language-selector-menu" data-modaal-scope="modaal_154143812867626e487b1a03c9"> -->
+              <a class="n-footer__corp-link modaal" href="#n-language-selector-menu">
+                <svg class="n-icon-baseline-language" aria-labelledby="title">
+                  <title>netapp-globe</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#globe"></use>
+                </svg>
+                English
+              </a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud_volumes/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">Have feedback for our website?<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">Let us know</a>
+  <a href="https://docs.netapp.com/us-en/announcements/" class="n-footer__copyright">Announcements</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/us-en/cloud_volumes/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/us-en/cloud_volumes/js/prism.js'></script>
+      <script type="text/javascript" src='/us-en/cloud_volumes/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/us-en/cloud_volumes/js/www-ntap.js'></script>
+  </body>
+
+  
+</html>
