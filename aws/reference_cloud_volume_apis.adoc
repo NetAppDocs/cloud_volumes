@@ -2,7 +2,7 @@
 sidebar: sidebar_aws
 permalink: aws/reference_cloud_volume_apis.html
 keywords: Cloud Volumes Service for AWS, APIs
-summary: The Cloud Volumes capabilities that are available through the web UI are also available through RESTful APIs.  The APIs enable you to create and manage cloud volumes and develop provisioning scripts and tools.
+summary: The Cloud Volumes capabilities that are available through the web UI are also available through RESTful APIs. The APIs enable you to create and manage cloud volumes and develop provisioning scripts and tools.
 ---
 
 = Cloud Volumes APIs
@@ -20,7 +20,7 @@ The Cloud Volumes capabilities that are available through the web UI are also av
 You need to obtain the Cloud Volumes API URL, API key, and Secret key for running an API call.
 
 .Steps
-. Click **API access** on the storage page or in the drop-down menu under your username.
+. Click *API access* on the storage page or in the drop-down menu under your username.
 +
 . Record the Cloud Volumes API URL, API key, and Secret key.
 
@@ -30,7 +30,7 @@ link:media/test.conf[Sample file showing the API URL, API key, and Secret key fo
 The storage page displays the available APIs that you can use.
 
 .Steps
-. Click **API documentation** on the storage page.
+. Click *API documentation* on the storage page.
 +
 The page lists the available APIs.
 . Scroll through the page to see the available APIs.
@@ -50,10 +50,10 @@ The APIs are listed by function, for example:
 * `DELETE`: destroys
 
 == Using the Cloud Volumes APIs
-This section shows you how to use the Cloud Volumes APIs.  The examples use curl from a Linux bash shell. You need to replace `<api_url>`, `<api_key>`, and `<secret_key>` with the values you recorded from <<finding_urL_key_secretKey, Finding the API URL, API key, and Secret key>>.
+This section shows you how to use the Cloud Volumes APIs. The examples use curl from a Linux bash shell. You need to replace `<api_url>`, `<api_key>`, and `<secret_key>` with the values you recorded from <<finding_urL_key_secretKey,Finding the API URL, API key, and Secret key>>.
 
 === Syntax
-`*curl -s -H  accept:application/json  -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X [GET,POST,PUT,DELETE] <api_url>/v2/<command>*`
+`*curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X [GET,POST,PUT,DELETE] <api_url>/v2/<command>*`
 
 === Examples
 ==== Listing volumes
@@ -194,7 +194,7 @@ IMPORTANT: Use with caution. This API call deletes the snapshot and all its data
 The following example uses a `POST` call to join a directory service and provides the DNS IP address, domain, the NetBIOS name for the SMB server, the username and password for a directory service admin, and the organizational unit (optional and defaults to CN=Computers).
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url/v2/Storage/ActiveDirectory -d '
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X POST <api_url>/v2/Storage/ActiveDirectory -d '
 {
 	"DNS": "<ip-address>",
 	"domain": "<domain>",
@@ -211,7 +211,7 @@ link:media/join-ad.py[Script to join a directory service]
 The following example uses a `GET` call to display the configuration for directory service integration.
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url/v2/Storage/ActiveDirectory
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET <api_url>/v2/Storage/ActiveDirectory
 
 link:media/get-ad.py[Script to view directory service integration]
 
@@ -221,7 +221,7 @@ The following example uses a `DELETE` call to unjoin a directory service integra
 NOTE: You cannot unjoin a directory service that is in use; status "in use".
 
 [source,json]
-curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url/v2/Storage/ActiveDirectory/<UUID>
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X DELETE <api_url>/v2/Storage/ActiveDirectory/<UUID>
 
 link:media/unjoin-ad.py[Script to unjoin a directory service]
 
@@ -230,6 +230,6 @@ link:media/unjoin-ad.py[Script to unjoin a directory service]
 The following example uses a `GET` call to list the read and write IOPS, throughput, and latency statistics over a specific time period for a volume specified by `volumeId`.
 
 [source,json]
-curl -s -H accept:application/json -H 'Content-type: application/json' -H api-key:<api_key> -H secret-key:<secret_key> -X GET '<api_url>/v2/Volumes/<volumeId>/PerformanceMetrics?startDate=2021-02-05T09:00&endDate=2021-02-05T09:05&type=READ_IOPS,WRITE_IOPS,TOTAL_THROUGHPUT,AVERAGE_OTHER_LATENCY'
+curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:<api_key> -H secret-key:<secret_key> -X GET '<api_url>/v2/Volumes/<volumeId>/PerformanceMetrics?startDate=2021-02-05T09:00&endDate=2021-02-05T09:05&type=READ_IOPS,WRITE_IOPS,TOTAL_THROUGHPUT,AVERAGE_OTHER_LATENCY'
 
 link:media/get-perfstats.py[Script to get performance statistics of a cloud volume by mountpoint]
