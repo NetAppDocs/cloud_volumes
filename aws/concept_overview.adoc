@@ -1,5 +1,5 @@
 ---
-sidebar: sidebar_aws
+sidebar: sidebar
 permalink: aws/concept_overview.html
 keywords: Cloud Volumes Service for AWS, overview, concepts, features, use cases, prerequisites, workflow
 summary: Cloud volumes are simple to use and fast to deploy. Some prerequisites apply for using Cloud Volumes Service for AWS.

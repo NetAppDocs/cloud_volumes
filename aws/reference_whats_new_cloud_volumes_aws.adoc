@@ -1,5 +1,5 @@
 ---
-sidebar: sidebar_aws
+sidebar: sidebar
 permalink: aws/reference_whats_new_cloud_volumes_aws.html
 keywords: Cloud Volumes Service for AWS, what's new, features, enhancements
 summary: NetApp periodically updates Cloud Volumes Service for AWS to bring you new features and enhancements.

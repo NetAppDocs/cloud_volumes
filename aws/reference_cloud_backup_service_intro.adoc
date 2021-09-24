@@ -1,5 +1,5 @@
 ---
-sidebar: sidebar_aws
+sidebar: sidebar
 permalink: aws/reference_cloud_backup_service_intro.html
 keywords: Cloud Volumes Service for AWS, Cloud Backup Service
 summary: You can back up NFS cloud volumes by using Cloud Backup Service.

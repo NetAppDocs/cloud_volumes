@@ -1,5 +1,5 @@
 ---
-sidebar: sidebar_aws
+sidebar: sidebar
 permalink: aws/task_modifying_export_policy_rules.html
 keywords: Cloud Volumes Service for AWS, export policy rules, client access, access types
 summary: You can modify the export policy rule for a volume as needed.
