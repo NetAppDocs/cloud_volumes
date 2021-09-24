@@ -1,5 +1,5 @@
 ---
-sidebar: sidebar_aws
+sidebar: sidebar
 permalink: aws/reference_known_issues.html
 keywords: Cloud Volumes Service for AWS limitations and known issues
 summary: The following known issues and limitations exist in Cloud Volumes Service for AWS.

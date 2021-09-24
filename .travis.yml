@@ -18,7 +18,7 @@ jobs:
       - sudo apt-get -y install graphicsmagick graphicsmagick-libmagick-dev-compat libmagickwand-dev
       script:
       - if [[ ! -z "$FEATURE_FLAG" ]]; then bundle exec rake buildAll; fi
-      - mkdir -p /tmp/output && bundle exec jekyll build --trace --destination /tmp/output
+      - mkdir -p /tmp/output && bundle exec jekyll build --trace --destination /tmp/output --config _config.yml,project.yml
       - touch /tmp/output/.nojekyll
       deploy:
         provider: pages
@@ -31,7 +31,7 @@ jobs:
         on:
           all_branches: true
     - state: i18n
-      if: branch = main OR repo =~ /-internal/
+      if: branch = main AND not repo =~ /-internal/
       before_install:
       - echo -e "machine github.com\n login $GH_TOKEN" >> ~/.netrc && chmod 600 ~/.netrc
       - git submodule add https://github.com/NetAppDocs/jekyll-harmony dependencies/jekyll-harmony

@@ -1,0 +1,76 @@
+sidebar:
+  entries:
+    - title: Cloud Volumes Service for AWS docs
+      url: /aws/index.html
+    - title: Release notes
+      entries:
+        - title: What's new
+          url: /aws/reference_whats_new_cloud_volumes_aws.html
+        - title: Known Issues
+          url: /aws/reference_known_issues.html
+    - title: Getting started
+      entries:
+        - title: Prerequisites
+          url: /aws/concept_overview.html
+        - title: Quick start instructions
+          url: /aws/task_quick_start.html
+        - title: Activating support entitlement and accessing support
+          url: /aws/task_activating_support_entitlement.html
+        - title: Selecting the region
+          url: /aws/task_selecting_region.html
+    - title: Managing cloud volumes
+      entries:
+        - title: Creating a cloud volume
+          url: /aws/task_creating_cloud_volumes_for_aws.html
+        - title: Mounting a cloud volume
+          url: /aws/task_mounting_cloud_volumes_for_aws.html
+        - title: Modifying a cloud volume
+          url: /aws/task_modifying_cloud_volumes_for_aws.html
+        - title: Deleting a cloud volume
+          url: /aws/task_deleting_cloud_volumes_for_aws.html
+    - title: Managing cloud volume snapshots
+      entries:
+        - title: Creating an on-demand snapshot for a cloud volume
+          url: /aws/task_creating_on_demand_snapshots.html
+        - title: Creating or modifying a snapshot policy
+          url: /aws/task_creating_modifying_snapshot_policies.html
+        - title: Disabling a snapshot policy
+          url: /aws/task_disabling_snapshot_policy.html
+        - title: Reverting a volume from a snapshot
+          url: /aws/task_reverting_volume_to_snapshot.html
+        - title: Deleting a snapshot
+          url: /aws/task_deleting_snapshots.html
+        - title: Restoring a snapshot to a new volume
+          url: /aws/task_restoring_snapshots_to_new_volumes.html
+    - title: Managing export policy rules
+      entries:
+        - title: Modifying an export policy rule
+          url: /aws/task_modifying_export_policy_rules.html
+        - title: Creating additional export policy rules
+          url: /aws/task_creating_additional_export_policy_rules.html
+        - title: Deleting export policy rules
+          url: /aws/task_deleting_export_policy_rules.html
+    - title: Managing Cloud Sync for cloud volumes
+      entries:
+        - title: Creating a Cloud Sync data broker
+          url: /aws/task_creating_cloud_sync_data_broker.html
+        - title: Creating a Cloud Sync relationship
+          url: /aws/task_creating_cloud_sync_relationship.html
+        - title: Modifying the Cloud Sync schedule
+          url: /aws/task_modifying_cloud_sync_schedule.html
+        - title: Deleting a Cloud Sync relationship
+          url: /aws/task_deleting_cloud_sync_relationship.html
+        - title: Deleting a Cloud Sync data broker
+          url: /aws/task_deleting_cloud_sync_data_broker.html
+  #  - title: Managing backups using Cloud Backup Service (beta for US-WEST-2)
+  #    url: /aws/reference_cloud_backup_service_intro.html
+    - title: Cloud Volumes APIs
+      url: /aws/reference_cloud_volume_apis.html
+    - title: Reference
+      entries:
+        - title: AWS security group settings for Windows AD servers
+          url: /aws/reference_security_groups_windows_ad_servers.html
+        - title: Selecting the appropriate service level and allocated capacity
+          url: /aws/reference_selecting_service_level_and_quota.html
+    - title: Legal notices
+      url: /aws/reference_notices.html

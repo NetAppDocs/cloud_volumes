@@ -1,5 +1,5 @@
 ---
-sidebar: sidebar_aws
+sidebar: sidebar
 permalink: aws/task_quick_start.html
 summary: You can get started with the Cloud Volumes Service for AWS by completing a few quick steps.
 ---
