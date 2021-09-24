@@ -1,5 +1,5 @@
 ---
-sidebar: sidebar_aws
+sidebar: sidebar
 permalink: aws/reference_security_groups_windows_ad_servers.html
 keywords: Cloud Volumes Service for AWS, security groups, ports, protocols, Windows, Active Directory, AD
 summary: If you use Windows Active Directory (AD) servers with cloud volumes, you should familiarize yourself with the guidance on AWS security group settings. The settings enable cloud volumes to integrate with AD correctly.
