@@ -1,3 +1,14 @@
+---
+settings:
+  name: Cloud Volumes Service
+  platform: ''
+  rss_page: reference_whats_new_cloud_volumes_aws.html
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: true
+    langs: us-en,ja-jp,zh-cn
 sidebar:
   entries:
     - title: Cloud Volumes Service for AWS docs
