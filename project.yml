@@ -8,7 +8,6 @@ settings:
   prod:
     pdf_enabled: true
     harmony_enabled: true
-    langs: us-en,ja-jp,zh-cn
 sidebar:
   entries:
     - title: Cloud Volumes Service for AWS docs
