@@ -15,19 +15,16 @@ summary: You can get started with the Cloud Volumes Service for AWS by completin
 [.lead]
 You can get started with the Cloud Volumes Service for AWS by completing a few quick steps.
 
-*Note:* You must have configured the required AWS networking components prior to creating a cloud volume. See the _NetApp Cloud Volumes Service for AWS Account Setup Guide_ link:media/cvs_aws_account_setup.pdf[[EN^]]|link:media/cvs_aws_account_setup_jaJP.pdf[[JA^]] if you have not yet completed these steps.
+NOTE: You must have configured the required AWS networking components prior to creating a cloud volume. See the _NetApp Cloud Volumes Service for AWS Account Setup Guide_ link:media/cvs_aws_account_setup.pdf[[EN^]]|link:media/cvs_aws_account_setup_jaJP.pdf[[JA^]] if you have not yet completed these steps.
 
-[discrete]
-=== image:number1.png[The number 1] link:task_selecting_region.html[Select the region]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Select the region
 [role="quick-margin-para"]
-Specify the AWS region where you plan to create cloud volumes.
+link:task_selecting_region.html[Specify the AWS region] where you plan to create cloud volumes.
 
-[discrete]
-=== image:number2.png[The number 2] link:task_creating_cloud_volumes_for_aws.html[Create the cloud volume]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Create the cloud volume
 [role="quick-margin-para"]
-Create the cloud volume in the AWS cloud by specifying the size and service level, and define other options.
+link:task_creating_cloud_volumes_for_aws.html[Create the cloud volume] in the AWS cloud by specifying the size and service level, and define other options.
 
-[discrete]
-=== image:number3.png[The number 3] link:task_mounting_cloud_volumes_for_aws.html[Mount the cloud volume]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Mount the cloud volume
 [role="quick-margin-para"]
-Mount the cloud volume to your AWS instance using NFS for Linux and UNIX clients, or SMB for Windows clients.
+link:task_mounting_cloud_volumes_for_aws.html[Mount the cloud volume] to your AWS instance using NFS for Linux and UNIX clients, or SMB for Windows clients.
