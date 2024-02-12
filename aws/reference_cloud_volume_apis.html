@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head class="at-element-marker">
+  <title>Cloud Volumes APIs</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Cloud Volumes APIs" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html" />
+	<meta property="og:description" content="The Cloud Volumes capabilities that are available through the web UI are also available through RESTful APIs. The APIs enable you to create and manage cloud ..." />
+  <meta property="og:image" content="https://docs.netapp.com/us-en/cloud_volumes/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="The Cloud Volumes capabilities that are available through the web UI are also available through RESTful APIs. The APIs enable you to create and manage cloud ...">
+  <meta name="keywords" content=" Cloud Volumes Service for AWS, APIs"><!-- Icons -->
+  <link rel="icon" href="/us-en/cloud_volumes/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud_volumes/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/us-en/cloud_volumes/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/us-en/cloud_volumes/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/cloud_volumes/aws/reference_cloud_volume_apis.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/cloud_volumes/aws/reference_cloud_volume_apis.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/cloud_volumes/aws/reference_cloud_volume_apis.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/cloud_volumes/aws/reference_cloud_volume_apis.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/cloud_volumes/aws/reference_cloud_volume_apis.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/cloud_volumes/aws/reference_cloud_volume_apis.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/cloud_volumes/aws/reference_cloud_volume_apis.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/cloud_volumes/aws/reference_cloud_volume_apis.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/us-en/cloud_volumes/js/na-search.js'></script><script src='/us-en/cloud_volumes/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/us-en/cloud_volumes/js/custom-dropdown.js'></script>
+  <script src='/us-en/cloud_volumes/js/FileSaver.min.js'></script>
+  <script src='/us-en/cloud_volumes/js/jszip-utils.min.js'></script>
+  <script src='/us-en/cloud_volumes/js/jszip.min.js'></script><script src='/us-en/cloud_volumes/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/us-en/cloud_volumes/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/">
+                <image id="ie-header-logo" src="/us-en/cloud_volumes/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/support-and-training/documentation/">Docs</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/us-en/cloud_volumes/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">English</span>
+                    <img src="/us-en/cloud_volumes/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/us-en/cloud_volumes/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ja-jp/cloud_volumes/aws/reference_cloud_volume_apis.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ko-kr/cloud_volumes/aws/reference_cloud_volume_apis.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/cloud_volumes/aws/reference_cloud_volume_apis.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/cloud_volumes/aws/reference_cloud_volume_apis.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/cloud_volumes/aws/reference_cloud_volume_apis.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/cloud_volumes/aws/reference_cloud_volume_apis.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/cloud_volumes/aws/reference_cloud_volume_apis.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/cloud_volumes/aws/reference_cloud_volume_apis.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/us-en/cloud_volumes/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">All NetApp</span>
+                    <img src="/us-en/cloud_volumes/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/us-en/cloud_volumes/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">Support</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">Knowledge Base</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">Training</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/us-en/cloud_volumes/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/us-en/cloud_volumes/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">All docs</a>
+    </li>
+    
+    
+
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/us-en/cloud_volumes/">-->
+      Cloud Volumes Service
+    <!--</a>-->
+  </div>
+</div>
+
+            
+
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/us-en/cloud_volumes/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/us-en/cloud_volumes/search.html" 
+        data-type="widget"
+        data-placeholder="Search documentation"
+        data-no-results-found="No results were found for {query}"
+        data-did-you-mean="Search for {suggestion}."
+        data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?"
+        data-results-found="{hitCount} results found"
+        data-error-message="An error occurred. Please try again."
+        data-error-reset="Reset search"
+        data-sk-es-pf-indexes="" 
+        data-flavor="">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes Service for AWS docs"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloud_volumes/aws/index.html">
+        Cloud Volumes Service for AWS docs
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Release notes"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloud_volumes/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloud_volumes/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Release notes</div>-->
+         Release notes
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="What's new"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/reference_whats_new_cloud_volumes_aws.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/reference_whats_new_cloud_volumes_aws.html">
+        What's new
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Known Issues"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/reference_known_issues.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/reference_known_issues.html">
+        Known Issues
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Getting started"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloud_volumes/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloud_volumes/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Getting started</div>-->
+         Getting started
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prerequisites"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/concept_overview.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/concept_overview.html">
+        Prerequisites
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Quick start instructions"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_quick_start.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_quick_start.html">
+        Quick start instructions
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Activating support entitlement and accessing support"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_activating_support_entitlement.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_activating_support_entitlement.html">
+        Activating support entitlement and accessing support
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Selecting the region"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_selecting_region.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_selecting_region.html">
+        Selecting the region
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Managing cloud volumes"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloud_volumes/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloud_volumes/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Managing cloud volumes</div>-->
+         Managing cloud volumes
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Creating a cloud volume"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_creating_cloud_volumes_for_aws.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_creating_cloud_volumes_for_aws.html">
+        Creating a cloud volume
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mounting a cloud volume"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_mounting_cloud_volumes_for_aws.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_mounting_cloud_volumes_for_aws.html">
+        Mounting a cloud volume
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Modifying a cloud volume"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_modifying_cloud_volumes_for_aws.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_modifying_cloud_volumes_for_aws.html">
+        Modifying a cloud volume
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deleting a cloud volume"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_deleting_cloud_volumes_for_aws.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_deleting_cloud_volumes_for_aws.html">
+        Deleting a cloud volume
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Managing cloud volume snapshots"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloud_volumes/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloud_volumes/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Managing cloud volume snapshots</div>-->
+         Managing cloud volume snapshots
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Creating an on-demand snapshot for a cloud volume"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_creating_on_demand_snapshots.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_creating_on_demand_snapshots.html">
+        Creating an on-demand snapshot for a cloud volume
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Creating or modifying a snapshot policy"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_creating_modifying_snapshot_policies.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_creating_modifying_snapshot_policies.html">
+        Creating or modifying a snapshot policy
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Disabling a snapshot policy"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_disabling_snapshot_policy.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_disabling_snapshot_policy.html">
+        Disabling a snapshot policy
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reverting a volume from a snapshot"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_reverting_volume_to_snapshot.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_reverting_volume_to_snapshot.html">
+        Reverting a volume from a snapshot
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deleting a snapshot"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_deleting_snapshots.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_deleting_snapshots.html">
+        Deleting a snapshot
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restoring a snapshot to a new volume"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_restoring_snapshots_to_new_volumes.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_restoring_snapshots_to_new_volumes.html">
+        Restoring a snapshot to a new volume
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Managing export policy rules"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloud_volumes/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloud_volumes/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Managing export policy rules</div>-->
+         Managing export policy rules
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Modifying an export policy rule"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_modifying_export_policy_rules.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_modifying_export_policy_rules.html">
+        Modifying an export policy rule
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Creating additional export policy rules"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_creating_additional_export_policy_rules.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_creating_additional_export_policy_rules.html">
+        Creating additional export policy rules
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deleting export policy rules"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_deleting_export_policy_rules.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_deleting_export_policy_rules.html">
+        Deleting export policy rules
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Managing Cloud Sync for cloud volumes"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloud_volumes/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloud_volumes/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Managing Cloud Sync for cloud volumes</div>-->
+         Managing Cloud Sync for cloud volumes
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Creating a Cloud Sync data broker"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_creating_cloud_sync_data_broker.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_creating_cloud_sync_data_broker.html">
+        Creating a Cloud Sync data broker
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Creating a Cloud Sync relationship"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_creating_cloud_sync_relationship.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_creating_cloud_sync_relationship.html">
+        Creating a Cloud Sync relationship
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Modifying the Cloud Sync schedule"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_modifying_cloud_sync_schedule.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_modifying_cloud_sync_schedule.html">
+        Modifying the Cloud Sync schedule
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deleting a Cloud Sync relationship"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_deleting_cloud_sync_relationship.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_deleting_cloud_sync_relationship.html">
+        Deleting a Cloud Sync relationship
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deleting a Cloud Sync data broker"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/task_deleting_cloud_sync_data_broker.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/task_deleting_cloud_sync_data_broker.html">
+        Deleting a Cloud Sync data broker
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes APIs"
+      data-li-level="1#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/reference_cloud_volume_apis.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html">
+        Cloud Volumes APIs
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reference"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloud_volumes/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloud_volumes/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Reference</div>-->
+         Reference
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS security group settings for Windows AD servers"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/reference_security_groups_windows_ad_servers.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/reference_security_groups_windows_ad_servers.html">
+        AWS security group settings for Windows AD servers
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Selecting the appropriate service level and allocated capacity"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/reference_selecting_service_level_and_quota.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloud_volumes/aws/reference_selecting_service_level_and_quota.html">
+        Selecting the appropriate service level and allocated capacity
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Legal notices"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/aws/reference_cloud_volume_apis.html" 
+      dale-entry-url="/aws/reference_notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloud_volumes/aws/reference_notices.html">
+        Legal notices
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/us-en/cloud_volumes"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/us-en/cloud_volumes"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      <div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">Cloud Volumes APIs</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2021-09-24 06:01:01 +0000">09/24/2021</time>
+        
+    
+    
+        <span>Contributors
+            <a target="_blank" class="ext-link-indicator" href="https://github.com/netapp-tonacki"><img  class="avatar avatar-small" alt="netapp-tonacki" width="20" height="20" src="https://avatars.githubusercontent.com/u/38222299?v=4" style="border-radius: 50%;"/></a>
+        
+            <a target="_blank" class="ext-link-indicator" href="https://github.com/netapp-juliec"><img  class="avatar avatar-small" alt="netapp-juliec" width="20" height="20" src="https://avatars.githubusercontent.com/u/35970435?v=4" style="border-radius: 50%;"/></a>
+        
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/us-en/cloud_volumes/images/discuss-sm.svg" alt="" class="github-icon" />Suggest changes</span>
+        <img src="/us-en/cloud_volumes/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/us-en/cloud_volumes/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/cloud_volumes/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html&page-title=Cloud Volumes APIs" class="page-nav-contribute-link" role="button">Request doc changes</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/cloud_volumes/blob/main/aws/reference_cloud_volume_apis.adoc" class="page-nav-contribute-link" role="button">Edit this page</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >Learn how to contribute</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/us-en/cloud_volumes/images/pdf-icon.png" alt="" width="16" height="16"/>PDFs<img src="/us-en/cloud_volumes/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/us-en/cloud_volumes/pdfs/fullsite-sidebar/Cloud_Volumes_Service_for_AWS_docs.pdf" >
+                    <img src="/us-en/cloud_volumes/images/pdf-icon.png" alt="" width="16" height="16"/>PDF of this doc site</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloud_volumes/pdfs/sidebar/Release_notes.pdf" 
+            
+          >
+            <img src="/us-en/cloud_volumes/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Release notes
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloud_volumes/pdfs/sidebar/Getting_started.pdf" 
+            
+          >
+            <img src="/us-en/cloud_volumes/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Getting started
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloud_volumes/pdfs/sidebar/Managing_cloud_volumes.pdf" 
+            
+          >
+            <img src="/us-en/cloud_volumes/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Managing cloud volumes
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloud_volumes/pdfs/sidebar/Managing_cloud_volume_snapshots.pdf" 
+            
+          >
+            <img src="/us-en/cloud_volumes/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Managing cloud volume snapshots
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloud_volumes/pdfs/sidebar/Managing_export_policy_rules.pdf" 
+            
+          >
+            <img src="/us-en/cloud_volumes/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Managing export policy rules
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloud_volumes/pdfs/sidebar/Managing_Cloud_Sync_for_cloud_volumes.pdf" 
+            
+          >
+            <img src="/us-en/cloud_volumes/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Managing Cloud Sync for cloud volumes
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloud_volumes/pdfs/sidebar/Reference.pdf" 
+            
+          >
+            <img src="/us-en/cloud_volumes/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Reference
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/us-en/cloud_volumes/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>Collection of separate PDF docs<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>The Cloud Volumes capabilities that are available through the web UI are also available through RESTful APIs. The APIs enable you to create and manage cloud volumes and develop provisioning scripts and tools.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="finding-the-api-url-api-key-and-secret-key">Finding the API URL, API key, and Secret key</h2>
+<div class="sectionbody">
+<div id="finding_urL_key_secretKey" class="paragraph">
+<p>You need to obtain the Cloud Volumes API URL, API key, and Secret key for running an API call.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Click <strong>API access</strong> on the storage page or in the drop-down menu under your username.</p>
+</li>
+<li>
+<p>Record the Cloud Volumes API URL, API key, and Secret key.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><a href="media/test.conf">Sample file showing the API URL, API key, and Secret key for an account</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="listing-the-available-apis">Listing the available APIs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The storage page displays the available APIs that you can use.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Click <strong>API documentation</strong> on the storage page.</p>
+<div class="paragraph">
+<p>The page lists the available APIs.</p>
+</div>
+</li>
+<li>
+<p>Scroll through the page to see the available APIs.</p>
+<div class="paragraph">
+<p>The APIs are listed by function, for example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>volumes</code></p>
+</li>
+<li>
+<p><code>mounttargets</code></p>
+</li>
+<li>
+<p><code>storage</code></p>
+</li>
+<li>
+<p><code>snapshots</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>To obtain details and examples of how to use an API call, select the function and click one of the following actions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>GET</code>: reads</p>
+</li>
+<li>
+<p><code>POST</code>: creates</p>
+</li>
+<li>
+<p><code>PUT</code>: updates or modifies</p>
+</li>
+<li>
+<p><code>DELETE</code>: destroys</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-the-cloud-volumes-apis">Using the Cloud Volumes APIs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section shows you how to use the Cloud Volumes APIs. The examples use curl from a Linux bash shell. You need to replace <code>&lt;api_url&gt;</code>, <code>&lt;api_key&gt;</code>, and <code>&lt;secret_key&gt;</code> with the values you recorded from <a href="#finding_urL_key_secretKey">Finding the API URL, API key, and Secret key</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="syntax">Syntax</h3>
+<div class="paragraph">
+<p><code><strong>curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X [GET,POST,PUT,DELETE] &lt;api_url&gt;/v2/&lt;command&gt;</strong></code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples">Examples</h3>
+<div class="sect3">
+<h4 id="listing-volumes">Listing volumes</h4>
+<div class="paragraph">
+<p>The following example displays information about all volumes:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud_volumes/images/note.svg" alt="Note">
+</td>
+<td class="content">
+Piping the command through <code>jq</code> improves the formatting of the <code>json</code> output. You might need to install <code>jq</code> on your system.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X GET &lt;api_url&gt;/v2/Volumes | jq</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/list-cv.py">Script to list cloud volumes in an account</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-the-details-for-a-specific-volume">Listing the details for a specific volume</h4>
+<div class="paragraph">
+<p>Each volume has an ID called <code>volumeId</code>, for example, <code>07c9ab6c-b655-a9fe-f904-b9b97ef9baaa</code>. Including the ID in the API call provides details for the specific volume:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X GET &lt;api_url&gt;/v2/Volumes/&lt;volumeId&gt; | jq</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-a-volume">Creating a volume</h4>
+<div class="paragraph">
+<p>The following example uses a <code>POST</code> call to create a volume called <code>Test</code>, in region <code>us-west-1</code>, with an <code>allocated capacity</code> of 100 GB and exported using <code>nfsv3</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X POST &lt;api_url&gt;/v2/Volumes -d '
+{
+	"name": "Test",
+	"creationToken": "grahams-test-volume3",
+	"region": "us-west-1",
+	"serviceLevel": "standard",
+	"quotaInBytes": 100000000000,
+	"exportPolicy": {"rules": [{"ruleIndex": 1,"allowedClients": "0.0.0.0/0","unixReadOnly": false,"unixReadWrite": true,"cifs": false,"nfsv3": true,"nfsv4": false}]},
+	"protocolTypes": ["NFSv3"],
+	"labels": ["test"]
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/create-cv.py">Script to create a cloud volume</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updating-a-volume">Updating a volume</h4>
+<div class="paragraph">
+<p>The following example uses a <code>PUT</code> call to update a volume called <code>Test</code>, change the service level to <code>extreme</code>, and change the allocated capacity to 600 GB:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X PUT &lt;api_url&gt;/v2/Volumes/&lt;volumeId&gt; -d '
+{
+	"serviceLevel": "extreme",
+	"quotaInBytes": 600000000000
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/update-cv.py">Script to update a cloud volume</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-volume">Deleting a volume</h4>
+<div class="paragraph">
+<p>The following example uses a <code>DELETE</code> call to delete a volume specified by <code>volumeId</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X DELETE &lt;api_url&gt;/v2/Volumes/&lt;volumeId&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/delete-cv.py">Script to delete a cloud volume by mountpoint</a></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud_volumes/images/important.svg" alt="Important">
+</td>
+<td class="content">
+Use with caution. This API call deletes the volume and all its data.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-a-snapshot">Creating a snapshot</h4>
+<div class="paragraph">
+<p>The following example uses a <code>POST</code> call to create a snapshot called <code>snappy</code> for a specific volume:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X POST &lt;api_url&gt;/v2/Volumes/&lt;volumeId&gt;/Snapshots -d '
+{
+	"name": "&lt;snapshot-name&gt;"
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/snap-cv.py">Script to create snapshots of a cloud volume by mountpoint</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-a-snapshot-policy">Creating a snapshot policy</h4>
+<div class="paragraph">
+<p>The following example uses a <code>PUT</code> call to create snapshot policies for a specific volume:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X PUT &lt;api_url&gt;/v2/Volumes/&lt;volumeId&gt; -d '
+{
+	"snapshotPolicy": {
+        "dailySchedule": {},
+        "enabled": true,
+        "hourlySchedule": {
+            "minute": 33,
+            "snapshotsToKeep": 24
+        },
+        "monthlySchedule": {},
+        "weeklySchedule": {}
+    }
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/snapshot-policy.py">Script to create snapshot policies for a cloud volume by mountpoint</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-snapshots-for-a-specific-volume">Listing snapshots for a specific volume</h4>
+<div class="paragraph">
+<p>The following example uses a <code>GET</code> call to list the snapshots for a specific volume:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X GET &lt;api_url&gt;/v2/Volumes/&lt;volumeId&gt;/Snapshots</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/get-snaps.py">Script to list snapshots of a cloud volume by mountpoint</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="reverting-a-snapshot">Reverting a snapshot</h4>
+<div class="paragraph">
+<p>The following example uses a <code>POST</code> call to revert a volume from a snapshot specified by <code>snapshotId</code> and <code>volumeId</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X POST &lt;api_url&gt;/v2/Volumes/&lt;volumeId&gt;/Revert -d '
+{
+	"snapshotId": "&lt;snapshotId&gt;"
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/revert-snap.py">Script to revert to a snapshot of a cloud volume by mountpoint and snapshotId</a></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud_volumes/images/important.svg" alt="Important">
+</td>
+<td class="content">
+Use with caution.  This API call causes any data written after the date of that snapshot to be lost.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-a-new-volume-from-a-snapshot">Creating a new volume from a snapshot</h4>
+<div class="paragraph">
+<p>The following example uses a <code>POST</code> call to create a new volume based on a snapshot of an existing volume, specified by <code>snapshotId</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X POST &lt;api_url&gt;/v2/Volumes -d '
+{
+	"snapshotId": "&lt;snapshotId&gt;",
+	"name": "Copy",
+	"creationToken": "perfectly-copied-volume",
+	"region": "us-west-1",
+	"serviceLevel": "extreme",
+	"protocolTypes": ["NFSv3"]
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/copy-cv.py">Script to copy a cloud volume</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-snapshot">Deleting a snapshot</h4>
+<div class="paragraph">
+<p>The following example uses a <code>DELETE</code> call to delete a snapshot specified by <code>snapshotId</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X DELETE &lt;api_url&gt;/v2/Volumes/&lt;volumeId&gt;/Snapshots/&lt;snapshotId&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/delete-snap.py">Script to delete a snapshot of a cloud volume by mountpoint and snapshotId</a></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud_volumes/images/important.svg" alt="Important">
+</td>
+<td class="content">
+Use with caution. This API call deletes the snapshot and all its data.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="joining-a-directory-service">Joining a directory service</h4>
+<div class="paragraph">
+<p>The following example uses a <code>POST</code> call to join a directory service and provides the DNS IP address, domain, the NetBIOS name for the SMB server, the username and password for a directory service admin, and the organizational unit (optional and defaults to CN=Computers).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X POST &lt;api_url&gt;/v2/Storage/ActiveDirectory -d '
+{
+	"DNS": "&lt;ip-address&gt;",
+	"domain": "&lt;domain&gt;",
+	"netBIOS": "&lt;netbios-name&gt;",
+	"organizationalUnit": "OU=Cloud Servers,DC=nas-cloud,DC=local",
+	"password": "secret",
+	"region": "us-west-1",
+	"username": "Administrator"
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/join-ad.py">Script to join a directory service</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-directory-service-integration">Viewing directory service integration</h4>
+<div class="paragraph">
+<p>The following example uses a <code>GET</code> call to display the configuration for directory service integration.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X GET &lt;api_url&gt;/v2/Storage/ActiveDirectory</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/get-ad.py">Script to view directory service integration</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="unjoining-a-directory-service">Unjoining a directory service</h4>
+<div class="paragraph">
+<p>The following example uses a <code>DELETE</code> call to unjoin a directory service integration. This requires the UUID for the current join, which can be found using the <code>GET</code> call listed above.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud_volumes/images/note.svg" alt="Note">
+</td>
+<td class="content">
+You cannot unjoin a directory service that is in use; status "in use".
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X DELETE &lt;api_url&gt;/v2/Storage/ActiveDirectory/&lt;UUID&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/unjoin-ad.py">Script to unjoin a directory service</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="get-performance-statistics">Get performance statistics</h4>
+<div class="paragraph">
+<p>The following example uses a <code>GET</code> call to list the read and write IOPS, throughput, and latency statistics over a specific time period for a volume specified by <code>volumeId</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">curl -s -H accept:application/json -H "Content-type: application/json" -H api-key:&lt;api_key&gt; -H secret-key:&lt;secret_key&gt; -X GET '&lt;api_url&gt;/v2/Volumes/&lt;volumeId&gt;/PerformanceMetrics?startDate=2021-02-05T09:00&amp;endDate=2021-02-05T09:05&amp;type=READ_IOPS,WRITE_IOPS,TOTAL_THROUGHPUT,AVERAGE_OTHER_LATENCY'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="media/get-perfstats.py">Script to get performance statistics of a cloud volume by mountpoint</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/us-en/cloud_volumes/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/us-en/cloud_volumes/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">On this page</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Terms of use</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Privacy policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Cookie settings</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">Send feedback about this page</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/us-en/cloud_volumes/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/us-en/cloud_volumes/js/prism.js'></script>
+      <script type="text/javascript" src='/us-en/cloud_volumes/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/us-en/cloud_volumes/js/ie-tabbed-blocks.js'></script>
+    <script src='/us-en/cloud_volumes/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
